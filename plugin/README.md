@@ -50,6 +50,9 @@ shell.
 3. Spec: `dezign0` (or a pinned version such as `dezign0@0.4.0`).
 4. Reload.
 
+The live `0.3.0` package has the six skills but not the tools; `0.4.0` is prepared
+and adds `dezign0_lint`, `dezign0_measure` and `dezign0_doctor`.
+
 Full guide: [docs/PUBLISHING.md](../docs/PUBLISHING.md).
 
 **From `opencode.json`:**

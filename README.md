@@ -29,7 +29,9 @@ In **Settings → Plugins → Add plugin**:
 
 - **From local path:** the absolute path to this repo directory.
 - **From npm:** `dezign0` — live at
-  [npmjs.com/package/dezign0](https://www.npmjs.com/package/dezign0).
+  [npmjs.com/package/dezign0](https://www.npmjs.com/package/dezign0). The live
+  `0.3.0` release has the six skills; `0.4.0` adds the tools described below and
+  is prepared but not published yet.
 
 Choose User or Project scope. On load the plugin copies the kit to `.design-os/`,
 registers six `dezign0-*` skills and three read-only tools (`dezign0_lint`,
