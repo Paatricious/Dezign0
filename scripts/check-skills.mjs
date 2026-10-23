@@ -12,7 +12,7 @@ const names = fs.readdirSync(skillsDir).filter((name) =>
   fs.existsSync(path.join(skillsDir, name, "SKILL.md")),
 );
 
-assert.equal(names.length, 8, "expected eight skills");
+assert.equal(names.length, 13, "expected thirteen skills");
 for (const name of names) {
   const file = path.join(skillsDir, name, "SKILL.md");
   const text = fs.readFileSync(file, "utf8");

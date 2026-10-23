@@ -1,0 +1,239 @@
+{
+  "schema": "dezign0/media/video-storyboards/v1",
+  "count": 5,
+  "note": "Original motion briefs for video or image-to-video tools and for human editors. This pack ships no generation API, no key, no endpoint and no bundled footage or audio. Storyboard text is original to Dezign0; no third-party storyboard or prompt text is reproduced.",
+  "storyboards": [
+    {
+      "id": "hero-loop-drift",
+      "title": "Hero loop, gradient drift",
+      "useCase": "Seamless background loop for a landing hero or section divider that already carries a static headline. Not for product UI: it shows no interface and earns its place only as atmosphere.",
+      "duration": "6s",
+      "format": "16:9 · 1920×1080 · 30 fps · MP4 (H.264) · seamless loop · no baked-in text",
+      "scenes": [
+        {
+          "index": 1,
+          "start": "0:00",
+          "end": "0:02",
+          "duration": "2s",
+          "shot": "wide",
+          "camera": "slow push in",
+          "action": "Gradient bloom enters from the lower-left; the peach band brightens by one stop while the top edge holds its value.",
+          "onScreenText": "none",
+          "audio": "low synth pad swelling, no transient"
+        },
+        {
+          "index": 2,
+          "start": "0:02",
+          "end": "0:04",
+          "duration": "2s",
+          "shot": "wide",
+          "camera": "lateral drift right",
+          "action": "Paper-fibre grain parallaxes four pixels against the gradient; a second softer band crosses behind the first.",
+          "onScreenText": "none",
+          "audio": "pad continues, faint high shimmer"
+        },
+        {
+          "index": 3,
+          "start": "0:04",
+          "end": "0:06",
+          "duration": "2s",
+          "shot": "wide",
+          "camera": "settle to the first frame",
+          "action": "Drift decelerates and the composition returns to the opening framing so the loop cuts clean on frame one.",
+          "onScreenText": "none",
+          "audio": "pad resolves to silence inside the last four frames"
+        }
+      ]
+    },
+    {
+      "id": "empty-to-populated",
+      "title": "Empty state to populated list",
+      "useCase": "Short mobile product clip for onboarding, a feature announcement or a docs embed. The transition must also exist in the product itself; if the real UI cannot do it in code, this is a marketing film and must be labelled as one.",
+      "duration": "15s",
+      "format": "9:16 · 1080×1920 · 30 fps · MP4 (H.264) · one-shot · UI copy captured from the product, never retyped",
+      "scenes": [
+        {
+          "index": 1,
+          "start": "0:00",
+          "end": "0:03",
+          "duration": "3s",
+          "shot": "medium",
+          "camera": "static",
+          "action": "Empty state holds: headline, one line of explanation, primary button. No cursor, no highlighting. Hold long enough to read both lines.",
+          "onScreenText": "none — use the product's own empty-state copy",
+          "audio": "room tone, one soft button press at 0:02"
+        },
+        {
+          "index": 2,
+          "start": "0:03",
+          "end": "0:07",
+          "duration": "4s",
+          "shot": "medium",
+          "camera": "static",
+          "action": "The button compresses one pixel and releases; three skeleton rows replace the empty state and shimmer left to right.",
+          "onScreenText": "none",
+          "audio": "single click, then a soft shimmer loop"
+        },
+        {
+          "index": 3,
+          "start": "0:07",
+          "end": "0:11",
+          "duration": "4s",
+          "shot": "medium",
+          "camera": "static",
+          "action": "Rows populate in a staggered sequence at eighty-millisecond intervals; each row fades in and rises four pixels into place.",
+          "onScreenText": "none",
+          "audio": "six light ticks in rhythm with the rows"
+        },
+        {
+          "index": 4,
+          "start": "0:11",
+          "end": "0:15",
+          "duration": "4s",
+          "shot": "close",
+          "camera": "slow push in",
+          "action": "One row expands to reveal its detail line while the rest hold still. End on the populated state with no motion for the last second.",
+          "onScreenText": "none",
+          "audio": "pad fades out under the final second"
+        }
+      ]
+    },
+    {
+      "id": "redesign-wipe",
+      "title": "Before / after wipe",
+      "useCase": "Redesign case study or changelog entry where two states must be compared in place. Use only when both frames exist at the same viewport and content; a wipe across different copy misleads.",
+      "duration": "10s",
+      "format": "16:9 · 1920×1080 · 30 fps · MP4 (H.264) · one-shot · before/after labels typeset in the edit",
+      "scenes": [
+        {
+          "index": 1,
+          "start": "0:00",
+          "end": "0:03",
+          "duration": "3s",
+          "shot": "wide",
+          "camera": "static with a two-pixel drift",
+          "action": "Before frame holds and drifts two pixels to stay alive; no cursor and no highlight.",
+          "onScreenText": "Before — small label, lower-left, set in the edit",
+          "audio": "room tone, low"
+        },
+        {
+          "index": 2,
+          "start": "0:03",
+          "end": "0:07",
+          "duration": "4s",
+          "shot": "wide",
+          "camera": "static",
+          "action": "A vertical wipe travels left to right over four hundred milliseconds with ease-out, revealing the after frame beneath it; the seam keeps a one-pixel soft edge.",
+          "onScreenText": "After — appears at lower-right as the wipe completes",
+          "audio": "short whoosh on the wipe, soft impact on completion"
+        },
+        {
+          "index": 3,
+          "start": "0:07",
+          "end": "0:10",
+          "duration": "3s",
+          "shot": "medium",
+          "camera": "slow push in",
+          "action": "After frame holds; one changed region lifts two pixels and settles to draw the eye, then everything is still.",
+          "onScreenText": "none",
+          "audio": "quiet tail, one low note"
+        }
+      ]
+    },
+    {
+      "id": "dashboard-tour-pan",
+      "title": "Dashboard tour, slow pan",
+      "useCase": "Product tour on a homepage or in a sales deck where a dashboard can be shown at full size. Use a real capture of the dashboard, not a redrawn mock, so the clip cannot claim features the product lacks.",
+      "duration": "20s",
+      "format": "16:9 · 1920×1080 · 30 fps · MP4 (H.264) · one-shot · no baked-in text",
+      "scenes": [
+        {
+          "index": 1,
+          "start": "0:00",
+          "end": "0:05",
+          "duration": "5s",
+          "shot": "wide",
+          "camera": "pan left to right",
+          "action": "Tour opens on the top row of KPI cards moving at constant speed; cards pass through frame with no focus changes or zooms.",
+          "onScreenText": "none",
+          "audio": "steady pulse, about ninety beats per minute"
+        },
+        {
+          "index": 2,
+          "start": "0:05",
+          "end": "0:10",
+          "duration": "5s",
+          "shot": "wide",
+          "camera": "pan continues",
+          "action": "The chart region enters; its line draws itself once over the first two seconds of the pass and then holds.",
+          "onScreenText": "none",
+          "audio": "pulse continues with faint data ticks"
+        },
+        {
+          "index": 3,
+          "start": "0:10",
+          "end": "0:15",
+          "duration": "5s",
+          "shot": "element-detail",
+          "camera": "slow push in",
+          "action": "Camera settles on a single widget cell, revealing label, metric and trend; the cell brightens by two percent against its neighbours.",
+          "onScreenText": "none",
+          "audio": "pulse thins to a single tone"
+        },
+        {
+          "index": 4,
+          "start": "0:15",
+          "end": "0:20",
+          "duration": "5s",
+          "shot": "wide",
+          "camera": "pull back",
+          "action": "Pull back to the full dashboard and decelerate to rest, leaving the right third clear for an end card added in the edit.",
+          "onScreenText": "none",
+          "audio": "tone resolves, tail silence before the cut"
+        }
+      ]
+    },
+    {
+      "id": "brand-sting-build",
+      "title": "Shape-assembly sting",
+      "useCase": "Four-second opener or end card for a social clip or a documentation video. Use only with a mark that is already final; a sting built on a placeholder logo will need a re-edit.",
+      "duration": "4s",
+      "format": "1:1 · 1080×1080 · 30 fps · MP4 (H.264) · one-shot · no baked-in text",
+      "scenes": [
+        {
+          "index": 1,
+          "start": "0:00",
+          "end": "0:01",
+          "duration": "1s",
+          "shot": "close",
+          "camera": "static",
+          "action": "A single rounded square enters from below, overshoots six pixels and settles dead centre.",
+          "onScreenText": "none",
+          "audio": "one soft low thud"
+        },
+        {
+          "index": 2,
+          "start": "0:01",
+          "end": "0:02.5",
+          "duration": "1.5s",
+          "shot": "close",
+          "camera": "static with a one-pixel settle",
+          "action": "Two half-circles slide in from opposite edges and lock into the square's notches; the assembly overshoots four pixels before settling.",
+          "onScreenText": "none",
+          "audio": "two clicks one hundred and twenty milliseconds apart"
+        },
+        {
+          "index": 3,
+          "start": "0:02.5",
+          "end": "0:04",
+          "duration": "1.5s",
+          "shot": "close",
+          "camera": "pull back four percent",
+          "action": "The assembled mark holds; a rust accent sweeps across it once, then the frame is still for the last eight frames before the cut.",
+          "onScreenText": "none",
+          "audio": "accent sweep, then silence"
+        }
+      ]
+    }
+  ]
+}

@@ -30,3 +30,7 @@ Upstream MIT license texts are preserved under `licenses/`:
 - `licenses/tom-modern-html-style-rule-LICENSE`
 
 The packaging script, catalog and formatting are original to Dezign0.
+
+Addon content (templates, figma, handoff, review, media, addons catalog) is
+original to Dezign0 and is not derived from OpenDesign. It is licensed under
+Apache-2.0 with the rest of this pack.

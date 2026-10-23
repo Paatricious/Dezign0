@@ -12,7 +12,7 @@ The kit is:
 - a process that makes design claims falsifiable (brief -> spec -> build ->
   critique -> fix -> handover);
 - templates for every artifact in that process;
-- eight portable skills for the recurring jobs;
+- thirteen portable skills for the recurring jobs;
 - static lint and optional rendered measurement tools.
 
 **Start here:** [DESIGN-OS.md](DESIGN-OS.md), then
@@ -57,7 +57,7 @@ your-project/
 └─ design-memory/             # starts empty; see briefs/MEMORY.md
 ```
 
-The installer copies the kit, puts the eight skills where the harness looks for
+The installer copies the kit, puts the thirteen skills where the harness looks for
 them, and writes an `AGENTS.md` fragment:
 
 ```bash
@@ -125,7 +125,7 @@ populated state.
 | [briefs/TOKENS.md](briefs/TOKENS.md) | Token and contrast documentation | Any design-system work |
 | [briefs/MEMORY.md](briefs/MEMORY.md) | One-fact design memory convention | Persistent harnesses |
 | [craft/](craft/) | Anti-slop, typography, color, layout, states, accessibility, motion, content, visual review | Every artifact |
-| [skills/](skills/) | Eight workflow skills | Intake, build, redesign, review, extraction, state boards, Figma context, design-language selection |
+| [skills/](skills/) | Thirteen workflow skills | Intake, build, redesign, review, extraction, state boards, Figma context, design-language selection, templates, Figma-to-code, code handoff, visual review, media briefs |
 | [harness/](harness/) | AGENTS.md, compact system prompt, orchestrator workflow | Harness setup |
 | [install.mjs](install.mjs) | One-command installer | First install |
 | [tools/](tools/) | Static linter and rendered measurement | Every artifact |

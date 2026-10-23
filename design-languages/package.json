@@ -1,7 +1,7 @@
 {
   "name": "dezign0-design-languages",
-  "version": "0.1.0",
-  "description": "All 152 design-system packages from OpenDesign, packaged as an optional content pack for Dezign0",
+  "version": "0.2.0",
+  "description": "All 152 OpenDesign design-system packages plus Dezign0 templates, Figma bridge, code handoff, review and media addons",
   "license": "Apache-2.0",
   "private": false,
   "type": "module",
@@ -13,7 +13,13 @@
     "ATTRIBUTION.md",
     "LICENSE",
     "README.md",
-    "licenses/"
+    "licenses/",
+    "addons/",
+    "templates/",
+    "figma/",
+    "handoff/",
+    "review/",
+    "media/"
   ],
   "keywords": [
     "design-systems",

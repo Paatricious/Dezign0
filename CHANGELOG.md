@@ -3,6 +3,24 @@
 All notable changes are recorded here. The format follows Keep a Changelog and
 the project uses semantic versioning.
 
+## [0.7.0] - 2026-10-23
+
+### Added
+
+- Five addon workflows: `template-start`, `figma-to-code`, `code-handoff`,
+  `visual-review` and `media-brief`.
+- `dezign0_addons` tool for the optional catalog.
+- Original starter templates: deck, live dashboard and mobile prototype.
+- Figma bridge and React/Next/Vue handoff contracts.
+- Visual review playbooks and exact-size, selector-scoped, accessibility checks
+  (`--viewports=145x188`, `--selector`, `--a11y`).
+- Original image prompt and video storyboard packs.
+- Optional pack v0.2.0: 152 design languages plus all addon sections.
+
+### Changed
+
+- Thirteen skills and five tools; core tarball remains ~109 kB packed.
+
 ## [0.6.0] - 2026-10-23
 
 ### Added

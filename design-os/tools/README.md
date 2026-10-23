@@ -150,3 +150,10 @@ the artifact with the P0s fixed. Do not ask it to fix the lint text.
 Add a check by appending a block in `lintHtml` and returning a finding with
 `{severity, id, line, file, message, fix, snippet}`. Keep the rule mechanical and
 explain the fix. Do not add taste-as-script rules that cannot be verified.
+
+
+### Exact sizes and accessibility
+
+`measure-artifact` accepts `WIDTHxHEIGHT` viewports, an optional
+`--selector=.widget` element box/screenshot, and `--a11y`. Use `145x188` for a
+single widget cell and pair it with `--strict` in review.

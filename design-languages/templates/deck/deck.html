@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marram — product brief</title>
+<style>
+  /* ── Tokens ─────────────────────────────────────────────────────────── */
+  :root {
+    --paper: #ecece6;
+    --paper-deep: #e2e2db;
+    --ink: #16181a;
+    --ink-soft: #565c60;
+    --line: #cbcac2;
+    --accent: #8f3f26;
+    --mark: var(--accent);
+    --tint: #efe1da;
+    --stage: #d6d6cf;
+
+    --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --font-body: "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
+    --font-mono: ui-monospace, "Cascadia Mono", "SF Mono", Consolas, "Liberation Mono", monospace;
+
+    --step: clamp(20px, 3.6vw, 52px);
+    --radius: 2px;
+  }
+
+  /* ── Base ───────────────────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: clamp(14px, 3vw, 44px);
+    background: var(--stage);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .deck {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: min(100%, 1200px, calc((100vh - 7rem) * 16 / 9));
+    aspect-ratio: 16 / 9;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: 0 24px 60px rgba(22, 24, 26, 0.16);
+    overflow: hidden;
+  }
+
+  /* ── Slides ─────────────────────────────────────────────────────────── */
+  .slide {
+    display: none;
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: var(--step);
+    position: relative;
+  }
+
+  .slide.is-active { display: grid; }
+
+  .slide[data-layout="title"] {
+    grid-template-rows: auto 1fr auto;
+    gap: clamp(12px, 2vw, 26px);
+  }
+
+  .slide[data-layout="split"] {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(20px, 3.4vw, 56px);
+    align-content: start;
+  }
+
+  .slide[data-layout="columns"],
+  .slide[data-layout="close"] {
+    grid-template-rows: auto 1fr;
+    gap: clamp(16px, 2.4vw, 32px);
+  }
+
+  .slide[data-layout="columns"] .columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(16px, 2.6vw, 40px);
+    align-content: start;
+  }
+
+  /* ── Type ───────────────────────────────────────────────────────────── */
+  .eyebrow,
+  .slide-number,
+  .kicker,
+  .tag {
+    font-family: var(--font-mono);
+    font-size: clamp(0.64rem, 0.9vw, 0.74rem);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-soft);
+  }
+
+  .eyebrow { display: flex; align-items: center; gap: 0.7em; margin: 0; }
+
+  .eyebrow::before {
+    content: "";
+    width: 1.9em;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+
+  .slide[data-layout="title"] .display {
+    font-size: clamp(2.1rem, 7.2vw, 5.6rem);
+    line-height: 0.94;
+    max-width: 16ch;
+    align-self: center;
+  }
+
+  .lead {
+    font-size: clamp(1rem, 1.8vw, 1.32rem);
+    line-height: 1.5;
+    max-width: 46ch;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.4rem;
+    margin: 0;
+    padding-top: clamp(10px, 1.4vw, 18px);
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-family: var(--font-mono);
+    font-size: clamp(0.68rem, 0.95vw, 0.8rem);
+  }
+
+  h2.display {
+    font-size: clamp(1.7rem, 3.6vw, 2.9rem);
+    line-height: 1.02;
+    max-width: 20ch;
+  }
+
+  .section-body {
+    display: grid;
+    gap: clamp(10px, 1.6vw, 18px);
+    align-content: start;
+  }
+
+  .section-body p { margin: 0; line-height: 1.6; max-width: 56ch; }
+
+  .findings { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(12px, 1.8vw, 20px); }
+
+  .findings li {
+    padding-top: 0.85em;
+    border-top: 1px solid var(--line);
+    line-height: 1.55;
+  }
+
+  .findings strong { display: block; font-weight: 600; margin-bottom: 0.25em; }
+
+  .findings span { color: var(--ink-soft); }
+
+  .column { padding-top: clamp(12px, 1.7vw, 20px); border-top: 1px solid var(--ink); }
+
+  .column .tag { display: block; margin-bottom: clamp(8px, 1.2vw, 14px); color: var(--accent); }
+
+  .column h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    font-size: clamp(1.1rem, 1.9vw, 1.5rem);
+    margin: 0 0 0.45em;
+  }
+
+  .column p { margin: 0; line-height: 1.55; color: var(--ink-soft); }
+
+  .slide[data-layout="close"] .display {
+    font-size: clamp(2rem, 5.4vw, 4.1rem);
+    line-height: 0.98;
+    max-width: 17ch;
+    align-self: start;
+  }
+
+  .next { display: grid; gap: 0.55rem; margin: 0; padding: 0; list-style: none; max-width: 44ch; }
+
+  .next li { display: grid; grid-template-columns: 2.4em 1fr; gap: 0.5em; line-height: 1.5; }
+
+  .next em { font-family: var(--font-mono); font-style: normal; color: var(--accent); }
+
+  .footnote { color: var(--ink-soft); font-size: clamp(0.72rem, 1vw, 0.84rem); margin: 0; }
+
+  /* ── Chrome: progress, counter, controls ────────────────────────────── */
+  .chrome {
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 1.6vw, 20px);
+    padding: 0 var(--step) clamp(12px, 1.8vw, 22px);
+  }
+
+  .progress {
+    flex: 1 1 auto;
+    height: 2px;
+    background: var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress span {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: var(--progress, 25%);
+    background: var(--mark);
+    transition: width 280ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .dots { display: flex; gap: 6px; }
+
+  .dots button {
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .dots button::after {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border-radius: 50%;
+    background: var(--line);
+    transition: background 180ms ease;
+  }
+
+  .dots button[aria-current="true"]::after { background: var(--mark); }
+
+  .counter {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+    min-width: 4.2em;
+    text-align: right;
+  }
+
+  .controls { display: flex; gap: 6px; }
+
+  .controls button {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--paper);
+    color: var(--ink);
+    cursor: pointer;
+    transition: background 160ms ease, border-color 160ms ease;
+  }
+
+  .controls button:hover { background: var(--tint); border-color: var(--ink-soft); }
+
+  .controls svg { width: 16px; height: 16px; display: block; }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .progress span,
+    .dots button::after,
+    .controls button { transition: none; }
+  }
+
+  /* ── Responsive ─────────────────────────────────────────────────────── */
+  @media (max-width: 720px) {
+    body { padding: 0; place-items: stretch; }
+    .deck {
+      width: 100%;
+      min-height: 100vh;
+      aspect-ratio: auto;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .slide[data-layout="split"],
+    .slide[data-layout="columns"] .columns { grid-template-columns: minmax(0, 1fr); }
+    .slide { overflow-y: auto; }
+  }
+
+  /* ── Print: one 16:9 page per slide ─────────────────────────────────── */
+  @media print {
+    @page { size: 16in 9in; margin: 0; }
+
+    html, body { background: #fff; }
+    body { display: block; padding: 0; }
+
+    .deck {
+      width: 100%;
+      aspect-ratio: auto;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      overflow: visible;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .slide {
+      display: grid !important;
+      height: 100vh;
+      padding: 0.75in 0.9in;
+      break-after: page;
+      page-break-after: always;
+    }
+
+    .slide:last-of-type { break-after: auto; page-break-after: auto; }
+
+    .chrome { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<main class="deck" data-od-id="deck" aria-label="Marram product brief, four slides">
+
+  <section class="slide is-active" data-layout="title" data-od-id="slide-1"
+           aria-roledescription="slide" aria-label="Slide 1: Cover">
+    <p class="eyebrow">Product brief · v0.3 · internal</p>
+    <h1 class="display">Read the dune before the storm.</h1>
+    <div>
+      <p class="lead">Marram turns a seasonal transect into a repeatable field record — so restoration crews argue about plants, not spreadsheets.</p>
+      <p class="meta"><span>Prepared by R. Vale</span><span>14 March 2026</span><span>Field programme</span></p>
+    </div>
+  </section>
+
+  <section class="slide" data-layout="split" data-od-id="slide-2"
+           aria-roledescription="slide" aria-label="Slide 2: The problem">
+    <div class="section-body">
+      <p class="kicker">01 — The problem</p>
+      <h2 class="display">The dune is moving. The record of it is not.</h2>
+      <p>Crews walk the same transect four times a year. Each walk produces a folder of photographs, a marked-up map and a spreadsheet that only one person knows how to read.</p>
+    </div>
+    <ul class="findings">
+      <li><strong>Three formats, one afternoon</strong><span>Photos live on a phone, sketch marks on paper, numbers in a sheet. Joining them costs the rest of the day.</span></li>
+      <li><strong>The comparison never happens</strong><span>A transect is only useful against last season's. Without a shared record, every survey starts from zero.</span></li>
+      <li><strong>Handover is oral</strong><span>When the crew lead changes, the reasoning behind a planting decision leaves with them.</span></li>
+    </ul>
+  </section>
+
+  <section class="slide" data-layout="columns" data-od-id="slide-3"
+           aria-roledescription="slide" aria-label="Slide 3: The system">
+    <div class="section-body">
+      <p class="kicker">02 — The system</p>
+      <h2 class="display">One walk, three artefacts.</h2>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <span class="tag">Capture</span>
+        <h3>Pinned observations</h3>
+        <p>Each photo carries a stake number, a bearing and a time. No free-floating images, no guessing where a picture was taken.</p>
+      </div>
+      <div class="column">
+        <span class="tag">Compare</span>
+        <h3>Season over season</h3>
+        <p>The same stake is shown against its previous three visits, with the change in surface height stated in centimetres.</p>
+      </div>
+      <div class="column">
+        <span class="tag">Hand over</span>
+        <h3>A briefing, not a dump</h3>
+        <p>One page per transect: what changed, what was planted, what to check next. Printable, and short enough to read in the truck.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-layout="close" data-od-id="slide-4"
+           aria-roledescription="slide" aria-label="Slide 4: Next steps">
+    <div class="section-body">
+      <p class="kicker">03 — Next</p>
+      <h2 class="display">Start with one transect, not the whole coast.</h2>
+    </div>
+    <div class="section-body">
+      <ol class="next">
+        <li><em>01</em><span>Walk the north transect with two crews and time the capture step honestly.</span></li>
+        <li><em>02</em><span>Print the first briefing and hand it to a crew that did not collect the data.</span></li>
+        <li><em>03</em><span>Decide in April whether the record is worth a second season.</span></li>
+      </ol>
+      <p class="footnote">Template content is illustrative. Replace names, dates and numbers before use.</p>
+    </div>
+  </section>
+
+  <div class="chrome" data-od-id="deck-controls">
+    <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+    <div class="dots" id="dots" role="group" aria-label="Jump to slide"></div>
+    <p class="counter" id="counter" aria-hidden="true">1 / 4</p>
+    <div class="controls">
+      <button type="button" id="prev" aria-label="Previous slide">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10.5 3.5 6 8l4.5 4.5"/></svg>
+      </button>
+      <button type="button" id="next" aria-label="Next slide">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5.5 3.5 10 8l-4.5 4.5"/></svg>
+      </button>
+    </div>
+    <p class="sr-only" id="status" role="status" aria-live="polite"></p>
+  </div>
+
+</main>
+<script>
+  (function () {
+    var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+    var dots = document.getElementById("dots");
+    var counter = document.getElementById("counter");
+    var bar = document.getElementById("progress-bar");
+    var status = document.getElementById("status");
+    var index = 0;
+
+    var labels = slides.map(function (slide) {
+      return slide.getAttribute("aria-label") || "Slide";
+    });
+
+    var dotButtons = slides.map(function (slide, i) {
+      var button = document.createElement("button");
+      button.type = "button";
+      button.setAttribute("aria-label", "Go to " + labels[i]);
+      button.addEventListener("click", function () { show(i); });
+      dots.appendChild(button);
+      return button;
+    });
+
+    function show(next) {
+      index = (next + slides.length) % slides.length;
+      slides.forEach(function (slide, i) {
+        var active = i === index;
+        slide.classList.toggle("is-active", active);
+        slide.setAttribute("aria-hidden", active ? "false" : "true");
+        slide.tabIndex = active ? 0 : -1;
+      });
+      dotButtons.forEach(function (button, i) {
+        button.setAttribute("aria-current", i === index ? "true" : "false");
+      });
+      counter.textContent = (index + 1) + " / " + slides.length;
+      bar.style.setProperty("--progress", ((index + 1) / slides.length * 100) + "%");
+      status.textContent = labels[index] + ", " + (index + 1) + " of " + slides.length;
+    }
+
+    function move(delta) {
+      show(index + delta);
+    }
+
+    document.getElementById("prev").addEventListener("click", function () { move(-1); });
+    document.getElementById("next").addEventListener("click", function () { move(1); });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.altKey || event.ctrlKey || event.metaKey) return;
+      var key = event.key;
+      if (key === "ArrowRight" || key === "PageDown" || key === " ") {
+        event.preventDefault();
+        move(1);
+      } else if (key === "ArrowLeft" || key === "PageUp") {
+        event.preventDefault();
+        move(-1);
+      } else if (key === "Home") {
+        event.preventDefault();
+        show(0);
+      } else if (key === "End") {
+        event.preventDefault();
+        show(slides.length - 1);
+      }
+    });
+
+    show(0);
+  })();
+</script>
+</body>
+</html>

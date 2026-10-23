@@ -30,7 +30,7 @@ Do not ship only the populated state.
 
 ## Skill routing
 
-Load only the skill that matches the task. Do not preload all eight.
+Load only the skill that matches the task. Do not preload all thirteen.
 
 | Request | Load |
 |---|---|
@@ -41,6 +41,11 @@ Load only the skill that matches the task. Do not preload all eight.
 | Documentation board, state board or multi-screen handoff page | `design-os/skills/state-board/` |
 | Figma file or frame is the source | `design-os/skills/figma-context/` |
 | A prebundled design language is requested | `design-os/skills/design-language/` |
+| A deck, dashboard or prototype starter is requested | `design-os/skills/template-start/` |
+| Figma frames must become code | `design-os/skills/figma-to-code/` |
+| An approved artifact must become React/Next/Vue | `design-os/skills/code-handoff/` |
+| Exact-size, selected-element or accessibility review | `design-os/skills/visual-review/` |
+| Image or video asset briefs are needed | `design-os/skills/media-brief/` |
 
 If a task spans two rows, start with the intake skill and load the build skill
 once the brief exists.

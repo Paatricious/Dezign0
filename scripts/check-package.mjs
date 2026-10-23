@@ -19,14 +19,14 @@ const skills = fs.readdirSync(path.join(root, "design-os", "skills"))
 assert.equal(plugin.version, pkg.version, ".claude-plugin/plugin.json version must match package.json");
 assert.equal(kit.version, pkg.version, "design-os/kit.json version must match package.json");
 assert.equal(market.plugins[0].version, pkg.version, "marketplace plugin version must match package.json");
-assert.equal(skills.length, 8, "expected eight SKILL.md files");
+assert.equal(skills.length, 13, "expected thirteen SKILL.md files");
 assert.ok(pkg.files.includes(".claude-plugin/"), "package files must include .claude-plugin/");
 assert.ok(pkg.files.includes("server.js"), "package files must include server.js");
 for (const file of ["server.js", "plugin/index.js", "design-os/DESIGN-OS.md", "README.md", "SECURITY.md"]) {
   assert.ok(fs.existsSync(path.join(root, file)), `${file} is missing`);
 }
 const source = fs.readFileSync(path.join(root, "plugin", "index.js"), "utf8");
-for (const name of ["dezign0_lint", "dezign0_measure", "dezign0_doctor", "dezign0_design_systems"]) {
+for (const name of ["dezign0_lint", "dezign0_measure", "dezign0_doctor", "dezign0_design_systems", "dezign0_addons"]) {
   assert.ok(source.includes(name), `plugin is missing ${name}`);
 }
 const pack = spawnSync("npm", ["pack", "--dry-run", "--json"], {
@@ -46,4 +46,4 @@ for (const file of [
 ]) {
   assert.ok(packed.includes(file), `npm pack is missing ${file}`);
 }
-console.log(`package check: dezign0@${pkg.version}, ${skills.length} skills, 4 tools, ${packed.length} packed files`);
+console.log(`package check: dezign0@${pkg.version}, ${skills.length} skills, 5 tools, ${packed.length} packed files`);

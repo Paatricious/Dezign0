@@ -6,7 +6,7 @@ generic installer. Pick the host you already use.
 ## 1. OpenChamber / OpenCode 2 (recommended)
 
 The repo root is a zero-dependency OpenCode 2 plugin. On load it copies the kit
-to `<project>/.design-os` (if missing) and registers eight `dezign0-*` skills.
+to `<project>/.design-os` (if missing) and registers thirteen `dezign0-*` skills.
 
 ### From local path
 
@@ -19,7 +19,7 @@ to `<project>/.design-os` (if missing) and registers eight `dezign0-*` skills.
 
 ### From npm or git
 
-Registry package (live 0.5.0; 0.6.0 adds the design-language catalog):
+Registry package (live 0.5.0; 0.7.0 adds the addon workflows and catalog):
 
 1. **Settings → Plugins → Add plugin → From npm**.
 2. Spec: `dezign0`, or pin a version.
@@ -28,13 +28,13 @@ Registry package (live 0.5.0; 0.6.0 adds the design-language catalog):
 Tagged git install (current tools, no npm auth):
 
 ```text
-github:Paatricious/Dezign0#v0.6.0
+github:Paatricious/Dezign0#v0.7.0
 ```
 
 Use the **From npm** tab for the git spec too, or put it in `opencode.json`.
 Reload after adding.
 
-Verified on OpenCode 2.1.3 with both scopes: the kit is copied, eight skills are
+Verified on OpenCode 2.1.3 with both scopes: the kit is copied, thirteen skills are
 registered, and the three `dezign0_*` tools appear. `dezign0_doctor` reports the
 install state; `dezign0_lint` and `dezign0_measure` run the mechanical checks. Local installs must point at the repo directory; single files are
 rejected by OpenCode 2's config loader.
@@ -62,7 +62,7 @@ by harness. See `design-os/adapters/<id>.json`.
 Install the optional catalog separately:
 
 ```bash
-npm install https://github.com/Paatricious/Dezign0/releases/download/v0.6.0/dezign0-design-languages-0.1.0.tgz
+npm install https://github.com/Paatricious/Dezign0/releases/download/v0.7.0/dezign0-design-languages-0.2.0.tgz
 ```
 
 From a source checkout you can also run `npm install ./design-languages`.

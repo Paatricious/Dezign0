@@ -6,11 +6,13 @@
 On load it:
 
 1. copies the bundled kit to `<project>/.design-os` (only if it does not exist);
-2. registers eight skills: `dezign0-design-brief`, `dezign0-frontend-design`,
+2. registers thirteen skills: `dezign0-design-brief`, `dezign0-frontend-design`,
    `dezign0-redesign`, `dezign0-critique`, `dezign0-design-system-extract`,
-   `dezign0-state-board`, `dezign0-figma-context`, `dezign0-design-language`.
+   `dezign0-state-board`, `dezign0-figma-context`, `dezign0-design-language`,
+   `dezign0-template-start`, `dezign0-figma-to-code`, `dezign0-code-handoff`,
+   `dezign0-visual-review`, `dezign0-media-brief`.
 
-It registers three read-only tools for the mechanical checks and does not edit
+It registers five read-only tools for the mechanical checks and does not edit
 source files. The skills tell the agent when to read `DESIGN-OS.md`, create a
 brief, run a critique and produce a handover.
 
@@ -37,7 +39,7 @@ shell.
    directory here; do not point it at `plugin/index.js`.
 4. Scope: **User** (all projects) or **Project** (this repo only).
 5. Add, then restart or reload OpenChamber. The plugin should show **Loaded**.
-6. Open a session; the eight `dezign0-*` skills appear in Skills and the four
+6. Open a session; the thirteen `dezign0-*` skills appear in Skills and the five
    `dezign0_*` tools appear in the tool list.
 
 **From npm (after publishing):**
@@ -48,21 +50,21 @@ shell.
    npm publish --access public
    ```
 2. Settings → Plugins → Add plugin → **From npm**.
-3. Spec: `dezign0` (or a pinned version such as `dezign0@0.6.0`).
+3. Spec: `dezign0` (or a pinned version such as `dezign0@0.7.0`).
 4. Reload.
 
-The live npm `0.5.0` package has seven skills and the tools. The `0.6.0` git tag adds the design-language skill, the 152-package catalog and the 0.5.x fixes.
+The live npm `0.5.0` package has seven skills and the tools. The `0.7.0` git tag adds the five addon workflows, the 152-package catalog and the 0.5.x fixes.
 
 **From git (tool-enabled, no npm auth):**
 
 ```text
-github:Paatricious/Dezign0#v0.6.0
+github:Paatricious/Dezign0#v0.7.0
 ```
 
 Use this in the **From npm** spec field, or in `opencode.json`:
 
 ```json
-{ "plugins": ["github:Paatricious/Dezign0#v0.6.0"] }
+{ "plugins": ["github:Paatricious/Dezign0#v0.7.0"] }
 ```
 
 This installs the tagged public repository and includes `dezign0_lint`,
@@ -144,7 +146,7 @@ or `opencode.json`. The plugin does not remove project files automatically.
   skill bodies. Install the optional catalog for all 152 languages:
 
 ```bash
-npm install https://github.com/Paatricious/Dezign0/releases/download/v0.6.0/dezign0-design-languages-0.1.0.tgz
+npm install https://github.com/Paatricious/Dezign0/releases/download/v0.7.0/dezign0-design-languages-0.2.0.tgz
 ```
 - It does not register slash commands. Use the skills conversationally, or use
   the OpenCode 1.x installer for `/design-new`, `/design-review`, `/design-ship`.
@@ -158,5 +160,5 @@ npm run plugin:test
 npm pack --dry-run
 ```
 
-The smoke test uses a mock OpenCode context: it verifies kit copying and eight
+The smoke test uses a mock OpenCode context: it verifies kit copying and thirteen
 skill registrations without starting a server.

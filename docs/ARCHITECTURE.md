@@ -19,8 +19,9 @@ The core is harness-agnostic. It owns:
 - `craft/`: checkable rules for typography, color, layout and states,
   accessibility, motion, content and anti-slop.
 - `briefs/`: brief, design spec, critique, handover, tokens and memory templates.
-- `skills/`: eight workflow skills for intake, build, redesign, review,
-  extraction, state boards, Figma context and design-language selection.
+- `skills/`: thirteen workflow skills for intake, build, redesign, review,
+  extraction, state boards, Figma context, design-language selection, template
+  starts, Figma-to-code, code handoff, visual review and media briefs.
 - `tools/`: a static linter and an optional Playwright measurement tool.
 
 The OS never depends on a specific model or UI. Any harness with file access can
@@ -67,10 +68,11 @@ for the early product.
 
 The core package does not bundle third-party design systems, templates, fonts,
 images or skill bodies. The optional `design-languages` pack adds all 152
-OpenDesign systems, with Apache-2.0 attribution and a separate install. The core
-stays small for three reasons:
+OpenDesign systems plus the original Dezign0 templates, Figma bridge, handoff,
+review and media addons. It has Apache-2.0 attribution and installs separately.
+The core stays small for three reasons:
 
-1. the full catalog adds ~4.8 MB packed / 32.5 MB unpacked;
+1. the full pack adds ~4.9 MB packed / 32.7 MB unpacked;
 2. prompt quality depends on selecting a few relevant systems, not loading a
    library;
 3. a small core package is easier to install and audit.

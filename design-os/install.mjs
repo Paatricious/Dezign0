@@ -10,7 +10,7 @@
  *
  * What it does:
  *   1. copies this kit to <target>/.design-os/
- *   2. installs the seven workflow skills where the harness looks for them
+ *   2. installs the thirteen workflow skills where the harness looks for them
  *   3. for OpenCode, adds /design-new, /design-review, /design-ship commands
  *   4. writes the harness instruction block (only with --with-agents)
  *

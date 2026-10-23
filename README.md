@@ -15,8 +15,11 @@ The CLI, local studio and additional adapter integrations are next.
 - **Craft rules** — typography, color, layout, states, accessibility, motion and
   content rules with mechanical checks.
 - **Templates** — brief, design spec, critique, handover, tokens and memory.
-- **Eight skills** — design brief, frontend design, redesign, critique,
-  design-system extraction, state boards, Figma context and design-language selection.
+- **Thirteen skills** — brief, frontend design, redesign, critique, system extraction,
+  state boards, Figma context, design language, template start, Figma-to-code,
+  code handoff, visual review and media brief.
+- **Addon pack** — 152 design languages plus starter templates, Figma bridge,
+  React/Next/Vue handoff, visual review and media prompt/storyboard packs.
 - **Plugin** — zero-dependency OpenCode 2 / OpenChamber integration that installs
   the kit into a project and registers the skills.
 - **Tools** — a static linter and a Playwright-based rendered measurement tool.
@@ -30,23 +33,23 @@ In **Settings → Plugins → Add plugin**:
 - **From local path:** the absolute path to this repo directory.
 - **From npm:** `dezign0` — live at
   [npmjs.com/package/dezign0](https://www.npmjs.com/package/dezign0). The live
-  `0.5.0` release has seven skills and the tools. The `0.6.0` git tag adds the
-  eighth skill, the design-language catalog and the 0.5.x fixes.
-- **From git (no npm publish needed):** `github:Paatricious/Dezign0#v0.6.0`.
+  `0.5.0` release has seven skills and the tools. The `0.7.0` git tag adds the
+  addon workflows, the design-language catalog and the 0.5.x fixes.
+- **From git (no npm publish needed):** `github:Paatricious/Dezign0#v0.7.0`.
   This is the current tool-enabled version; the repository is public.
 
-Optional 152-language catalog: install the public release tarball in the project:
+Optional addon pack — 152 design languages plus templates, Figma bridge, handoff, review and media prompts. Install the public release tarball in the project:
 
 ```bash
-npm install https://github.com/Paatricious/Dezign0/releases/download/v0.6.0/dezign0-design-languages-0.1.0.tgz
+npm install https://github.com/Paatricious/Dezign0/releases/download/v0.7.0/dezign0-design-languages-0.2.0.tgz
 ```
 
 Or use the sibling `design-languages/` folder in a source checkout.
 
 Choose User or Project scope. On load the plugin copies the kit to `.design-os/`,
-registers eight `dezign0-*` skills and four read-only tools (`dezign0_lint`,
-`dezign0_measure`, `dezign0_doctor`). It needs no npm dependencies; Playwright is
-optional for rendered measurement.
+registers thirteen `dezign0-*` skills and five read-only tools (`dezign0_lint`,
+`dezign0_measure`, `dezign0_doctor`, `dezign0_design_systems`, `dezign0_addons`).
+It needs no npm dependencies; Playwright is optional for rendered measurement.
 Details: [plugin/README.md](plugin/README.md).
 
 ### OpenCode 1.x
@@ -93,7 +96,7 @@ node design-os/install.mjs --target=../my-app --harness=codex --with-agents
 ```
 
 The installer never installs Playwright or deletes files. It copies the kit to
-`.design-os/`, installs the eight skills to the harness's native path and writes an
+`.design-os/`, installs the thirteen skills to the harness's native path and writes an
 `AGENTS.md` fragment. Use `--dry-run` to inspect first.
 
 ## How it works

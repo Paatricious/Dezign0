@@ -14,11 +14,11 @@ the date/commit for a release.
 - The public package has no third-party design systems, templates, fonts or
   images.
 
-Git release `v0.6.0` (public repository) additionally verified:
+Git release `v0.7.0` (public repository) additionally verified:
 
-- Anonymous `npm pack github:Paatricious/Dezign0#v0.6.0` succeeded.
+- Anonymous `npm pack github:Paatricious/Dezign0#v0.7.0` succeeded.
 - OpenCode 2 installed that git spec, loaded the kit and reported
-  `kit version: 0.6.0`, `skills: 8/8`, design languages: 152.
+  `kit version: 0.7.0`, `skills: 13/13`, design languages: 152, addons: 13.
 - `dezign0_lint`, `dezign0_measure`, `dezign0_doctor` are registered and
   callable through OpenCode 2.
 - `dezign0_lint` returns P0/P1 findings for a fixture and rejects paths outside
@@ -32,14 +32,14 @@ Git release `v0.6.0` (public repository) additionally verified:
 - Installer regression test covers dry-run, install with spaces, `--force=false`,
   file conflict at `.design-os`, and `--upgrade`.
 - CI runs `npm run check` on Ubuntu and Windows; both pass.
-- `claude plugin validate . --strict` passes; `claude plugin details` shows 7 skills and 1 SessionStart hook.
+- `claude plugin validate . --strict` passes; `claude plugin details` shows 13 skills and 1 SessionStart hook.
 - The installer adapter check covers 12 harness targets and the Codex path regression.
 
 ## Known limits
 
 - `measure-artifact` needs Playwright; it is optional and not bundled.
 - Skill triggering was sampled on three realistic prompts, not a full benchmark.
-- The npm registry serves `0.5.0`; `0.6.0` is available via the public GitHub tag
+- The npm registry serves `0.5.0`; `0.7.0` is available via the public GitHub tag
   until it is published. Installing the git spec needs no authentication.
 
 ## Reproduce

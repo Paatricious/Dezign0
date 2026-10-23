@@ -1,11 +1,12 @@
-# Dezign0 design languages
+# Dezign0 addons
 
 Optional content pack containing all **152 design-system packages** from
 [OpenDesign](https://github.com/nexu-io/open-design), pinned at commit
 `e03d5c23f308c39f4de7c057568df66c29a84385`.
 
 This is intentionally separate from the core `dezign0` plugin. The core plugin
-stays small; this pack adds the design-language library.
+stays small; this pack adds the design-language library and the five addon
+workflows.
 
 Each package follows OpenDesign's portable design-system shape:
 
@@ -26,6 +27,17 @@ design-systems/<slug>/
 `index.json` is a lightweight catalog: 152 entries with slug, name, category,
 description, files and source metadata. The full package files stay on disk.
 
+## Addon library
+
+The same pack also carries original Dezign0 addons:
+
+- `templates/` — deck, live-dashboard and mobile-prototype starters
+- `figma/` — Figma-to-DESIGN/tokens/code bridge
+- `handoff/` — React, Next.js and Vue delivery contracts
+- `review/` — visual, exact-size and accessibility review playbooks
+- `media/` — image prompt and video storyboard packs (briefs only)
+- `addons/index.json` — machine-readable catalog used by `dezign0_addons`
+
 ## Install
 
 From this repo, the plugin discovers the sibling pack automatically when it is
@@ -38,7 +50,7 @@ run from the source checkout:
 For an installed plugin, install this pack in the project:
 
 ```bash
-npm install https://github.com/Paatricious/Dezign0/releases/download/v0.6.0/dezign0-design-languages-0.1.0.tgz
+npm install https://github.com/Paatricious/Dezign0/releases/download/v0.7.0/dezign0-design-languages-0.2.0.tgz
 ```
 
 This works without npm authentication because the tarball is a public GitHub

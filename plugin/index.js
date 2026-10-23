@@ -4,7 +4,7 @@
  * Zero runtime dependencies. OpenCode 2 calls `setup(ctx)` for each location.
  * On setup it:
  *   1. copies the bundled design kit to `<project>/.design-os` (only if missing)
- *   2. registers the eight design skills from the kit
+ *   2. registers the thirteen design skills from the kit
  *   3. registers tools for lint, rendered measurement and a doctor check
  *
  * The tools only read files inside the current project. They never write source
@@ -40,8 +40,13 @@ const SKILLS = [
   "state-board",
   "figma-context",
   "design-language",
+  "template-start",
+  "figma-to-code",
+  "code-handoff",
+  "visual-review",
+  "media-brief",
 ];
-const TOOL_NAMES = ["dezign0_lint", "dezign0_measure", "dezign0_doctor", "dezign0_design_systems"];
+const TOOL_NAMES = ["dezign0_lint", "dezign0_measure", "dezign0_doctor", "dezign0_design_systems", "dezign0_addons"];
 const VERSION = (() => {
   try {
     return JSON.parse(fs.readFileSync(path.resolve(HERE, "..", "package.json"), "utf8")).version || "0.0.0";
@@ -400,7 +405,43 @@ function readDesignCatalog(root) {
     .sort((a, b) => a.slug.localeCompare(b.slug));
 }
 
-function formatDesignLanguages(root, items) {const lines = [`design languages: ${items.length}`, `root: ${root}`, ""];for (const item of items.slice(0, 40)) lines.push(`${item.slug} — ${item.name} [${item.category}]`);if (items.length > 40) lines.push(`... ${items.length - 40} more; use action=search with a query`);return lines.join("\n");}function makeTools(projectDir, kitDir, scriptKit) {
+function formatDesignLanguages(root, items) {const lines = [`design languages: ${items.length}`, `root: ${root}`, ""];for (const item of items.slice(0, 40)) lines.push(`${item.slug} — ${item.name} [${item.category}]`);if (items.length > 40) lines.push(`... ${items.length - 40} more; use action=search with a query`);return lines.join("\n");}function findAddonPack(projectDir) {
+  const candidates = [
+    process.env.DEZIGN0_ADDONS,
+    projectDir,
+    path.join(projectDir, "node_modules", "dezign0-design-languages"),
+    path.resolve(KIT, "..", "design-languages"),
+  ].filter(Boolean);
+  for (const candidate of candidates) {
+    try {
+      const root = fs.realpathSync(candidate);
+      if (fs.existsSync(path.join(root, "addons", "index.json"))) return root;
+    } catch {
+      // Try the next candidate.
+    }
+  }
+  return null;
+}
+
+function readAddonIndex(root) {
+  const index = JSON.parse(fs.readFileSync(path.join(root, "addons", "index.json"), "utf8"));
+  return Array.isArray(index.items) ? index.items : [];
+}
+
+function formatAddons(root, items) {
+  const lines = [`addons: ${items.length}`, `root: ${root}`, ""];
+  let section = "";
+  for (const item of items) {
+    if (item.section !== section) {
+      section = item.section;
+      lines.push(`[${section}]`);
+    }
+    lines.push(`${item.id} — ${item.title}: ${item.path}`);
+  }
+  return lines.join("\n");
+}
+
+function makeTools(projectDir, kitDir, scriptKit) {
   return [
     {
       name: "dezign0_lint",
@@ -443,9 +484,11 @@ function formatDesignLanguages(root, items) {const lines = [`design languages: $
           path: { type: "string", description: "Artifact path, relative to the current project." },
           viewports: {
             type: "string",
-            description: "Comma-separated widths. Default: 1440,1024,768,390,375,360.",
+            description: "Comma-separated WIDTH or WIDTHxHEIGHT values. Default: 1440x900,1024x900,768x900,390x844,375x812,360x800. Use 145x188 for an exact cell.",
           },
-          strict: { type: "boolean", description: "Fail on clipped content, contrast failures or console errors." },
+          selector: { type: "string", description: "Optional CSS selector; captures and reports the element box." },
+          a11y: { type: "boolean", description: "Run accessibility checks and fail under --strict." },
+          strict: { type: "boolean", description: "Fail on clipped content, contrast failures, console errors or a11y findings." },
         },
         required: ["path"],
         additionalProperties: false,
@@ -457,6 +500,8 @@ function formatDesignLanguages(root, items) {const lines = [`design languages: $
           if (!fs.existsSync(script)) return failure("measure-artifact.mjs is missing from the installed kit");
           const args = [file];
           if (input.viewports) args.push(`--viewports=${input.viewports}`);
+          if (input.selector) args.push(`--selector=${input.selector}`);
+          if (input.a11y) args.push("--a11y");
           if (input.strict) args.push("--strict");
           const run = await runNode(script, args, projectDir);
           if (run.spawnError) return failure("Node.js was not found. Install Node 18+ to use measurement.");
@@ -471,6 +516,58 @@ function formatDesignLanguages(root, items) {const lines = [`design languages: $
         } catch (error) {
           return failure(error instanceof Error ? error.message : String(error));
         }
+      },
+    },
+    {
+      name: "dezign0_addons",
+      description:
+        "Browse the optional Dezign0 addon pack: starter templates, Figma bridge docs, React/Next/Vue handoff contracts, review playbooks and media prompt/storyboard packs. Actions: list, search, get.",
+      input: {
+        type: "object",
+        properties: {
+          action: { type: "string", enum: ["list", "search", "get"] },
+          query: { type: "string", description: "Search text for action=search." },
+          section: { type: "string", description: "Optional section filter: templates, figma, handoff, review, media." },
+          id: { type: "string", description: "Item id for action=get." },
+        },
+        required: ["action"],
+        additionalProperties: false,
+      },
+      async execute(input) {
+        const root = findAddonPack(projectDir);
+        if (!root) {
+          return result(
+            "No addon pack found. Install `dezign0-design-languages` 0.2+ in the project, or use the sibling design-languages folder in a source checkout.",
+          );
+        }
+        const all = readAddonIndex(root);
+        const section = typeof input.section === "string" ? input.section : "";
+        const filtered = section ? all.filter((item) => item.section === section) : all;
+        if (input.action === "list") return result(formatAddons(root, filtered), { count: filtered.length, root });
+        if (input.action === "search") {
+          const query = String(input.query || "").toLowerCase().trim();
+          if (!query) return failure("query is required for action=search");
+          const matches = filtered.filter((item) =>
+            [item.id, item.title, item.section, item.description, item.path].join(" ").toLowerCase().includes(query),
+          );
+          return result(formatAddons(root, matches), { count: matches.length, query });
+        }
+        if (input.action === "get") {
+          const item = all.find((entry) => entry.id === input.id);
+          if (!item) return failure(`unknown addon: ${input.id}`);
+          const file = path.join(root, item.path);
+          if (!isInside(root, file) || !fs.existsSync(file)) return failure(`addon file missing: ${item.path}`);
+          return result(`addon: ${item.title} (${item.id})
+section: ${item.section}
+path: ${file}
+
+${fs.readFileSync(file, "utf8")}`, {
+            id: item.id,
+            section: item.section,
+            file,
+          });
+        }
+        return failure(`unknown action: ${input.action}`);
       },
     },
     {
@@ -544,7 +641,7 @@ function formatDesignLanguages(root, items) {const lines = [`design languages: $
     {
       name: "dezign0_doctor",
       description:
-        "Check the installed Dezign0 kit: plugin version, kit location/version, eight skills, lint/measure scripts, Node and Playwright. Use when the plugin seems installed but skills or checks are missing.",
+        "Check the installed Dezign0 kit: plugin version, kit location/version, thirteen skills, lint/measure scripts, Node and Playwright. Use when the plugin seems installed but skills or checks are missing.",
       input: { type: "object", properties: {}, additionalProperties: false },
       async execute() {
         const metaFile = path.join(kitDir, META);
@@ -568,6 +665,8 @@ function formatDesignLanguages(root, items) {const lines = [`design languages: $
         const projectMeasure = fs.existsSync(path.join(kitDir, "tools", "measure-artifact.mjs"));
         const designRoot = findDesignLanguages(projectDir);
         const designCount = designRoot ? readDesignCatalog(designRoot).length : 0;
+        const addonRoot = findAddonPack(projectDir);
+        const addonCount = addonRoot ? readAddonIndex(addonRoot).length : 0;
         const lines = [
           `dezign0 doctor`,
           `plugin: ${VERSION}`,
@@ -579,6 +678,7 @@ function formatDesignLanguages(root, items) {const lines = [`design languages: $
           `project lint/measure: ${projectLint ? "ok" : "missing"}/${projectMeasure ? "ok" : "missing"}`,
           `package scripts: lint/measure from ${KIT_VERSION}`,
           `design languages: ${designRoot ? `${designCount} (${designRoot})` : "none (optional pack not installed)"}`,
+          `addons: ${addonRoot ? `${addonCount} (${addonRoot})` : "none (optional pack not installed)"}`,
           `node: ${process.version}`,
           `playwright: ${playwright}`,
           `tools: ${TOOL_NAMES.join(", ")} (scripts from package ${KIT_VERSION})`,

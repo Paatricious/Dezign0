@@ -1,0 +1,71 @@
+{
+  "schema": "dezign0/media/image-prompts/v1",
+  "count": 8,
+  "note": "Original prompt briefs for image generation. This pack ships no generation API, no key, no endpoint and no bundled image. Prompt text is original to Dezign0; no third-party prompt text is reproduced.",
+  "prompts": [
+    {
+      "id": "hero-aurora-dawn",
+      "title": "Aurora dawn hero backdrop",
+      "useCase": "Landing or product hero that needs a full-bleed background instead of photography. Use when the headline sits centre-right and needs a quiet, dark right third; not for data surfaces where text must sit across the whole frame.",
+      "aspect": "16:9 (1920×1080)",
+      "prompt": "Abstract background for a product hero: a slow vertical gradient from deep slate blue at the top edge to warm sand at the horizon, crossed by three wide soft-edged bands of pale peach light that arc like dawn cloud layers. Fine paper-fibre grain across the whole frame, visible at 100% but quiet at a glance. Light originates low and left so the right third stays almost flat and dark enough for overlaid white text. Matte finish, no gloss, no vignette. Composition carries no objects; detail is concentrated at the bottom-left corner and the centre-right is empty. Rendered as a high-resolution editorial backdrop with clean edges.",
+      "negative": "text, letters, numbers, watermark, logo, signature, people, faces, animals, buildings, sun disc, lens flare, bokeh circles, colour banding, heavy noise, plastic gloss, vignette, oversaturated colours, framed border"
+    },
+    {
+      "id": "empty-state-desk",
+      "title": "Overhead desk, flat vector",
+      "useCase": "Empty-state illustration for lists, inboxes and first-run panels. Use at 240–480px wide with the headline beneath; the bare rectangle in the centre is reserved for that headline, so do not crop into it.",
+      "aspect": "1:1 (1024×1024)",
+      "prompt": "Flat vector illustration of a tidy overhead desk in a restrained palette: warm off-white surface, graphite linework, one muted terracotta shape. A closed notebook, a single pen, a small ceramic cup and a rectangular paper card sit in a loose but deliberate arrangement, leaving one empty rectangle of desk bare at the centre. Consistent two-pixel stroke, rounded line caps, no gradients, one soft shadow shape only. Generous margin on all sides, no crop touching an object, shapes simplified enough to read at 400px wide.",
+      "negative": "text, letters, handwriting, watermark, logo, brand names, people, hands, faces, clutter, photorealism, 3d render, blurred drop shadows, gradients, emoji, decorative swirls, cropped objects at the frame edge"
+    },
+    {
+      "id": "dashboard-grain-overlay",
+      "title": "Press-sheet grain overlay",
+      "useCase": "Low-contrast texture layer behind dashboards and documentation plates, composited at 6–12% opacity. Use when a flat surface feels synthetic; not as a standalone hero image.",
+      "aspect": "3:2 (1500×1000)",
+      "prompt": "Neutral texture plate intended as a background overlay behind data surfaces: even low-contrast paper grain with faint charcoal speckle and a subtle vertical fibre direction, exposed as if from a press sheet. Mid-grey average value, no visible pattern repeat inside the frame, no edges or borders. Very low dynamic range so text placed on top stays readable: darkest note near eighteen percent black, lightest near eighty-two percent white. Scanned-plate realism with no objects, folds or stains.",
+      "negative": "text, letters, watermark, logo, objects, folds, stains, holes, vignette, high contrast, colour cast, moiré, repeating tiles, border, handwriting, ink splatter"
+    },
+    {
+      "id": "clay-ui-maquette",
+      "title": "Clay dashboard maquette",
+      "useCase": "Editorial product-section image for a landing page or case study, paired with one short paragraph. Use when the brand wants craft and physicality; not for UI documentation where an actual screenshot is required.",
+      "aspect": "4:5 (1080×1350)",
+      "prompt": "Editorial still life: a small physical model of an abstract dashboard sculpted from matte grey clay, standing on natural linen. The model is three stacked rounded slabs with recessed rectangles suggesting cards and a short bar-chart ridge, carrying no readable markings. Directional daylight from the left casts one long soft shadow; the background is a warm plaster wall with faint trowel texture. Shallow depth of field with focus on the front slab, fifty-millimetre-equivalent perspective, muted palette of stone, sand and a single rust accent. Photographic rather than rendered-looking, calm and uncluttered.",
+      "negative": "text, letters, numbers, logos, brand marks, screens, cables, people, hands, faces, glossy plastic, neon, chrome, clutter, harsh flash, overexposure, watermark, duplicate objects"
+    },
+    {
+      "id": "og-social-plate",
+      "title": "Share-card geometry",
+      "useCase": "1200×630 Open Graph or blog header where the title is typeset in HTML on top. Use when the card must survive thumbnail scaling; not as a content illustration inside the page.",
+      "aspect": "1.91:1 (1200×630)",
+      "prompt": "Geometric composition for a 1200×630 share card with all type added later in HTML: three overlapping rounded rectangles in deep ink, bone white and a single rust accent, arranged on a diagonal so the bone panel leaves an empty clean area across the left fifty-five percent of the frame. Behind them a faint twenty-four-pixel grid of hairlines at eight percent opacity. Flat vector shapes, crisp edges, no texture and no shadow. Safe margins of eighty pixels on every side with nothing important within ninety pixels of an edge. Balanced and quiet, still legible as a three-hundred-pixel-wide thumbnail.",
+      "negative": "text, letters, numbers, watermark, logo, icons, photographs, gradients, glow, bevelled edges, 3d, drop shadow, people, faces, decorative noise, border, off-centre composition"
+    },
+    {
+      "id": "onboarding-phone-stand",
+      "title": "Phone on stand, vertical",
+      "useCase": "Mobile onboarding or app-store-adjacent panel where copy overlays the upper third. Use when a device needs to appear without showing UI; not for screenshots or feature call-outs.",
+      "aspect": "9:16 (1080×1920)",
+      "prompt": "Vertical mobile onboarding illustration: a slate-grey phone standing on a small wooden wedge on a pale sand surface, screen facing away so no display content is visible. Behind it a soft out-of-focus wall in warm off-white with a single arched shadow. Two small props suggest a workspace rhythm, a folded paper swatch and a short pencil. Soft morning light from the upper right with gentle gradient falloff, muted palette, fine film grain at low strength. The upper third of the frame stays empty and calm for overlaid UI copy. No hands and no people.",
+      "negative": "text, letters, app icons, logos, brand marks, visible screen content, hands, people, faces, cables, clutter, neon light, hard reflections, watermark, phone edges cropped by the frame"
+    },
+    {
+      "id": "isometric-system-plate",
+      "title": "Isometric system plate",
+      "useCase": "Documentation or architecture page that explains a flow as a diagram. Use as a print-friendly plate at A5 or larger; not as a decorative hero.",
+      "aspect": "4:3 (1600×1200)",
+      "prompt": "Isometric technical plate for documentation: nine flat rectangular modules of varying size arranged on an invisible thirty-degree grid, connected by thin routed lines with small circular junction nodes. Two-colour scheme of graphite linework on a bone background with one module filled rust to mark the subject. Modules are plain, carrying no icons or labels, drawn with one-and-a-half-pixel strokes, consistent corner radius, no shading and no gradients. Even spacing, generous outer margin, nothing crossing the frame edge. Precise, quiet and diagrammatic, legible when printed at A5.",
+      "negative": "text, letters, numbers, labels, watermark, logo, icons, isometric buildings, 3d shading, gradients, drop shadows, people, faces, tangled lines, crossing connectors, border, cramped margins, perspective distortion"
+    },
+    {
+      "id": "avatar-shape-set",
+      "title": "Geometric avatar set",
+      "useCase": "Placeholder avatars for people, teams or agents where no photo exists and no face should be implied. Use at 32–96px; the six tiles are meant to be sliced into individual assets.",
+      "aspect": "1:1 (1024×1024)",
+      "prompt": "A set of six abstract avatar tiles in a three-by-two grid with equal gutters on a warm off-white background. Each tile is a solid geometric character built from two or three overlapping shapes, a circle, a half-circle and a rounded triangle, in one of six muted palette pairs: stone, sand, sage, slate, rust and bone. No faces, no eyes, no mouths and no letters; identity comes from silhouette and colour only. Flat vector, crisp edges, consistent optical weight, every tile fully inside the frame with even margins, readable at thirty-two pixels.",
+      "negative": "text, letters, numbers, watermark, logo, faces, eyes, mouths, people, animals, hands, gradients, shadows, outlines, emoji, tiles clipped by the frame, uneven gutters, border"
+    }
+  ]
+}

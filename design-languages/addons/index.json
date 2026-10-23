@@ -1,0 +1,98 @@
+{
+  "schema": "dezign0/addons/v1",
+  "version": "0.2.0",
+  "count": 13,
+  "items": [
+    {
+      "id": "template-deck",
+      "section": "templates",
+      "title": "Four-slide deck starter",
+      "path": "templates/deck/deck.html",
+      "description": "16:9 presentation starter with title, thesis, evidence and close slides."
+    },
+    {
+      "id": "template-live-dashboard",
+      "section": "templates",
+      "title": "Live KPI dashboard starter",
+      "path": "templates/live/dashboard.html",
+      "description": "KPI wall with an inline SVG trend chart and responsive card grid."
+    },
+    {
+      "id": "template-mobile-prototype",
+      "section": "templates",
+      "title": "Three-screen mobile prototype",
+      "path": "templates/prototype/mobile.html",
+      "description": "Mobile flow with state switching, safe areas and a bottom tab bar."
+    },
+    {
+      "id": "figma-bridge",
+      "section": "figma",
+      "title": "Figma to Dezign0 bridge",
+      "path": "figma/bridge.md",
+      "description": "Map Figma variables, styles, auto-layout and components into DESIGN.md/tokens and code."
+    },
+    {
+      "id": "handoff-contract",
+      "section": "handoff",
+      "title": "Artifact to code contract",
+      "path": "handoff/contract.md",
+      "description": "Definition of done for turning an approved HTML artifact into framework code."
+    },
+    {
+      "id": "handoff-react",
+      "section": "handoff",
+      "title": "React handoff",
+      "path": "handoff/react.md",
+      "description": "React component tree, props, tokens, state and accessibility mapping."
+    },
+    {
+      "id": "handoff-next",
+      "section": "handoff",
+      "title": "Next.js handoff",
+      "path": "handoff/next.md",
+      "description": "Next.js server/client boundaries, routing, assets and metadata mapping."
+    },
+    {
+      "id": "handoff-vue",
+      "section": "handoff",
+      "title": "Vue handoff",
+      "path": "handoff/vue.md",
+      "description": "Vue SFC component tree, props, emits, slots and style mapping."
+    },
+    {
+      "id": "review-checklist",
+      "section": "review",
+      "title": "Visual review checklist",
+      "path": "review/checklist.md",
+      "description": "Viewport, state, content and handoff checks before shipping."
+    },
+    {
+      "id": "review-a11y",
+      "section": "review",
+      "title": "Accessibility review",
+      "path": "review/a11y.md",
+      "description": "Semantics, focus, labels, contrast and motion checks with the measure tool."
+    },
+    {
+      "id": "review-report-template",
+      "section": "review",
+      "title": "Review report template",
+      "path": "review/report-template.md",
+      "description": "Copyable report shape with evidence, findings and residual risk."
+    },
+    {
+      "id": "media-image-prompts",
+      "section": "media",
+      "title": "Image prompt pack",
+      "path": "media/image-prompts.json",
+      "description": "Eight original image briefs for product, editorial and abstract assets."
+    },
+    {
+      "id": "media-video-storyboards",
+      "section": "media",
+      "title": "Video storyboard pack",
+      "path": "media/video-storyboards.json",
+      "description": "Five original short-form storyboards with scenes, durations and delivery formats."
+    }
+  ]
+}

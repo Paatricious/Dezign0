@@ -31,26 +31,37 @@ const strict = args.includes('--strict')
 const viewportsArg = args.find((a) => a.startsWith('--viewports='))
 const shotsArg = args.find((a) => a.startsWith('--shots='))
 const excludeArg = args.find((a) => a.startsWith('--exclude='))
+const selectorArg = args.find((a) => a.startsWith('--selector='))
+const selector = selectorArg ? selectorArg.split('=').slice(1).join('=') : null
+const a11y = args.includes('--a11y')
 const excludes = (excludeArg ? excludeArg.split('=')[1] : '')
   .split(',').map((s) => s.trim()).filter(Boolean)
-const viewports = (viewportsArg ? viewportsArg.split('=')[1] : '1440,1024,768,390,375,360')
-  .split(',').map(Number).filter((n) => Number.isFinite(n) && n > 0)
+const viewports = (viewportsArg ? viewportsArg.split('=')[1] : '1440x900,1024x900,768x900,390x844,375x812,360x800')
+  .split(',')
+  .map((entry) => {
+    const [w, h] = entry.toLowerCase().split('x').map(Number)
+    return { width: w, height: h || 900, label: entry }
+  })
+  .filter((v) => Number.isFinite(v.width) && v.width > 0)
 const shotsDir = shotsArg ? shotsArg.split('=')[1] : null
 
 if (!target || args.includes('--help') || args.includes('-h')) {
   console.log(`measure-artifact — rendered checks for a design artifact
 
-Usage: node measure-artifact.mjs <file-or-url> [--viewports=1440,768,390,375,360]
-                                   [--json] [--strict] [--shots=dir]
+Usage: node measure-artifact.mjs <file-or-url> [--viewports=1440x900,768x900,390x844]
+                                   [--json] [--strict] [--shots=dir] [--a11y]
+                                   [--selector=.widget]
                                    [--exclude=.selector,other-selector]
 
 Requires Playwright: npm i -D playwright && npx playwright install chromium
 
 Reports: console errors, clipped elements per viewport, rendered contrast
-failures, distinct type sizes and text below 11px, focusable controls, and
-data-od-id hooks. --strict exits 1 on clipped content, contrast failures or
-console errors. --exclude skips intentionally reproduced regions (for example
-the inert mock widgets on a state board) from clipping/contrast/type checks.`)
+failures, distinct type sizes and text below 11px, focusable controls,
+data-od-id hooks and optional accessibility checks. Viewports accept WIDTH or
+WIDTHxHEIGHT; use 145x188 for an exact widget cell. --selector also captures
+the element box. --strict exits 1 on clipped content, contrast failures,
+console errors or --a11y findings. --exclude skips intentionally reproduced
+regions (for example inert mock widgets on a state board).`)
   process.exit(target ? 0 : 2)
 }
 
@@ -91,12 +102,17 @@ try {
 await page.evaluate(() => document.fonts.ready)
 
 const results = []
-for (const width of viewports) {
-  await page.setViewportSize({ width, height: 900 })
+for (const viewport of viewports) {
+  await page.setViewportSize({ width: viewport.width, height: viewport.height })
   await page.waitForTimeout(150)
   if (shotsDir) {
     fs.mkdirSync(shotsDir, { recursive: true })
-    await page.screenshot({ path: path.join(shotsDir, `artifact-${width}.png`), fullPage: true })
+    const safe = viewport.label.replace(/[^a-z0-9x-]+/gi, '-')
+    await page.screenshot({ path: path.join(shotsDir, `artifact-${safe}.png`), fullPage: true })
+    if (selector) {
+      const element = page.locator(selector).first()
+      if (await element.count()) await element.screenshot({ path: path.join(shotsDir, `artifact-${safe}-element.png`) }).catch(() => {})
+    }
   }
   const measure = await page.evaluate((excludes) => {
     const vw = window.innerWidth
@@ -205,9 +221,45 @@ for (const width of viewports) {
       tabStops++
     }
 
+    const a11yIssues = []
+    const addA11y = (kind, detail) => a11yIssues.push({ kind, detail })
+    const textOf = (el) => (el.getAttribute('aria-label') || el.getAttribute('title') || el.textContent || '').trim()
+    for (const img of document.querySelectorAll('img')) {
+      if (!img.hasAttribute('alt')) addA11y('img-alt', `<img src="${String(img.getAttribute('src') || '').slice(0, 40)}">`)
+    }
+    for (const control of document.querySelectorAll('button, a[href], input:not([type="hidden"]), select, textarea')) {
+      if (control.closest('[inert]')) continue
+      if (control.tagName === 'INPUT' && control.type === 'submit') continue
+      const name = textOf(control) || control.getAttribute('placeholder') || ''
+      if (!name) addA11y('control-name', `<${control.tagName.toLowerCase()}>`)
+      if (control.tagName === 'INPUT' && control.type !== 'submit' && control.type !== 'button') {
+        const id = control.getAttribute('id')
+        const labelled = (id && document.querySelector(`label[for="${CSS.escape(id)}"]`)) || control.closest('label') || control.getAttribute('aria-label')
+        if (!labelled) addA11y('input-label', `<input${id ? ` id="${id}"` : ''}>`)
+      }
+    }
+    const headings = [...document.querySelectorAll('h1,h2,h3,h4,h5,h6')]
+    const h1s = headings.filter((h) => h.tagName === 'H1').length
+    if (h1s === 0) addA11y('heading-h1', 'no h1')
+    if (h1s > 1) addA11y('heading-h1', `${h1s} h1 elements`)
+    let lastLevel = 0
+    for (const h of headings) {
+      const level = Number(h.tagName[1])
+      if (lastLevel && level > lastLevel + 1) addA11y('heading-order', `${h.tagName} after h${lastLevel}`)
+      lastLevel = level
+    }
+    if (!document.querySelector('main,[role="main"]')) addA11y('landmark-main', 'no main landmark')
+    if (document.querySelector('[tabindex]')) {
+      for (const el of document.querySelectorAll('[tabindex]')) {
+        if (Number(el.getAttribute('tabindex')) > 0) addA11y('tabindex-positive', el.tagName.toLowerCase())
+      }
+    }
+
     return {
       vw,
       scrollWidth: document.documentElement.scrollWidth,
+      a11yCount: a11yIssues.length,
+      a11y: a11yIssues.slice(0, 12),
       clipped: offenders.slice(0, 12),
       clippedCount: offenders.length,
       contrast: contrast.sort((a, b) => a.ratio - b.ratio).slice(0, 12),
@@ -218,14 +270,20 @@ for (const width of viewports) {
       odHooks: document.querySelectorAll('[data-od-id]').length,
     }
   }, excludes)
-  results.push({ width, ...measure })
+  let elementBox = null
+  if (selector) {
+    const box = await page.locator(selector).first().boundingBox().catch(() => null)
+    if (box) elementBox = { x: Math.round(box.x), y: Math.round(box.y), width: Math.round(box.width), height: Math.round(box.height) }
+  }
+  results.push({ width: viewport.width, height: viewport.height, label: viewport.label, selector, elementBox, ...measure })
 }
 
 await browser.close()
 
 const blocking =
   results.some((r) => r.clippedCount > 0 || r.contrastCount > 0) ||
-  consoleErrors.length > 0 || pageErrors.length > 0
+  consoleErrors.length > 0 || pageErrors.length > 0 ||
+  (a11y && results.some((r) => r.a11yCount > 0))
 
 if (json) {
   console.log(JSON.stringify({ url, viewports, results, consoleErrors, pageErrors, requests, blocking }, null, 2))
@@ -235,10 +293,11 @@ if (json) {
   for (const r of results) {
     const clip = r.clippedCount ? `CLIPPED ${r.clippedCount}` : 'no clipped content'
     const con = r.contrastCount ? `contrast failures ${r.contrastCount}` : 'contrast ok'
-    console.log(`${String(r.width).padStart(4)}px  scrollWidth=${r.scrollWidth}  ${clip}  ${con}  typeSizes=${r.typeSizeCount}  tabStops=${r.tabStops}  odHooks=${r.odHooks}`)
+    console.log(`${String(r.label || r.width).padStart(9)}  scrollWidth=${r.scrollWidth}  ${clip}  ${con}  typeSizes=${r.typeSizeCount}  tabStops=${r.tabStops}  odHooks=${r.odHooks}${a11y ? `  a11y=${r.a11yCount}` : ''}${r.elementBox ? `  element=${r.elementBox.width}x${r.elementBox.height}` : ''}`)
     for (const c of r.clipped.slice(0, 4)) console.log(`      clip: <${c.tag.toLowerCase()} class="${c.cls}"> ${c.left}..${c.right}`)
     for (const c of r.contrast.slice(0, 4)) console.log(`      contrast ${c.ratio}:1 (need ${c.required}) ${c.size}px "${c.text}"`)
     if (r.tiny.length) console.log(`      text <11px: ${r.tiny.map((t) => `${t.size}px ${t.tag.toLowerCase()}.${t.cls}`).join(', ')}`)
+    if (a11y) for (const a of r.a11y.slice(0, 6)) console.log(`      a11y ${a.kind}: ${a.detail}`)
   }
   if (consoleErrors.length) console.log('console:', consoleErrors.slice(0, 5))
   if (pageErrors.length) console.log('pageerrors:', pageErrors.slice(0, 5))
