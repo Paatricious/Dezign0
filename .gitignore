@@ -22,3 +22,7 @@ test-results/
 *.log
 .DS_Store
 Thumbs.db
+
+# Optional content pack: do not ignore its data
+!design-languages/
+!design-languages/design-systems/
