@@ -17,7 +17,7 @@ const skills = fs.readdirSync(path.join(root, "design-os", "skills"))
 
 assert.equal(plugin.version, pkg.version, ".claude-plugin/plugin.json version must match package.json");
 assert.equal(market.plugins[0].version, pkg.version, "marketplace plugin version must match package.json");
-assert.equal(skills.length, 6, "expected six SKILL.md files");
+assert.equal(skills.length, 7, "expected seven SKILL.md files");
 assert.ok(pkg.files.includes(".claude-plugin/"), "package files must include .claude-plugin/");
 assert.ok(pkg.files.includes("server.js"), "package files must include server.js");
 for (const file of ["server.js", "plugin/index.js", "design-os/DESIGN-OS.md", "README.md", "SECURITY.md"]) {

@@ -6,9 +6,9 @@
 On load it:
 
 1. copies the bundled kit to `<project>/.design-os` (only if it does not exist);
-2. registers six skills: `dezign0-design-brief`, `dezign0-frontend-design`,
+2. registers seven skills: `dezign0-design-brief`, `dezign0-frontend-design`,
    `dezign0-redesign`, `dezign0-critique`, `dezign0-design-system-extract`,
-   `dezign0-state-board`.
+   `dezign0-state-board`, `dezign0-figma-context`.
 
 It registers three read-only tools for the mechanical checks and does not edit
 source files. The skills tell the agent when to read `DESIGN-OS.md`, create a
@@ -36,7 +36,7 @@ shell.
    directory here; do not point it at `plugin/index.js`.
 4. Scope: **User** (all projects) or **Project** (this repo only).
 5. Add, then restart or reload OpenChamber. The plugin should show **Loaded**.
-6. Open a session; the six `dezign0-*` skills appear in Skills and the three
+6. Open a session; the seven `dezign0-*` skills appear in Skills and the three
    `dezign0_*` tools appear in the tool list.
 
 **From npm (after publishing):**
@@ -47,21 +47,21 @@ shell.
    npm publish --access public
    ```
 2. Settings → Plugins → Add plugin → **From npm**.
-3. Spec: `dezign0` (or a pinned version such as `dezign0@0.4.0`).
+3. Spec: `dezign0` (or a pinned version such as `dezign0@0.5.0`).
 4. Reload.
 
-The live npm `0.3.0` package has the six skills but not the tools.
+The live npm `0.3.0` package has six skills and no tools. The `0.5.0` git tag adds the Figma skill, tools and the Claude Code bootstrap hook.
 
 **From git (tool-enabled, no npm auth):**
 
 ```text
-github:Paatricious/Dezign0#v0.4.0
+github:Paatricious/Dezign0#v0.5.0
 ```
 
 Use this in the **From npm** spec field, or in `opencode.json`:
 
 ```json
-{ "plugins": ["github:Paatricious/Dezign0#v0.4.0"] }
+{ "plugins": ["github:Paatricious/Dezign0#v0.5.0"] }
 ```
 
 This installs the tagged public repository and includes `dezign0_lint`,
@@ -103,7 +103,7 @@ Tested against the OpenChamber-managed OpenCode **2.1.3** binary with
 
 - User/custom config and project `.opencode/opencode.json` both load the plugin.
 - `.design-os/` is created in the project.
-- Six `SKILL.md` files are present under `.design-os/skills/`.
+- Seven `SKILL.md` files are present under `.design-os/skills/`.
 
 The plugin does not need npm dependencies, a build step or Playwright.
 
@@ -152,5 +152,5 @@ npm run plugin:test
 npm pack --dry-run
 ```
 
-The smoke test uses a mock OpenCode context: it verifies kit copying and six
+The smoke test uses a mock OpenCode context: it verifies kit copying and seven
 skill registrations without starting a server.

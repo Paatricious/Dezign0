@@ -30,8 +30,8 @@ try {
     fs.readdirSync(path.join(target, ".opencode", "skills")).filter((name) =>
       fs.existsSync(path.join(target, ".opencode", "skills", name, "SKILL.md")),
     ).length,
-    6,
-    "six skills installed",
+    7,
+    "seven skills installed",
   );
   assert.match(fs.readFileSync(path.join(target, "AGENTS.md"), "utf8"), /design-os:start/);
 
@@ -40,6 +40,15 @@ try {
   const noForce = run(["--target", target, "--harness=opencode", "--force=false"]);
   assert.equal(noForce.status, 0, noForce.stderr);
   assert.equal(fs.readFileSync(canary, "utf8"), "keep", "--force=false must not overwrite");
+
+  const codex = path.join(temp, "codex app");
+  const codexRun = run(["--target", codex, "--harness=codex", "--with-agents"]);
+  assert.equal(codexRun.status, 0, codexRun.stderr);
+  assert.ok(
+    fs.existsSync(path.join(codex, ".codex", "skills", "critique", "SKILL.md")),
+    "Codex skills must go to .codex/skills",
+  );
+  assert.ok(fs.existsSync(path.join(codex, "AGENTS.md")), "Codex instruction file");
 
   const bad = run(["--target", target, "--harness=opencode", "--force=maybe"]);
   assert.equal(bad.status, 2, "invalid boolean must be a usage error");

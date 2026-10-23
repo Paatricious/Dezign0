@@ -1,0 +1,20 @@
+{
+  "id": "windsurf",
+  "label": "Windsurf / Devin Desktop",
+  "skills": {
+    "project": [
+      ".devin/skills"
+    ],
+    "global": [
+      "~/.devin/skills"
+    ]
+  },
+  "instructions": {
+    "file": "AGENTS.md"
+  },
+  "capabilities": {
+    "shell": true,
+    "browser": "mcp",
+    "mcp": true
+  }
+}

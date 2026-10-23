@@ -1,0 +1,21 @@
+{
+  "id": "dsh",
+  "label": "DeepSeek Harness",
+  "skills": {
+    "project": [
+      ".agents/skills"
+    ],
+    "global": [
+      "~/.agents/skills"
+    ]
+  },
+  "instructions": {
+    "file": "AGENTS.md"
+  },
+  "capabilities": {
+    "shell": true,
+    "browser": "shell",
+    "mcp": true,
+    "subagents": true
+  }
+}

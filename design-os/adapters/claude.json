@@ -1,0 +1,23 @@
+{
+  "id": "claude",
+  "label": "Claude Code",
+  "skills": {
+    "project": [
+      ".claude/skills"
+    ],
+    "global": [
+      "~/.claude/skills"
+    ]
+  },
+  "instructions": {
+    "file": "CLAUDE.md"
+  },
+  "capabilities": {
+    "shell": true,
+    "browser": "native",
+    "mcp": true,
+    "subagents": true,
+    "hooks": true
+  },
+  "notes": "Marketplace plugin is primary; this is the installer fallback."
+}

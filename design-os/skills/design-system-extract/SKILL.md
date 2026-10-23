@@ -12,6 +12,20 @@ Read `.design-os/DESIGN-OS.md` first. Write project artifacts under
 Produce a contract another agent can build with. Every value carries evidence.
 When evidence is weak, mark it; never present a guess as measured.
 
+## Input A: live DOM/source
+
+Use computed styles, source files and official brand assets. Use a browser when
+available; otherwise label the extraction source-only and say what was skipped.
+
+## Input B: Figma
+
+If Figma is the source of truth, run `figma-context` first and use its
+`FIGMA.md` bridge document. Keep the file key, node ID, tool used and
+SOURCE/PARTIAL/GUESS grade for every token. Use `get_variable_defs` for token
+names and collection modes; do not invent a mapping when a variable is missing.
+Figma is optional: if no MCP server is available, continue with screenshots or
+pasted context and record the lost evidence.
+
 ## Evidence grades
 
 For every token, component or rule:

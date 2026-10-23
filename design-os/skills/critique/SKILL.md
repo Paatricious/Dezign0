@@ -15,11 +15,13 @@ not review from memory.
 ## Workflow
 
 1. **Identify the artifact and scope.** Files, screens, states, viewport, DPR,
-   browser/tool available. State what cannot be reviewed.
+   browser/tool available. If the user supplied a screenshot or annotation, map
+   it to the smallest element/region and follow `.design-os/craft/visual-review.md`.
+   State what cannot be reviewed.
 2. **Read the source and measure the render.** Read the CSS tokens and count
    controls/states. If a browser is available, run
-   `.design-os/tools/measure-artifact.mjs <artifact> --strict` for clipped content, rendered contrast,
-   type-size count and tab stops. If it is not, write "source-only review" and
+   `.design-os/tools/measure-artifact.mjs <artifact> --strict --shots=design/<slug>/shots`
+   for clipped content, rendered contrast, type-size count and tab stops. If it is not, write "source-only review" and
    do not claim rendered overflow, contrast or font behavior. Still cite source
    lines. For a state board, use `.design-os/briefs/CRITIQUE.md` -> "State-board
    checklist", and verify size claims against the built widget or source.

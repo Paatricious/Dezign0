@@ -1,0 +1,20 @@
+{
+  "id": "cline",
+  "label": "Cline",
+  "skills": {
+    "project": [
+      ".cline/skills"
+    ],
+    "global": [
+      "~/.cline/skills"
+    ]
+  },
+  "instructions": {
+    "file": ".clinerules/design-os.md"
+  },
+  "capabilities": {
+    "shell": true,
+    "browser": "native",
+    "mcp": true
+  }
+}

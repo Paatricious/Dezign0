@@ -1,0 +1,14 @@
+{
+  "id": "aider",
+  "label": "Aider",
+  "skills": null,
+  "instructions": {
+    "file": "CONVENTIONS.md"
+  },
+  "capabilities": {
+    "shell": true,
+    "browser": "none",
+    "mcp": false
+  },
+  "notes": "No skill discovery; the instruction block is the adapter."
+}

@@ -1,0 +1,21 @@
+{
+  "id": "gemini",
+  "label": "Gemini CLI",
+  "skills": {
+    "project": [
+      ".gemini/skills"
+    ],
+    "global": [
+      "~/.gemini/skills"
+    ]
+  },
+  "instructions": {
+    "file": "GEMINI.md"
+  },
+  "capabilities": {
+    "shell": true,
+    "browser": "mcp",
+    "mcp": true,
+    "hooks": true
+  }
+}

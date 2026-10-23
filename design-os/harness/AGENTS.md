@@ -30,7 +30,7 @@ Do not ship only the populated state.
 
 ## Skill routing
 
-Load only the skill that matches the task. Do not preload all six.
+Load only the skill that matches the task. Do not preload all seven.
 
 | Request | Load |
 |---|---|
@@ -39,6 +39,7 @@ Load only the skill that matches the task. Do not preload all six.
 | Review, audit or "what is wrong with this?" | `design-os/skills/critique/` |
 | Extract a brand or design system from an existing source | `design-os/skills/design-system-extract/` |
 | Documentation board, state board or multi-screen handoff page | `design-os/skills/state-board/` |
+| Figma file or frame is the source | `design-os/skills/figma-context/` |
 
 If a task spans two rows, start with the intake skill and load the build skill
 once the brief exists.

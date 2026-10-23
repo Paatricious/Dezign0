@@ -15,8 +15,8 @@ The CLI, local studio and additional adapter integrations are next.
 - **Craft rules** — typography, color, layout, states, accessibility, motion and
   content rules with mechanical checks.
 - **Templates** — brief, design spec, critique, handover, tokens and memory.
-- **Six skills** — design brief, frontend design, redesign, critique,
-  design-system extraction and state boards.
+- **Seven skills** — design brief, frontend design, redesign, critique,
+  design-system extraction, state boards and Figma context.
 - **Plugin** — zero-dependency OpenCode 2 / OpenChamber integration that installs
   the kit into a project and registers the skills.
 - **Tools** — a static linter and a Playwright-based rendered measurement tool.
@@ -31,11 +31,11 @@ In **Settings → Plugins → Add plugin**:
 - **From npm:** `dezign0` — live at
   [npmjs.com/package/dezign0](https://www.npmjs.com/package/dezign0). The live
   `0.3.0` release has the six skills.
-- **From git (no npm publish needed):** `github:Paatricious/Dezign0#v0.4.0`.
+- **From git (no npm publish needed):** `github:Paatricious/Dezign0#v0.5.0`.
   This is the current tool-enabled version; the repository is public.
 
 Choose User or Project scope. On load the plugin copies the kit to `.design-os/`,
-registers six `dezign0-*` skills and three read-only tools (`dezign0_lint`,
+registers seven `dezign0-*` skills and three read-only tools (`dezign0_lint`,
 `dezign0_measure`, `dezign0_doctor`). It needs no npm dependencies; Playwright is
 optional for rendered measurement.
 Details: [plugin/README.md](plugin/README.md).
@@ -57,6 +57,15 @@ node design-os/install.mjs --target=../my-app --harness=dsh --with-agents
 
 If your DSH build only discovers global skills, add `--scope=global`.
 
+### Other harnesses
+
+The installer supports 12 targets (OpenCode, Claude Code, Codex, Cursor,
+Windsurf/Devin, Cline, Roo, OpenHands, Aider, DSH, Gemini CLI, files-only):
+
+```bash
+node design-os/install.mjs --target=../my-app --harness=cursor --with-agents
+```
+
 ### Claude Code plugin
 
 ```text
@@ -64,7 +73,8 @@ If your DSH build only discovers global skills, add `--scope=global`.
 /plugin install dezign0@dezign0
 ```
 
-This uses `.claude-plugin/` and updates through the marketplace.
+This uses `.claude-plugin/` and updates through the marketplace. A
+`SessionStart` hook bootstraps `.design-os/` in the project so the skills resolve.
 
 ### Claude Code / Codex (installer fallback)
 
@@ -74,7 +84,7 @@ node design-os/install.mjs --target=../my-app --harness=codex --with-agents
 ```
 
 The installer never installs Playwright or deletes files. It copies the kit to
-`.design-os/`, installs the six skills to the harness's native path and writes an
+`.design-os/`, installs the seven skills to the harness's native path and writes an
 `AGENTS.md` fragment. Use `--dry-run` to inspect first.
 
 ## How it works
@@ -119,6 +129,7 @@ unclear.
 | [docs/ADOPTION.md](docs/ADOPTION.md) | Install and daily-loop instructions per harness |
 | [docs/PUBLISHING.md](docs/PUBLISHING.md) | Publish to npm and install from OpenChamber's "From npm" field |
 | [docs/VERIFICATION.md](docs/VERIFICATION.md) | What was tested, on which versions, and what is still a limit |
+| [docs/figma.md](docs/figma.md) | Optional Figma MCP bridge and evidence rules |
 | [CHANGELOG.md](CHANGELOG.md) | Release history |
 | [SECURITY.md](SECURITY.md) | Threat model and reporting |
 

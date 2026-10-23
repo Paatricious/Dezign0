@@ -1,0 +1,20 @@
+{
+  "id": "roo",
+  "label": "Roo Code",
+  "skills": {
+    "project": [
+      ".roo/skills"
+    ],
+    "global": [
+      "~/.roo/skills"
+    ]
+  },
+  "instructions": {
+    "file": ".roo/rules/design-os.md"
+  },
+  "capabilities": {
+    "shell": true,
+    "browser": "mcp",
+    "mcp": true
+  }
+}

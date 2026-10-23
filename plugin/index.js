@@ -4,7 +4,7 @@
  * Zero runtime dependencies. OpenCode 2 calls `setup(ctx)` for each location.
  * On setup it:
  *   1. copies the bundled design kit to `<project>/.design-os` (only if missing)
- *   2. registers the six design skills from the kit
+ *   2. registers the seven design skills from the kit
  *   3. registers tools for lint, rendered measurement and a doctor check
  *
  * The tools only read files inside the current project. They never write source
@@ -30,6 +30,7 @@ const SKILLS = [
   "critique",
   "design-system-extract",
   "state-board",
+  "figma-context",
 ];
 const TOOL_NAMES = ["dezign0_lint", "dezign0_measure", "dezign0_doctor"];
 const VERSION = (() => {
@@ -296,7 +297,7 @@ function makeTools(projectDir, kitDir, scriptKit) {
     {
       name: "dezign0_doctor",
       description:
-        "Check the installed Dezign0 kit: plugin version, kit location/version, six skills, lint/measure scripts, Node and Playwright. Use when the plugin seems installed but skills or checks are missing.",
+        "Check the installed Dezign0 kit: plugin version, kit location/version, seven skills, lint/measure scripts, Node and Playwright. Use when the plugin seems installed but skills or checks are missing.",
       input: { type: "object", properties: {}, additionalProperties: false },
       async execute() {
         const metaFile = path.join(kitDir, META);

@@ -10,9 +10,9 @@
  *
  * What it does:
  *   1. copies this kit to <target>/.design-os/
- *   2. installs the six workflow skills where the harness looks for them
+ *   2. installs the seven workflow skills where the harness looks for them
  *   3. for OpenCode, adds /design-new, /design-review, /design-ship commands
- *   4. writes an AGENTS.md fragment (and appends it only with --with-agents)
+ *   4. writes the harness instruction block (only with --with-agents)
  *
  * It never deletes anything. --force overwrites; --upgrade only adds missing
  * files. It does not install Playwright or any global dependency.
@@ -23,21 +23,30 @@ import os from 'node:os'
 import { fileURLToPath } from 'node:url'
 
 const KIT = path.dirname(fileURLToPath(import.meta.url))
+const ADAPTER_DIR = path.join(KIT, 'adapters')
+const ADAPTERS = Object.fromEntries(
+  fs.readdirSync(ADAPTER_DIR)
+    .filter((name) => name.endsWith('.json'))
+    .map((name) => {
+      const adapter = JSON.parse(fs.readFileSync(path.join(ADAPTER_DIR, name), 'utf8'))
+      return [adapter.id, adapter]
+    }),
+)
+const HARNESSES = Object.keys(ADAPTERS).sort()
 const BOOLEAN = new Set(['dry-run', 'with-agents', 'force', 'upgrade', 'help', 'h'])
 const VALUE = new Set(['harness', 'scope', 'target'])
-const HARNESSES = ['dsh', 'opencode', 'claude', 'codex', 'files']
 
 function usage() {
   console.log(`Design OS installer
 
-Usage: node install.mjs --harness=<dsh|opencode|claude|codex|files> [options]
+Usage: node install.mjs --harness=<${HARNESSES.join('|')}> [options]
 
 Options:
   --target=<dir>           Project directory (required in practice; default:
                            current directory). Use the app you are designing,
                            not the Dezign0 checkout.
   --scope=project|global   Install skills for this project (default) or globally
-  --with-agents            Append the design instructions to AGENTS.md
+  --with-agents            Append the design instructions to the harness instruction file
   --force                  Overwrite existing skill/command files and kit files
   --upgrade                Copy only missing kit/skill files (never overwrite)
   --dry-run                Print what would happen, write nothing
@@ -45,12 +54,8 @@ Options:
 
 Notes:
   - The kit is always copied to <target>/.design-os.
-  - Skills are copied to the harness's native directory:
-      opencode: .opencode/skills/<name>/SKILL.md (or ~/.config/opencode/skills)
-      dsh:      .agents/skills/<name>/SKILL.md   (or ~/.agents/skills)
-      claude:   .claude/skills/<name>/SKILL.md   (or ~/.claude/skills)
-      codex:    .agents/skills/<name>/SKILL.md
-      files:    no skill copy
+  - Skills are copied to the harness's native directory. The path and the
+    instruction file come from design-os/adapters/<harness>.json.
   - OpenCode also gets /design-new, /design-review and /design-ship commands.
   - Restart the harness after installing so it rescans skills.`)
 }
@@ -119,6 +124,7 @@ function main() {
     return 0
   }
   const { harness, scope, target, dryRun, withAgents, force, upgrade } = args
+  const adapter = ADAPTERS[harness]
 
   if (target === KIT || isInside(KIT, target)) {
     throw new Error('target is inside the Dezign0 kit. Run with --target pointing at the app you are designing.')
@@ -185,21 +191,20 @@ function main() {
   }
 
   // 2. Skills
-  const skillRoots = {
-    opencode: scope === 'global' ? path.join(os.homedir(), '.config', 'opencode', 'skills') : path.join(target, '.opencode', 'skills'),
-    dsh: scope === 'global' ? path.join(os.homedir(), '.agents', 'skills') : path.join(target, '.agents', 'skills'),
-    claude: scope === 'global' ? path.join(os.homedir(), '.claude', 'skills') : path.join(target, '.claude', 'skills'),
-    codex: scope === 'global' ? path.join(os.homedir(), '.agents', 'skills') : path.join(target, '.agents', 'skills'),
-    files: null,
-  }
   const skillsDir = path.join(KIT, 'skills')
   const skills = fs.existsSync(skillsDir)
     ? fs.readdirSync(skillsDir).filter((d) => fs.existsSync(path.join(skillsDir, d, 'SKILL.md')))
     : []
-  if (skillRoots[harness]) {
+  const expandHome = (value) => value?.startsWith('~') ? path.join(os.homedir(), value.slice(1)) : value
+  const projectSkillRoot = adapter.skills?.project?.[0]
+  const globalSkillRoot = adapter.skills?.global?.[0]
+  const skillRoot = adapter.skills
+    ? (scope === 'global' ? expandHome(globalSkillRoot) : path.join(target, projectSkillRoot))
+    : null
+  if (skillRoot) {
     for (const name of skills) {
       const from = path.join(skillsDir, name)
-      const to = path.join(skillRoots[harness], name)
+      const to = path.join(skillRoot, name)
       if (fs.existsSync(to) && !force && !upgrade) {
         log(`skip (exists): ${rel(to)}`)
         continue
@@ -258,7 +263,7 @@ no browser, say the review is source-only. Do not invent metrics or filler copy.
 `
   write(path.join(kitTarget, 'AGENTS.fragment.md'), fragment)
 
-  const agentsPath = path.join(target, 'AGENTS.md')
+  const agentsPath = path.join(target, adapter.instructions.file)
   if (withAgents) {
     const start = '<!-- design-os:start -->'
     const end = '<!-- design-os:end -->'
@@ -269,14 +274,14 @@ no browser, say the review is source-only. Do not invent metrics or filler copy.
       const existing = fs.readFileSync(agentsPath, 'utf8')
       if (existing.includes(start) && existing.includes(end)) {
         if (!force && !upgrade) {
-          log('skip: AGENTS.md already contains the design-os block')
+          log(`skip: ${adapter.instructions.file} already contains the design-os block`)
         } else {
           const next = existing.replace(new RegExp(`${start}[\\s\\S]*?${end}`), block.trim())
           log(`update: ${rel(agentsPath)} (managed design-os block)`)
           if (!dryRun) fs.writeFileSync(agentsPath, next)
         }
       } else if (existing.includes(start)) {
-        throw new Error('AGENTS.md has a design-os start marker but no end marker; fix it manually')
+        throw new Error(`${adapter.instructions.file} has a design-os start marker but no end marker; fix it manually`)
       } else {
         log(`append: ${rel(agentsPath)}`)
         if (!dryRun) fs.appendFileSync(agentsPath, block)
@@ -286,20 +291,23 @@ no browser, say the review is source-only. Do not invent metrics or filler copy.
 
   // 5. Next steps
   console.log('\nInstalled into: ' + target)
-  if (skillRoots[harness]) {
-    console.log('Skills: ' + rel(skillRoots[harness]) + ` (${skills.length})`)
+  if (skillRoot) {
+    console.log('Skills: ' + rel(skillRoot) + ` (${skills.length})`)
   } else {
-    console.log('Skills: not installed (harness=files)')
+    console.log(`Skills: not installed (${adapter.label} has no skill directory)`)
   }
   console.log('\nNext:')
   let step = 1
   if (!withAgents && harness !== 'files') {
-    console.log(`  ${step++}. Add .design-os/AGENTS.fragment.md to your AGENTS.md, or rerun with --with-agents.`)
+    console.log(`  ${step++}. Add .design-os/AGENTS.fragment.md to ${adapter.instructions.file}, or rerun with --with-agents.`)
   }
   console.log(`  ${step++}. Restart the harness (or start a new session) so it rescans skills.`)
   console.log(`  ${step++}. In the project: "Read .design-os/DESIGN-OS.md and use the design-brief skill for: ..."`)
   if (harness === 'dsh' && scope === 'project') {
     console.log('  Note: if this DSH build only discovers global skills, rerun with --scope=global.')
+  }
+  if (['cursor','windsurf','cline','roo','openhands'].includes(harness)) {
+    console.log('  Note: this harness also reads compatibility skill directories; see its adapter JSON.')
   }
   if (harness === 'opencode') {
     console.log(`  ${step++}. Try /design-new, /design-review, /design-ship in OpenCode.`)

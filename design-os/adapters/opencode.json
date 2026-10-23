@@ -1,0 +1,22 @@
+{
+  "id": "opencode",
+  "label": "OpenCode",
+  "skills": {
+    "project": [
+      ".opencode/skills"
+    ],
+    "global": [
+      "~/.config/opencode/skills"
+    ]
+  },
+  "instructions": {
+    "file": "AGENTS.md"
+  },
+  "capabilities": {
+    "shell": true,
+    "browser": "shell",
+    "mcp": true,
+    "commands": true
+  },
+  "notes": "Native plugin is the primary path; installer is the OpenCode 1.x fallback."
+}

@@ -1,0 +1,20 @@
+{
+  "id": "codex",
+  "label": "Codex CLI",
+  "skills": {
+    "project": [
+      ".codex/skills"
+    ],
+    "global": [
+      "~/.codex/skills"
+    ]
+  },
+  "instructions": {
+    "file": "AGENTS.md"
+  },
+  "capabilities": {
+    "shell": true,
+    "browser": "mcp",
+    "mcp": true
+  }
+}

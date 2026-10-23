@@ -3,6 +3,24 @@
 All notable changes are recorded here. The format follows Keep a Changelog and
 the project uses semantic versioning.
 
+## [0.5.0] - 2026-10-23
+
+### Added
+
+- `figma-context` skill: read a Figma file/frame through the user's MCP server,
+  grade evidence SOURCE/PARTIAL/GUESS and write `design/<slug>/FIGMA.md`.
+- Harness adapter registry for 12 targets: OpenCode, Claude Code, Codex, Cursor,
+  Windsurf/Devin, Cline, Roo, OpenHands, Aider, DSH, Gemini CLI and files-only.
+- Claude Code `SessionStart` hook that materialises `.design-os/` in the project.
+- Visual-review protocol for screenshots, annotations and before/after shots.
+- `docs/figma.md`, adapter checks and Codex path regression test.
+
+### Fixed
+
+- Codex now installs to `.codex/skills`, not `.agents/skills`.
+- Claude Code marketplace installs no longer leave skills pointing at a missing
+  `.design-os/` kit.
+
 ## [0.4.0] - 2026-10-23
 
 ### Added

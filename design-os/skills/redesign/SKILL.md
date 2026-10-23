@@ -24,7 +24,8 @@ State the mode in one line before touching pixels.
 
 ## 2. Audit before editing
 
-Capture the baseline as an artifact or screenshot. If neither is available,
+Capture the baseline as an artifact or screenshot, and read
+`.design-os/craft/visual-review.md` for the point/annotation protocol. If neither is available,
 record DOM/CSS counts, source lines and lint output, and label the baseline
 "source-only". Then inspect:
 

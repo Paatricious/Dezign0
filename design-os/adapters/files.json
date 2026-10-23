@@ -1,0 +1,13 @@
+{
+  "id": "files",
+  "label": "Files only",
+  "skills": null,
+  "instructions": {
+    "file": "AGENTS.md"
+  },
+  "capabilities": {
+    "shell": true,
+    "browser": "shell"
+  },
+  "notes": "Copies the kit and instructions only."
+}

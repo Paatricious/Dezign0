@@ -1,0 +1,21 @@
+{
+  "id": "cursor",
+  "label": "Cursor",
+  "skills": {
+    "project": [
+      ".cursor/skills"
+    ],
+    "global": [
+      "~/.cursor/skills"
+    ]
+  },
+  "instructions": {
+    "file": "AGENTS.md"
+  },
+  "capabilities": {
+    "shell": true,
+    "browser": "native",
+    "mcp": true
+  },
+  "notes": "Cursor also reads .agents and .claude skills; .cursor/skills is the primary path."
+}

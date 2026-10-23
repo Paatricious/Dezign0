@@ -6,7 +6,7 @@ generic installer. Pick the host you already use.
 ## 1. OpenChamber / OpenCode 2 (recommended)
 
 The repo root is a zero-dependency OpenCode 2 plugin. On load it copies the kit
-to `<project>/.design-os` (if missing) and registers six `dezign0-*` skills.
+to `<project>/.design-os` (if missing) and registers seven `dezign0-*` skills.
 
 ### From local path
 
@@ -28,16 +28,34 @@ Registry package (skills only in the live 0.3.0):
 Tagged git install (current tools, no npm auth):
 
 ```text
-github:Paatricious/Dezign0#v0.4.0
+github:Paatricious/Dezign0#v0.5.0
 ```
 
 Use the **From npm** tab for the git spec too, or put it in `opencode.json`.
 Reload after adding.
 
-Verified on OpenCode 2.1.3 with both scopes: the kit is copied, six skills are
+Verified on OpenCode 2.1.3 with both scopes: the kit is copied, seven skills are
 registered, and the three `dezign0_*` tools appear. `dezign0_doctor` reports the
 install state; `dezign0_lint` and `dezign0_measure` run the mechanical checks. Local installs must point at the repo directory; single files are
 rejected by OpenCode 2's config loader.
+
+### Other harnesses
+
+The installer is data-driven; each target has a JSON adapter under
+`design-os/adapters/`.
+
+```bash
+node design-os/install.mjs --target=../my-app --harness=cursor --with-agents
+node design-os/install.mjs --target=../my-app --harness=windsurf --with-agents
+node design-os/install.mjs --target=../my-app --harness=cline --with-agents
+node design-os/install.mjs --target=../my-app --harness=roo --with-agents
+node design-os/install.mjs --target=../my-app --harness=openhands --with-agents
+node design-os/install.mjs --target=../my-app --harness=gemini --with-agents
+node design-os/install.mjs --target=../my-app --harness=aider --with-agents
+```
+
+Each adapter installs the kit and the instruction block; skill directories differ
+by harness. See `design-os/adapters/<id>.json`.
 
 ## 2. DSH
 
@@ -101,6 +119,10 @@ As a plugin:
 /plugin marketplace add Paatricious/Dezign0
 /plugin install dezign0@dezign0
 ```
+
+The plugin includes a `SessionStart` hook that copies the kit to the project
+`.design-os/` before the first turn. If hooks are disabled, run the installer
+below instead.
 
 Or with the installer:
 

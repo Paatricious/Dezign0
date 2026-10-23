@@ -19,8 +19,8 @@ The core is harness-agnostic. It owns:
 - `craft/`: checkable rules for typography, color, layout and states,
   accessibility, motion, content and anti-slop.
 - `briefs/`: brief, design spec, critique, handover, tokens and memory templates.
-- `skills/`: six workflow skills for intake, build, redesign, review, extraction
-  and state boards.
+- `skills/`: seven workflow skills for intake, build, redesign, review,
+  extraction, state boards and Figma context.
 - `tools/`: a static linter and an optional Playwright measurement tool.
 
 The OS never depends on a specific model or UI. Any harness with file access can

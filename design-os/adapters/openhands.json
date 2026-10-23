@@ -1,0 +1,20 @@
+{
+  "id": "openhands",
+  "label": "OpenHands",
+  "skills": {
+    "project": [
+      ".openhands/skills"
+    ],
+    "global": [
+      "~/.openhands/skills"
+    ]
+  },
+  "instructions": {
+    "file": "AGENTS.md"
+  },
+  "capabilities": {
+    "shell": true,
+    "browser": "native",
+    "mcp": true
+  }
+}

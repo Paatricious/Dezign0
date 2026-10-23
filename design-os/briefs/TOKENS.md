@@ -12,6 +12,13 @@ disagrees with the artifact, the artifact wins and this document is stale.
 1. `<artifact>.html` — authoritative.
 2. `tokens.css` — extracted verbatim.
 3. This file — description only.
+4. `FIGMA.md` — when Figma was the input; record file/node and evidence grade.
+
+### Provenance
+
+For every token, record where it came from: SOURCE (computed/source/Figma
+variables), PARTIAL (screenshot or limited sample), or GUESS (proposal). A GUESS
+must never be presented as a measured brand token.
 
 ## 2. Color roles
 

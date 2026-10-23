@@ -13,6 +13,8 @@ OpenChamber/OpenCode plugin, installers for other harnesses, and review tools.
    from OpenChamber's "From npm" field.
 4. **[VERIFICATION.md](VERIFICATION.md)** — what was tested and what remains a
    limit.
+5. **[figma.md](figma.md)** — optional Figma MCP bridge; no token storage or paid
+   dependency.
 
 ## Current pieces
 
