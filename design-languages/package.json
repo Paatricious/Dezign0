@@ -1,14 +1,14 @@
 {
   "name": "dezign0-design-languages",
-  "version": "0.2.0",
-  "description": "All 152 OpenDesign design-system packages plus Dezign0 templates, Figma bridge, code handoff, review and media addons",
+  "version": "0.2.1",
+  "description": "152 portable design-system packages plus Dezign0 templates, Figma bridge, code handoff, review and media addons",
   "license": "Apache-2.0",
   "private": false,
   "type": "module",
   "files": [
     "design-systems/",
     "index.json",
-    "OPEN-DESIGN-README.md",
+    "UPSTREAM-README.md",
     "NOTICE",
     "ATTRIBUTION.md",
     "LICENSE",
@@ -25,8 +25,8 @@
     "design-systems",
     "design-languages",
     "dezign0",
-    "opendesign",
-    "design-tokens"
+    "design-tokens",
+    "design-templates"
   ],
   "engines": {
     "node": ">=18"

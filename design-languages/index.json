@@ -1,7 +1,6 @@
 {
   "schema": "dezign0/design-languages/v1",
   "source": {
-    "repo": "https://github.com/nexu-io/open-design",
     "commit": "e03d5c23f308c39f4de7c057568df66c29a84385",
     "license": "Apache-2.0"
   },
@@ -11,350 +10,350 @@
       "slug": "agentic",
       "name": "Agentic",
       "category": "Themed & Unique",
-      "description": "Bundled OpenDesign package for Agentic, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Agentic, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "airbnb",
       "name": "Airbnb",
       "category": "E-Commerce & Retail",
-      "description": "Bundled OpenDesign package for Airbnb, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Airbnb, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "airtable",
       "name": "Airtable",
       "category": "Design & Creative",
-      "description": "Bundled OpenDesign package for Airtable, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Airtable, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "ant",
       "name": "Ant",
       "category": "Professional & Corporate",
-      "description": "Bundled OpenDesign package for Ant, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Ant, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "apple",
       "name": "Apple",
       "category": "Media & Consumer",
-      "description": "Bundled OpenDesign package for Apple, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Apple, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "application",
       "name": "Application",
       "category": "Professional & Corporate",
-      "description": "Bundled OpenDesign package for Application, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Application, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "arc",
       "name": "Arc Browser",
       "category": "Productivity & SaaS",
-      "description": "Bundled OpenDesign package for Arc Browser, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Arc Browser, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "artistic",
       "name": "Artistic",
       "category": "Creative & Artistic",
-      "description": "Bundled OpenDesign package for Artistic, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Artistic, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "atelier-zero",
       "name": "Atelier Zero",
       "category": "Editorial · Studio",
-      "description": "Bundled OpenDesign package for Atelier Zero, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Atelier Zero, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "bento",
       "name": "Bento",
       "category": "Layout & Structure",
-      "description": "Bundled OpenDesign package for Bento, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Bento, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "binance",
       "name": "Binance.US",
       "category": "Fintech & Crypto",
-      "description": "Bundled OpenDesign package for Binance.US, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Binance.US, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "bmw",
       "name": "BMW",
       "category": "Automotive",
-      "description": "Bundled OpenDesign package for BMW, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for BMW, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "bmw-m",
       "name": "BMW M",
       "category": "Automotive",
-      "description": "Bundled OpenDesign package for BMW M, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for BMW M, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "bold",
       "name": "Bold",
       "category": "Bold & Expressive",
-      "description": "Bundled OpenDesign package for Bold, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Bold, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "brutalism",
       "name": "Brutalism",
       "category": "Bold & Expressive",
-      "description": "Bundled OpenDesign package for Brutalism, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Brutalism, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "bugatti",
       "name": "Bugatti",
       "category": "Automotive",
-      "description": "Bundled OpenDesign package for Bugatti, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Bugatti, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "cafe",
       "name": "Cafe",
       "category": "Creative & Artistic",
-      "description": "Bundled OpenDesign package for Cafe, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Cafe, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "cal",
       "name": "Cal.com",
       "category": "Productivity & SaaS",
-      "description": "Bundled OpenDesign package for Cal.com, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Cal.com, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "canva",
       "name": "Canva",
       "category": "Design & Creative",
-      "description": "Bundled OpenDesign package for Canva, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Canva, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "cisco",
       "name": "Cisco",
       "category": "Backend & Data",
-      "description": "Bundled OpenDesign package for Cisco, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Cisco, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "claude",
       "name": "Claude (Anthropic)",
       "category": "AI & LLM",
-      "description": "Bundled OpenDesign package for Claude (Anthropic), derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Claude (Anthropic), derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "clay",
       "name": "Clay",
       "category": "Design & Creative",
-      "description": "Bundled OpenDesign package for Clay, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Clay, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "claymorphism",
       "name": "Claymorphism",
       "category": "Morphism & Effects",
-      "description": "Bundled OpenDesign package for Claymorphism, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Claymorphism, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "clean",
       "name": "Clean",
       "category": "Modern & Minimal",
-      "description": "Bundled OpenDesign package for Clean, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Clean, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "clickhouse",
       "name": "ClickHouse",
       "category": "Backend & Data",
-      "description": "Bundled OpenDesign package for ClickHouse, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for ClickHouse, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
@@ -368,1491 +367,1491 @@
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated integration of https://github.com/cloudflare/kumo at 0c5832575c99988917b81cd752002e10f3dc9c7a (@cloudflare/kumo 2.9.2, MIT)"
+        "origin": "Upstream curated integration of https://github.com/cloudflare/kumo at 0c5832575c99988917b81cd752002e10f3dc9c7a (@cloudflare/kumo 2.9.2, MIT)"
       }
     },
     {
       "slug": "cohere",
       "name": "Cohere",
       "category": "AI & LLM",
-      "description": "Bundled OpenDesign package for Cohere, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Cohere, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "coinbase",
       "name": "Coinbase",
       "category": "Fintech & Crypto",
-      "description": "Bundled OpenDesign package for Coinbase, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Coinbase, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "colorful",
       "name": "Colorful",
       "category": "Bold & Expressive",
-      "description": "Bundled OpenDesign package for Colorful, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Colorful, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "composio",
       "name": "Composio",
       "category": "Backend & Data",
-      "description": "Bundled OpenDesign package for Composio, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Composio, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "contemporary",
       "name": "Contemporary",
       "category": "Modern & Minimal",
-      "description": "Bundled OpenDesign package for Contemporary, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Contemporary, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "corporate",
       "name": "Corporate",
       "category": "Professional & Corporate",
-      "description": "Bundled OpenDesign package for Corporate, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Corporate, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "cosmic",
       "name": "Cosmic",
       "category": "Creative & Artistic",
-      "description": "Bundled OpenDesign package for Cosmic, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Cosmic, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "creative",
       "name": "Creative",
       "category": "Creative & Artistic",
-      "description": "Bundled OpenDesign package for Creative, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Creative, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "cursor",
       "name": "Cursor",
       "category": "Developer Tools",
-      "description": "Bundled OpenDesign package for Cursor, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Cursor, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "dashboard",
       "name": "Dashboard",
       "category": "Professional & Corporate",
-      "description": "Bundled OpenDesign package for Dashboard, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Dashboard, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "default",
       "name": "Neutral Modern",
       "category": "Starter",
-      "description": "Bundled OpenDesign package for Neutral Modern, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Neutral Modern, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "discord",
       "name": "Discord",
       "category": "Productivity & SaaS",
-      "description": "Bundled OpenDesign package for Discord, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Discord, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "dithered",
       "name": "Dithered",
       "category": "Retro & Nostalgic",
-      "description": "Bundled OpenDesign package for Dithered, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Dithered, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "doodle",
       "name": "Doodle",
       "category": "Creative & Artistic",
-      "description": "Bundled OpenDesign package for Doodle, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Doodle, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "dramatic",
       "name": "Dramatic",
       "category": "Bold & Expressive",
-      "description": "Bundled OpenDesign package for Dramatic, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Dramatic, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "duolingo",
       "name": "Duolingo",
       "category": "Productivity & SaaS",
-      "description": "Bundled OpenDesign package for Duolingo, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Duolingo, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "editorial",
       "name": "Editorial",
       "category": "Creative & Artistic",
-      "description": "Bundled OpenDesign package for Editorial, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Editorial, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "elegant",
       "name": "Elegant",
       "category": "Professional & Corporate",
-      "description": "Bundled OpenDesign package for Elegant, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Elegant, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "elevenlabs",
       "name": "ElevenLabs",
       "category": "AI & LLM",
-      "description": "Bundled OpenDesign package for ElevenLabs, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for ElevenLabs, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "energetic",
       "name": "Energetic",
       "category": "Bold & Expressive",
-      "description": "Bundled OpenDesign package for Energetic, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Energetic, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "enterprise",
       "name": "Enterprise",
       "category": "Professional & Corporate",
-      "description": "Bundled OpenDesign package for Enterprise, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Enterprise, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "expo",
       "name": "Expo",
       "category": "Developer Tools",
-      "description": "Bundled OpenDesign package for Expo, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Expo, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "expressive",
       "name": "Expressive",
       "category": "Bold & Expressive",
-      "description": "Bundled OpenDesign package for Expressive, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Expressive, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "fantasy",
       "name": "Fantasy",
       "category": "Creative & Artistic",
-      "description": "Bundled OpenDesign package for Fantasy, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Fantasy, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "ferrari",
       "name": "Ferrari",
       "category": "Automotive",
-      "description": "Bundled OpenDesign package for Ferrari, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Ferrari, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "figma",
       "name": "Figma",
       "category": "Design & Creative",
-      "description": "Bundled OpenDesign package for Figma, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Figma, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "flat",
       "name": "Flat",
       "category": "Modern & Minimal",
-      "description": "Bundled OpenDesign package for Flat, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Flat, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "framer",
       "name": "Framer",
       "category": "Design & Creative",
-      "description": "Bundled OpenDesign package for Framer, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Framer, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "friendly",
       "name": "Friendly",
       "category": "Creative & Artistic",
-      "description": "Bundled OpenDesign package for Friendly, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Friendly, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "futuristic",
       "name": "Futuristic",
       "category": "Themed & Unique",
-      "description": "Bundled OpenDesign package for Futuristic, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Futuristic, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "github",
       "name": "GitHub",
       "category": "Developer Tools",
-      "description": "Bundled OpenDesign package for GitHub, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for GitHub, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "glassmorphism",
       "name": "Glassmorphism",
       "category": "Morphism & Effects",
-      "description": "Bundled OpenDesign package for Glassmorphism, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Glassmorphism, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "gradient",
       "name": "Gradient",
       "category": "Morphism & Effects",
-      "description": "Bundled OpenDesign package for Gradient, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Gradient, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "hashicorp",
       "name": "HashiCorp",
       "category": "Backend & Data",
-      "description": "Bundled OpenDesign package for HashiCorp, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for HashiCorp, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "hud",
       "name": "HUD Design System",
       "category": "Themed & Unique",
-      "description": "Bundled OpenDesign package for HUD Design System, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for HUD Design System, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "huggingface",
       "name": "Hugging Face",
       "category": "AI & LLM",
-      "description": "Bundled OpenDesign package for Hugging Face, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Hugging Face, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "ibm",
       "name": "IBM",
       "category": "Media & Consumer",
-      "description": "Bundled OpenDesign package for IBM, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for IBM, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "intercom",
       "name": "Intercom",
       "category": "Productivity & SaaS",
-      "description": "Bundled OpenDesign package for Intercom, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Intercom, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "kami",
       "name": "kami (紙 / 纸)",
       "category": "Editorial & Print",
-      "description": "Bundled OpenDesign package for kami (紙 / 纸), derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for kami (紙 / 纸), derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "kraken",
       "name": "Kraken",
       "category": "Fintech & Crypto",
-      "description": "Bundled OpenDesign package for Kraken, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Kraken, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "lamborghini",
       "name": "Lamborghini",
       "category": "Automotive",
-      "description": "Bundled OpenDesign package for Lamborghini, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Lamborghini, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "levels",
       "name": "Levels",
       "category": "Layout & Structure",
-      "description": "Bundled OpenDesign package for Levels, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Levels, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "linear-app",
       "name": "Linear",
       "category": "Productivity & SaaS",
-      "description": "Bundled OpenDesign package for Linear, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Linear, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "lingo",
       "name": "Lingo",
       "category": "Creative & Artistic",
-      "description": "Bundled OpenDesign package for Lingo, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Lingo, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "loom",
       "name": "Loom Design System",
       "category": "Themed & Unique",
-      "description": "Bundled OpenDesign package for Loom Design System, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Loom Design System, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "lovable",
       "name": "Lovable",
       "category": "Developer Tools",
-      "description": "Bundled OpenDesign package for Lovable, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Lovable, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "luxury",
       "name": "Luxury",
       "category": "Professional & Corporate",
-      "description": "Bundled OpenDesign package for Luxury, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Luxury, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "mastercard",
       "name": "Mastercard",
       "category": "Fintech & Crypto",
-      "description": "Bundled OpenDesign package for Mastercard, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Mastercard, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "material",
       "name": "Material",
       "category": "Professional & Corporate",
-      "description": "Bundled OpenDesign package for Material, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Material, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "meta",
       "name": "Meta (Store)",
       "category": "E-Commerce & Retail",
-      "description": "Bundled OpenDesign package for Meta (Store), derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Meta (Store), derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "minimal",
       "name": "Minimal",
       "category": "Modern & Minimal",
-      "description": "Bundled OpenDesign package for Minimal, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Minimal, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "minimax",
       "name": "MiniMax",
       "category": "AI & LLM",
-      "description": "Bundled OpenDesign package for MiniMax, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for MiniMax, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "mintlify",
       "name": "Mintlify",
       "category": "Productivity & SaaS",
-      "description": "Bundled OpenDesign package for Mintlify, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Mintlify, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "miro",
       "name": "Miro",
       "category": "Design & Creative",
-      "description": "Bundled OpenDesign package for Miro, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Miro, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "mission-control",
       "name": "Mission Control Design System",
       "category": "Developer Tools",
-      "description": "Bundled OpenDesign package for Mission Control Design System, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Mission Control Design System, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "mistral-ai",
       "name": "Mistral AI",
       "category": "AI & LLM",
-      "description": "Bundled OpenDesign package for Mistral AI, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Mistral AI, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "modern",
       "name": "Modern",
       "category": "Modern & Minimal",
-      "description": "Bundled OpenDesign package for Modern, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Modern, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "mongodb",
       "name": "MongoDB",
       "category": "Backend & Data",
-      "description": "Bundled OpenDesign package for MongoDB, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for MongoDB, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "mono",
       "name": "Mono",
       "category": "Modern & Minimal",
-      "description": "Bundled OpenDesign package for Mono, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Mono, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "neobrutalism",
       "name": "Neobrutalism",
       "category": "Bold & Expressive",
-      "description": "Bundled OpenDesign package for Neobrutalism, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Neobrutalism, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "neon",
       "name": "Neon",
       "category": "Morphism & Effects",
-      "description": "Bundled OpenDesign package for Neon, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Neon, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "neumorphism",
       "name": "Neumorphism",
       "category": "Morphism & Effects",
-      "description": "Bundled OpenDesign package for Neumorphism, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Neumorphism, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "nike",
       "name": "Nike",
       "category": "E-Commerce & Retail",
-      "description": "Bundled OpenDesign package for Nike, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Nike, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "notion",
       "name": "Notion",
       "category": "Productivity & SaaS",
-      "description": "Bundled OpenDesign package for Notion, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Notion, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "nvidia",
       "name": "NVIDIA",
       "category": "Media & Consumer",
-      "description": "Bundled OpenDesign package for NVIDIA, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for NVIDIA, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "ollama",
       "name": "Ollama",
       "category": "AI & LLM",
-      "description": "Bundled OpenDesign package for Ollama, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Ollama, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "openai",
       "name": "OpenAI",
       "category": "AI & LLM",
-      "description": "Bundled OpenDesign package for OpenAI, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for OpenAI, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "opencode-ai",
       "name": "OpenCode",
       "category": "AI & LLM",
-      "description": "Bundled OpenDesign package for OpenCode, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for OpenCode, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "pacman",
       "name": "Pacman",
       "category": "Themed & Unique",
-      "description": "Bundled OpenDesign package for Pacman, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Pacman, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "paper",
       "name": "Paper",
       "category": "Retro & Nostalgic",
-      "description": "Bundled OpenDesign package for Paper, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Paper, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "perplexity",
       "name": "Perplexity AI",
       "category": "AI & LLM",
-      "description": "Bundled OpenDesign package for Perplexity AI, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Perplexity AI, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "perspective",
       "name": "Perspective",
       "category": "Layout & Structure",
-      "description": "Bundled OpenDesign package for Perspective, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Perspective, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "pinterest",
       "name": "Pinterest",
       "category": "Media & Consumer",
-      "description": "Bundled OpenDesign package for Pinterest, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Pinterest, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "playstation",
       "name": "PlayStation",
       "category": "Media & Consumer",
-      "description": "Bundled OpenDesign package for PlayStation, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for PlayStation, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "posthog",
       "name": "PostHog",
       "category": "Backend & Data",
-      "description": "Bundled OpenDesign package for PostHog, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for PostHog, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "premium",
       "name": "Premium",
       "category": "Professional & Corporate",
-      "description": "Bundled OpenDesign package for Premium, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Premium, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "professional",
       "name": "Professional",
       "category": "Professional & Corporate",
-      "description": "Bundled OpenDesign package for Professional, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Professional, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "publication",
       "name": "Publication",
       "category": "Creative & Artistic",
-      "description": "Bundled OpenDesign package for Publication, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Publication, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "raycast",
       "name": "Raycast",
       "category": "Developer Tools",
-      "description": "Bundled OpenDesign package for Raycast, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Raycast, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "refined",
       "name": "Refined",
       "category": "Modern & Minimal",
-      "description": "Bundled OpenDesign package for Refined, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Refined, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "renault",
       "name": "Renault",
       "category": "Automotive",
-      "description": "Bundled OpenDesign package for Renault, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Renault, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "replicate",
       "name": "Replicate",
       "category": "AI & LLM",
-      "description": "Bundled OpenDesign package for Replicate, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Replicate, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "resend",
       "name": "Resend",
       "category": "Productivity & SaaS",
-      "description": "Bundled OpenDesign package for Resend, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Resend, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "retro",
       "name": "Retro",
       "category": "Retro & Nostalgic",
-      "description": "Bundled OpenDesign package for Retro, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Retro, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "revolut",
       "name": "Revolut",
       "category": "Fintech & Crypto",
-      "description": "Bundled OpenDesign package for Revolut, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Revolut, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "runwayml",
       "name": "Runway",
       "category": "AI & LLM",
-      "description": "Bundled OpenDesign package for Runway, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Runway, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "sanity",
       "name": "Sanity",
       "category": "Backend & Data",
-      "description": "Bundled OpenDesign package for Sanity, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Sanity, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "sentry",
       "name": "Sentry",
       "category": "Backend & Data",
-      "description": "Bundled OpenDesign package for Sentry, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Sentry, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "shadcn",
       "name": "Shadcn",
       "category": "Modern & Minimal",
-      "description": "Bundled OpenDesign package for Shadcn, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Shadcn, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "shopify",
       "name": "Shopify",
       "category": "E-Commerce & Retail",
-      "description": "Bundled OpenDesign package for Shopify, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Shopify, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "simple",
       "name": "Simple",
       "category": "Modern & Minimal",
-      "description": "Bundled OpenDesign package for Simple, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Simple, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "skeumorphism",
       "name": "Skeumorphism",
       "category": "Morphism & Effects",
-      "description": "Bundled OpenDesign package for Skeumorphism, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Skeumorphism, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "slack",
       "name": "Slack",
       "category": "Productivity & SaaS",
-      "description": "Bundled OpenDesign package for Slack, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Slack, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "sleek",
       "name": "Sleek",
       "category": "Modern & Minimal",
-      "description": "Bundled OpenDesign package for Sleek, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Sleek, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "spacex",
       "name": "SpaceX",
       "category": "Media & Consumer",
-      "description": "Bundled OpenDesign package for SpaceX, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for SpaceX, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "spacious",
       "name": "Spacious",
       "category": "Layout & Structure",
-      "description": "Bundled OpenDesign package for Spacious, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Spacious, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "spotify",
       "name": "Spotify",
       "category": "Media & Consumer",
-      "description": "Bundled OpenDesign package for Spotify, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Spotify, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "starbucks",
       "name": "Starbucks",
       "category": "E-Commerce & Retail",
-      "description": "Bundled OpenDesign package for Starbucks, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Starbucks, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "storytelling",
       "name": "Storytelling",
       "category": "Creative & Artistic",
-      "description": "Bundled OpenDesign package for Storytelling, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Storytelling, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "stripe",
       "name": "Stripe",
       "category": "Fintech & Crypto",
-      "description": "Bundled OpenDesign package for Stripe, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Stripe, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "supabase",
       "name": "Supabase",
       "category": "Backend & Data",
-      "description": "Bundled OpenDesign package for Supabase, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Supabase, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "superhuman",
       "name": "Superhuman",
       "category": "Developer Tools",
-      "description": "Bundled OpenDesign package for Superhuman, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Superhuman, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "tesla",
       "name": "Tesla",
       "category": "Automotive",
-      "description": "Bundled OpenDesign package for Tesla, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Tesla, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "tetris",
       "name": "Tetris",
       "category": "Themed & Unique",
-      "description": "Bundled OpenDesign package for Tetris, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Tetris, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "theverge",
       "name": "The Verge",
       "category": "Media & Consumer",
-      "description": "Bundled OpenDesign package for The Verge, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for The Verge, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "together-ai",
       "name": "Together AI",
       "category": "AI & LLM",
-      "description": "Bundled OpenDesign package for Together AI, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Together AI, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
@@ -1873,266 +1872,266 @@
       "slug": "totality-festival",
       "name": "Totality Festival",
       "category": "Themed & Unique",
-      "description": "Bundled OpenDesign package for Totality Festival, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Totality Festival, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "trading-terminal",
       "name": "Trading Terminal Design System",
       "category": "Themed & Unique",
-      "description": "Bundled OpenDesign package for Trading Terminal Design System, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Trading Terminal Design System, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "uber",
       "name": "Uber",
       "category": "Media & Consumer",
-      "description": "Bundled OpenDesign package for Uber, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Uber, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "urdu",
       "name": "Urdu Modern (Indus Script System)",
       "category": "Editorial / Personal / Publication",
-      "description": "Bundled OpenDesign package for Urdu Modern (Indus Script System), derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Urdu Modern (Indus Script System), derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "vercel",
       "name": "Vercel",
       "category": "Developer Tools",
-      "description": "Bundled OpenDesign package for Vercel, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Vercel, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "vibrant",
       "name": "Vibrant",
       "category": "Bold & Expressive",
-      "description": "Bundled OpenDesign package for Vibrant, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Vibrant, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "vintage",
       "name": "Vintage",
       "category": "Retro & Nostalgic",
-      "description": "Bundled OpenDesign package for Vintage, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Vintage, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "vodafone",
       "name": "Vodafone",
       "category": "Media & Consumer",
-      "description": "Bundled OpenDesign package for Vodafone, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Vodafone, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "voltagent",
       "name": "VoltAgent",
       "category": "AI & LLM",
-      "description": "Bundled OpenDesign package for VoltAgent, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for VoltAgent, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "warm-editorial",
       "name": "Warm Editorial",
       "category": "Starter",
-      "description": "Bundled OpenDesign package for Warm Editorial, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Warm Editorial, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "warp",
       "name": "Warp",
       "category": "Developer Tools",
-      "description": "Bundled OpenDesign package for Warp, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Warp, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "webex",
       "name": "Webex",
       "category": "Productivity & SaaS",
-      "description": "Bundled OpenDesign package for Webex, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Webex, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "webflow",
       "name": "Webflow",
       "category": "Design & Creative",
-      "description": "Bundled OpenDesign package for Webflow, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Webflow, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "wechat",
       "name": "WeChat Design System",
       "category": "Social & Messaging",
-      "description": "Bundled OpenDesign package for WeChat Design System, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for WeChat Design System, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "wired",
       "name": "WIRED",
       "category": "Media & Consumer",
-      "description": "Bundled OpenDesign package for WIRED, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for WIRED, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "wise",
       "name": "Wise",
       "category": "Fintech & Crypto",
-      "description": "Bundled OpenDesign package for Wise, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Wise, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "x-ai",
       "name": "xAI",
       "category": "AI & LLM",
-      "description": "Bundled OpenDesign package for xAI, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for xAI, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "xiaohongshu",
       "name": "Xiaohongshu",
       "category": "Media & Consumer",
-      "description": "Bundled OpenDesign package for Xiaohongshu, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Xiaohongshu, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     },
     {
       "slug": "zapier",
       "name": "Zapier",
       "category": "Productivity & SaaS",
-      "description": "Bundled OpenDesign package for Zapier, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
+      "description": "Bundled design language for Zapier, derived from curated DESIGN.md, tokens.css, and components.html fixtures.",
       "design": "DESIGN.md",
       "tokens": "tokens.css",
       "components": "components.html",
       "usage": "USAGE.md",
       "source": {
         "type": "bundled",
-        "origin": "OpenDesign curated bundled fixture"
+        "origin": "Curated bundled fixture"
       }
     }
   ]

@@ -6,7 +6,6 @@ work and are credited:
 
 | Resource | License | Influence |
 |---|---|---|
-| [OpenDesign](https://github.com/nexu-io/open-design) | Apache-2.0 | Workflow, prompt-composition and review concepts |
 | [refero_skill](https://github.com/referodesign/refero_skill) | MIT | Craft-rule tradition behind typography, color, anti-slop and state coverage |
 | [Anthropic frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design) | Apache-2.0 | Frontend design workflow concepts |
 | [taste-skill](https://github.com/Leonxlnx/taste-skill) | MIT, © 2026 Leonxlnx | Design read, dials and AI-tell concepts |

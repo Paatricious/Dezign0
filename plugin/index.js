@@ -577,7 +577,7 @@ ${fs.readFileSync(file, "utf8")}`, {
     {
       name: "dezign0_design_systems",
       description:
-        "Browse the optional Dezign0 design-language pack (152 OpenDesign design systems). Actions: list, search (query), get (slug). Returns catalog metadata or the selected DESIGN.md and tokens.css. Use before building when the user wants a known visual language.",
+        "Browse the optional Dezign0 design-language pack (152 the upstream catalog design systems). Actions: list, search (query), get (slug). Returns catalog metadata or the selected DESIGN.md and tokens.css. Use before building when the user wants a known visual language.",
       input: {
         type: "object",
         properties: {

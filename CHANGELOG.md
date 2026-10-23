@@ -3,6 +3,16 @@
 All notable changes are recorded here. The format follows Keep a Changelog and
 the project uses semantic versioning.
 
+## [0.7.1] - 2026-10-23
+
+### Changed
+
+- Removed upstream product branding from package metadata, docs, skills and all
+  152 design-system packages.
+- Upstream license and attribution are preserved in `LICENSE`, `NOTICE`,
+  `ATTRIBUTION.md` and `licenses/` without the upstream product name.
+- Addon pack bumped to 0.2.1 for the white-label build.
+
 ## [0.7.0] - 2026-10-23
 
 ### Added
@@ -25,7 +35,7 @@ the project uses semantic versioning.
 
 ### Added
 
-- Optional `design-languages` pack: all **152** OpenDesign design-system
+- Optional `design-languages` pack: all **152** the upstream catalog design-system
   packages, pinned at `e03d5c23f308c39f4de7c057568df66c29a84385`, with Apache-2.0
   license, NOTICE, attribution and upstream MIT license texts.
 - `dezign0_design_systems` tool: list, search and get a design language.

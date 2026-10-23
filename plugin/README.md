@@ -50,21 +50,21 @@ shell.
    npm publish --access public
    ```
 2. Settings → Plugins → Add plugin → **From npm**.
-3. Spec: `dezign0` (or a pinned version such as `dezign0@0.7.0`).
+3. Spec: `dezign0` (or a pinned version such as `dezign0@0.7.1`).
 4. Reload.
 
-The live npm `0.7.0` package has thirteen skills, five tools and the five addon workflows.
+The live npm `0.7.0` package has thirteen skills and five tools. The white-label `0.7.1` build is on the git tag until published.
 
 **From git (tool-enabled, no npm auth):**
 
 ```text
-github:Paatricious/Dezign0#v0.7.0
+github:Paatricious/Dezign0#v0.7.1
 ```
 
 Use this in the **From npm** spec field, or in `opencode.json`:
 
 ```json
-{ "plugins": ["github:Paatricious/Dezign0#v0.7.0"] }
+{ "plugins": ["github:Paatricious/Dezign0#v0.7.1"] }
 ```
 
 This installs the tagged public repository and includes `dezign0_lint`,
@@ -146,7 +146,7 @@ or `opencode.json`. The plugin does not remove project files automatically.
   skill bodies. Install the optional catalog for all 152 languages:
 
 ```bash
-npm install https://github.com/Paatricious/Dezign0/releases/download/v0.7.0/dezign0-design-languages-0.2.0.tgz
+npm install https://github.com/Paatricious/Dezign0/releases/download/v0.7.1/dezign0-design-languages-0.2.1.tgz
 ```
 - It does not register slash commands. Use the skills conversationally, or use
   the OpenCode 1.x installer for `/design-new`, `/design-review`, `/design-ship`.

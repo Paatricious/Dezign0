@@ -1,14 +1,14 @@
 # Dezign0 addons
 
-Optional content pack containing all **152 design-system packages** from
-[OpenDesign](https://github.com/nexu-io/open-design), pinned at commit
+Optional content pack containing all **152 design-system packages** from an
+upstream Apache-2.0 catalog, pinned at commit
 `e03d5c23f308c39f4de7c057568df66c29a84385`.
 
 This is intentionally separate from the core `dezign0` plugin. The core plugin
 stays small; this pack adds the design-language library and the five addon
 workflows.
 
-Each package follows OpenDesign's portable design-system shape:
+Each package follows the portable design-system shape:
 
 ```text
 design-systems/<slug>/
@@ -50,12 +50,12 @@ run from the source checkout:
 For an installed plugin, install this pack in the project:
 
 ```bash
-npm install https://github.com/Paatricious/Dezign0/releases/download/v0.7.0/dezign0-design-languages-0.2.0.tgz
+npm install https://github.com/Paatricious/Dezign0/releases/download/v0.7.1/dezign0-design-languages-0.2.1.tgz
 ```
 
 This works without npm authentication because the tarball is a public GitHub
 release asset. The npm package name already has an earlier placeholder; use the
-release asset until `dezign0-design-languages@0.2.0` is published.
+release asset until `dezign0-design-languages@0.2.1` is published.
 
 The plugin searches:
 
@@ -69,13 +69,13 @@ The `dezign0_design_systems` tool lists, searches and returns a selected
 
 ## Licensing
 
-The OpenDesign repository is Apache-2.0. This pack preserves its `LICENSE`,
-`NOTICE`, `ATTRIBUTION.md` and `OPEN-DESIGN-README.md`. Brand-referencing
+The the upstream catalog repository is Apache-2.0. This pack preserves its `LICENSE`,
+`NOTICE`, `ATTRIBUTION.md` and `UPSTREAM-README.md`. Brand-referencing
 packages are aesthetic inspirations, not official brand assets.
 
 Upstream license texts are preserved under `licenses/`.
 
-Major upstream sources credited by OpenDesign include
+Major upstream sources credited by the upstream catalog include
 `VoltAgent/awesome-design-md` (MIT), `bergside/awesome-design-skills`,
 `tw93/kami` (MIT) and `Tom-Opencart/tom-modern-html-style-rule` (MIT). See
 `NOTICE` and each package's `manifest.json`/`source/` evidence.

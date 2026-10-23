@@ -20,4 +20,4 @@ action=get id="template-deck"
 
 Content is original to Dezign0 unless a file says otherwise. The design languages
 catalog lives beside this directory under `design-systems/` and keeps its own
-OpenDesign attribution and license.
+the upstream catalog attribution and license.

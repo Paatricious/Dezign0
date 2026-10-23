@@ -68,11 +68,11 @@ for the early product.
 
 The core package does not bundle third-party design systems, templates, fonts,
 images or skill bodies. The optional `design-languages` pack adds all 152
-OpenDesign systems plus the original Dezign0 templates, Figma bridge, handoff,
+the upstream catalog systems plus the original Dezign0 templates, Figma bridge, handoff,
 review and media addons. It has Apache-2.0 attribution and installs separately.
 The core stays small for three reasons:
 
-1. the full pack adds ~4.9 MB packed / 32.7 MB unpacked;
+1. the full pack adds ~4.9 MB packed / 32.4 MB unpacked;
 2. prompt quality depends on selecting a few relevant systems, not loading a
    library;
 3. a small core package is easier to install and audit.

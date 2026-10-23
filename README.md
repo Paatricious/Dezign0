@@ -33,17 +33,17 @@ In **Settings → Plugins → Add plugin**:
 - **From local path:** the absolute path to this repo directory.
 - **From npm:** `dezign0` — live at
   [npmjs.com/package/dezign0](https://www.npmjs.com/package/dezign0). The live
-  `0.7.0` release has thirteen skills, five tools and the addon workflows.
-- **From git (no npm publish needed):** `github:Paatricious/Dezign0#v0.7.0`.
+  `0.7.0` release has thirteen skills, five tools and the addon workflows. The white-label `0.7.1` build is on the git tag until published.
+- **From git (no npm publish needed):** `github:Paatricious/Dezign0#v0.7.1`.
   This is the current tool-enabled version; the repository is public.
 
 Optional addon pack — 152 design languages plus templates, Figma bridge, handoff, review and media prompts. Install the release tarball in the project:
 
 ```bash
-npm install https://github.com/Paatricious/Dezign0/releases/download/v0.7.0/dezign0-design-languages-0.2.0.tgz
+npm install https://github.com/Paatricious/Dezign0/releases/download/v0.7.1/dezign0-design-languages-0.2.1.tgz
 ```
 
-Once `dezign0-design-languages@0.2.0` is published, `npm install dezign0-design-languages` is equivalent.
+Once `dezign0-design-languages@0.2.1` is published, `npm install dezign0-design-languages` is equivalent.
 
 Or use the sibling `design-languages/` folder in a source checkout.
 
@@ -126,7 +126,7 @@ node .design-os/tools/measure-artifact.mjs path/to/artifact.html --strict
 
 The **core** package does not bundle third-party design systems, templates,
 fonts, images or skill bodies. The optional [design-languages](design-languages/README.md)
-pack adds all 152 OpenDesign design systems with their Apache-2.0 license and
+pack adds all 152 the upstream catalog design systems with their Apache-2.0 license and
 attribution. Install it separately when you want the catalog.
 
 Use the design-system extraction skill to create a `DESIGN.md` and `tokens.css`
@@ -144,7 +144,7 @@ for a brand, or select a prebuilt language with the `design-language` skill.
 | [docs/PUBLISHING.md](docs/PUBLISHING.md) | Publish to npm and install from OpenChamber's "From npm" field |
 | [docs/VERIFICATION.md](docs/VERIFICATION.md) | What was tested, on which versions, and what is still a limit |
 | [docs/figma.md](docs/figma.md) | Optional Figma MCP bridge and evidence rules |
-| [design-languages/](design-languages/README.md) | Optional 152-package design-language pack from OpenDesign |
+| [design-languages/](design-languages/README.md) | Optional 152-package design-language pack from the upstream catalog |
 | [CHANGELOG.md](CHANGELOG.md) | Release history |
 | [SECURITY.md](SECURITY.md) | Threat model and reporting |
 
@@ -164,5 +164,5 @@ The repository is Apache-2.0 (see [LICENSE](LICENSE)). Prior-art credits are in
 [design-os/ATTRIBUTION.md](design-os/ATTRIBUTION.md).
 
 No third-party application code is included in the core package. The optional
-design-languages pack contains the OpenDesign catalog under its own license and
+design-languages pack contains the upstream catalog under its own license and
 notice.

@@ -7,7 +7,6 @@ The following public resources informed the concepts and are credited:
 
 | Resource | License | Influence |
 |---|---|---|
-| [OpenDesign](https://github.com/nexu-io/open-design) | Apache-2.0 | Workflow, prompt-composition and review concepts |
 | [refero_skill](https://github.com/referodesign/refero_skill) | MIT | Craft-rule tradition behind typography, color, anti-slop and state coverage |
 | [Anthropic frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design) | Apache-2.0 | Frontend design workflow concepts |
 | [taste-skill](https://github.com/Leonxlnx/taste-skill) | MIT, © 2026 Leonxlnx | Design read, dials and AI-tell concepts |
@@ -17,7 +16,8 @@ The following public resources informed the concepts and are credited:
 ## What is not included
 
 - Any third-party application code, daemon, UI or plugin pipeline.
-- Design-system packages, templates, fonts, images, logos or skill bodies.
+- Design-system packages, templates, fonts, images or logos are not part of the
+core package; the optional addon pack carries them separately.
 - Any third-party assets. Harnesses should self-host assets they are licensed to
   use.
 

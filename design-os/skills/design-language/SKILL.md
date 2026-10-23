@@ -1,6 +1,6 @@
 ---
 name: design-language
-description: Choose and apply one of the optional prebundled OpenDesign design languages, or a user-installed design-systems package. Use when the user wants a known visual style, or when a project has a design-system catalog but no active DESIGN.md.
+description: Choose and apply one of the optional prebundled the upstream catalog design languages, or a user-installed design-systems package. Use when the user wants a known visual style, or when a project has a design-system catalog but no active DESIGN.md.
 ---
 
 # Design language
@@ -31,7 +31,7 @@ Then call `action: "get"` with the chosen `slug`. Read:
 - `tokens.css` for values;
 - `USAGE.md` and `components.html` when present.
 
-Record the slug, OpenDesign source commit, package path and any missing files in
+Record the slug, the upstream catalog source commit, package path and any missing files in
 `design/<slug>/DESIGN-LANGUAGE.md`.
 
 ## 3. Apply it

@@ -5,7 +5,7 @@ inventory and implementation notes without inventing values, and how to translat
 Figma layout, variants, text styles and assets into CSS that survives contact
 with a real browser.
 
-This document is original Dezign0 content. It is not derived from the OpenDesign
+This document is original Dezign0 content. It is not derived from the upstream catalog
 packages in `design-languages/design-systems/`. It defines no new runtime code:
 the only Figma access path is the user's MCP client through the
 `figma-context` skill, as documented in [`docs/figma.md`](../../docs/figma.md).

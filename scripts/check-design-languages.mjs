@@ -1,5 +1,5 @@
 /**
- * Validate the optional design-languages pack and its relationship to OpenDesign.
+ * Validate the optional design-languages pack and its relationship to the upstream catalog.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -20,7 +20,7 @@ for (const item of index.items) {
   assert.ok(fs.existsSync(path.join(systemsDir, item.slug, "DESIGN.md")), `${item.slug}: missing DESIGN.md`);
   assert.ok(fs.existsSync(path.join(systemsDir, item.slug, "manifest.json")), `${item.slug}: missing manifest.json`);
 }
-for (const file of ["LICENSE", "NOTICE", "ATTRIBUTION.md", "OPEN-DESIGN-README.md", "package.json", "licenses/volt-agent-awesome-design-md-LICENSE", "licenses/tw93-kami-LICENSE"]) {
+for (const file of ["LICENSE", "NOTICE", "ATTRIBUTION.md", "UPSTREAM-README.md", "package.json", "licenses/volt-agent-awesome-design-md-LICENSE", "licenses/tw93-kami-LICENSE"]) {
   assert.ok(fs.existsSync(path.join(pack, file)), `pack missing ${file}`);
 }
 console.log(`design languages check: ${index.count} packages, source ${index.source.commit.slice(0, 7)}`);

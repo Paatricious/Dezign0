@@ -4,7 +4,7 @@ Turn a finished, critiqued Dezign0 HTML artifact into framework components witho
 losing the design contract. This addon is framework guidance, not a generator and
 not a scaffold. It contains no third-party framework code.
 
-Original Dezign0 content; it is not derived from the OpenDesign packages in
+Original Dezign0 content; it is not derived from the upstream catalog packages in
 `design-languages/design-systems/`.
 
 ## Where this fits
