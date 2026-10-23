@@ -5,6 +5,10 @@ description: Build a production-grade web interface with a clear visual directio
 
 # Frontend design
 
+Kit root: `.design-os/`.
+Read `.design-os/DESIGN-OS.md` first. Write project artifacts under
+`design/<slug>/`; never edit `.design-os/`.
+
 The goal is not "make it nicer". The goal is a working interface with a point of
 view, strong craft and enough product detail that it feels designed for the
 user's actual context.
@@ -18,7 +22,8 @@ user's actual context.
 3. **Direction.** Use the brand `DESIGN.md` or choose one named direction with a
    thesis, palette, type, spacing, radius and motion posture.
 4. **Design spec.** Freeze tokens, type scale, spacing, components, states,
-   content and motion. Use `briefs/DESIGN-SPEC.md`.
+   content and motion. Copy `.design-os/briefs/DESIGN-SPEC.md` to
+   `design/<slug>/DESIGN-SPEC.md` and fill it.
 5. **Existing work.** If a repo/artifact exists, read its tokens, components,
    screenshots and conventions. Preserve them unless explicitly asked to
    redesign.
@@ -48,10 +53,13 @@ user's actual context.
 - Light and dark both intentional.
 - No anti-slop P0 patterns.
 - One memorable quality a user could describe.
+- Run `.design-os/tools/design-lint.mjs <artifact>`; P0 must be clear.
+- If a browser is available, run `.design-os/tools/measure-artifact.mjs
+  <artifact> --strict`; if not, say "source-only self-check".
 
 ## Output
 
-Write the artifact. Name the files and entry point. State assumptions and known
+Write the artifact to `design/<slug>/`. Name the files and entry point. State assumptions and known
 limits. If a critique is required, run the `critique` skill against the artifact
 from disk before handover.
 
@@ -63,3 +71,7 @@ from disk before handover.
 - Using a stock component library in its default state.
 - Making the page responsive by shrinking everything.
 - Claiming a screenshot/render/validation that did not run.
+
+## When not to use
+
+Do not use for polishing an existing UI; use `redesign` instead.

@@ -6,7 +6,7 @@ Your job is to make the work clear, distinctive, coherent, and shippable, and to
 leave a contract that another agent can implement without guessing.
 
 This document is the operating manual. The `craft/`, `briefs/`, `skills/` and
-`templates/` folders are the reference library. Use them.
+`harness/` folders are the reference library. Use them.
 
 ---
 
@@ -51,6 +51,26 @@ tokens.
 
 A plan is not a delivery. A source file is not a rendered result unless the user
 asked for source. Deliver the actual requested output.
+
+### Project output contract
+
+Write project artifacts under `design/<slug>/`; never edit files under
+`.design-os/`. The kit is a read-only template library.
+
+```text
+design/<slug>/
+  BRIEF.md
+  DESIGN-SPEC.md
+  artifact.html
+  CRITIQUE.md
+  HANDOVER.md
+  TOKENS.md
+  tokens.css
+  design-memory/
+```
+
+Copy a template from `.design-os/briefs/` into the project folder before filling
+it. A missing `design/` folder is created on demand.
 
 ---
 
@@ -100,7 +120,7 @@ Before building, establish:
 2. **The physical constraints.** Grid, container, min/max sizes, fixed cell,
    breakpoints, platform, existing tokens, performance budget.
 3. **Target sizes.** Enumerate them exactly. For a widget: every real cell size.
-   For a page: 375 / 768 / 1024 / 1440. For a deck: slide dimensions.
+   For a page: 320 / 375 / 390 / 768 / 1024 / 1440; 375 is the reference mobile, 390 a large phone, 320 the floor. For a deck: slide dimensions.
 4. **The visual system.** Use the brand `DESIGN.md`; if none exists, name the
    direction and propose tokens. Never invent a second system mid-artifact.
 5. **Content.** Real copy or explicit content rules. State what must not be
@@ -114,9 +134,10 @@ Before building, establish:
 If a parameter is missing, choose a stated assumption and disclose its risk in
 one sentence; do not silently fill it. Do not add unrequested deliverables.
 
-Use `briefs/BRIEF.md` for a full deliverable. Read the matching profile in
-`briefs/DELIVERABLE-PROFILES.md` before building a prototype, marketing page,
-dashboard, deck or document.
+Copy `.design-os/briefs/BRIEF.md` to `design/<slug>/BRIEF.md` for a full
+deliverable. Read the matching profile in
+`.design-os/briefs/DELIVERABLE-PROFILES.md` before building a prototype,
+marketing page, dashboard, deck or document.
 
 ---
 
@@ -150,8 +171,9 @@ retro-futurist, artful/expressive. Pick one; do not average.
 
 ## 6. Design Spec
 
-Freeze these before writing markup. Put them in `briefs/DESIGN-SPEC.md` for a
-full task; keep them in working memory for a small one.
+Freeze these before writing markup. Put them in `design/<slug>/DESIGN-SPEC.md`
+for a full task (copy `.design-os/briefs/DESIGN-SPEC.md`); keep them in working
+memory for a small one.
 
 - **Palette:** token name, role, light value, dark value, contrast of each text
   pair.
@@ -263,8 +285,9 @@ This is a gate, not a suggestion.
 - Longest and shortest content tested.
 - No overlap, clipping, overflow, or horizontal scroll. A passing
   `scrollWidth == viewport` is not enough: `overflow-x: clip` can hide content.
-  If a browser is available, run `tools/measure-artifact.mjs --strict` and fix
-  every clipped element and rendered contrast failure.
+  If a browser is available, run
+  `.design-os/tools/measure-artifact.mjs <artifact.html> --strict` and fix every clipped
+  element and rendered contrast failure.
 - Reduced motion and (if relevant) forced colors handled.
 - Contrast measured, not guessed. 4.5:1 body, 3:1 large/UI.
 - Light and dark themes both intentional, not inverted afterthoughts.
@@ -280,12 +303,12 @@ This is a gate, not a suggestion.
 ## 9. Critique
 
 Before calling a design finished, run the critique protocol in
-`briefs/CRITIQUE.md`. For a full residency, produce it as a separate report
+`.design-os/briefs/CRITIQUE.md`. For a full residency, produce it as a separate report
 (ideally an HTML artifact). For a bounded task, keep it inline but still answer
 all five dimensions. If a browser is available, measure the render with
-`tools/measure-artifact.mjs --strict`; source reading is not a substitute for
-rendered overflow and contrast. For a state board, use the state-board checklist
-in `briefs/CRITIQUE.md` and score the board as a communication artifact.
+`.design-os/tools/measure-artifact.mjs <artifact.html> --strict`; source reading is not a
+substitute for rendered overflow and contrast. For a state board, use the state-board checklist
+in `.design-os/briefs/CRITIQUE.md` and score the board as a communication artifact.
 
 Five dimensions, each 0–10:
 
@@ -306,8 +329,9 @@ Hard rules:
 - A critique report is read-only by default. If asked to fix, fix the artifact
   and then re-score the artifact from disk. Do not edit only the critique prose.
 
-Stop when the composite clears **8.0/10 and no must-fix items remain**, or when
-the user accepts the tradeoffs. Do not loop forever.
+Stop when **no scored dimension is below 7 and the composite clears 8.0/10**,
+with no must-fix items remaining, or when the user accepts the tradeoffs. A
+single broken dimension cannot be averaged away. Do not loop forever.
 
 ---
 
@@ -323,7 +347,7 @@ When another agent or person will implement the design, produce:
   deliberate exceptions, geometry formulas, motion table, exclusions.
 - `tokens.css` — the copy-paste token layer taken from the artifact.
 
-Use `briefs/HANDOVER.md` and `briefs/TOKENS.md`.
+Use `.design-os/briefs/HANDOVER.md` and `.design-os/briefs/TOKENS.md`.
 
 The handover is written for the implementer, not the designer. It must make
 silent deviation hard.

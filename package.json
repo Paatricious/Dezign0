@@ -1,6 +1,6 @@
 {
   "name": "dezign0",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Portable design capability layer for AI coding agents: design OS, craft rules, skills and review tools",
   "license": "Apache-2.0",
   "private": false,
@@ -20,10 +20,13 @@
     "docs/",
     "README.md",
     "ATTRIBUTION.md",
-    "LICENSE"
+    "LICENSE",
+    ".claude-plugin/",
+    "SECURITY.md",
+    "CHANGELOG.md"
   ],
   "scripts": {
-    "check": "node --check design-os/install.mjs && node --check design-os/tools/design-lint.mjs && node --check design-os/tools/measure-artifact.mjs && node --check plugin/index.js && node --check server.js && node plugin/smoke-test.mjs",
+    "check": "node --check design-os/install.mjs && node --check design-os/tools/design-lint.mjs && node --check design-os/tools/measure-artifact.mjs && node --check plugin/index.js && node --check server.js && node plugin/smoke-test.mjs && node scripts/test-installer.mjs && node scripts/check-skills.mjs && node scripts/check-package.mjs",
     "plugin:test": "node plugin/smoke-test.mjs",
     "prepublishOnly": "npm run check"
   },
@@ -41,5 +44,13 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Paatricious/Dezign0.git"
+  },
+  "homepage": "https://github.com/Paatricious/Dezign0#readme",
+  "bugs": {
+    "url": "https://github.com/Paatricious/Dezign0/issues"
   }
 }

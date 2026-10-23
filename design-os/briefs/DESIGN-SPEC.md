@@ -115,7 +115,9 @@ selected / disabled / loading.
 
 | Breakpoint | Layout | What reflows | What drops |
 |---|---|---|---|
+| 320 | | | |
 | 375 | | | |
+| 390 | | | |
 | 768 | | | |
 | 1024 | | | |
 | 1440 | | | |

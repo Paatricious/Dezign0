@@ -192,7 +192,7 @@ function lintHtml(raw, file) {
   // ── P1: display face uses a default sans ─────────────────────────────────
   for (const rule of cssRules(raw)) {
     if (!/(^|,)\s*(h1|h2|h3|\.display|\.headline)\b/i.test(rule.selector)) continue
-    if (/font-family\s*:\s*[^;]*(Inter|Roboto|system-ui|^\s*sans-serif)/i.test(rule.body)) {
+    if (/font-family\s*:\s*[^;]*(Inter|Roboto|system-ui|sans-serif)/i.test(rule.body)) {
       add('P1', 'sans-display', rule.index,
         `Heading rule "${rule.selector.slice(0, 60)}" uses a default sans as the display face.`,
         'Use the brand display face, or declare an intentional first choice. Do not let system-ui be the visual idea.')
@@ -317,7 +317,8 @@ function lintHtml(raw, file) {
   // ── P2: href="#" placeholders ───────────────────────────────────────────
   const hashLinks = (raw.match(/href\s*=\s*["']#["']/gi) || []).length
   if (hashLinks > 0) {
-    add('P2', 'hash-link', raw.indexOf('href="#"'),
+    const firstHash = /href\s*=\s*["']#["']/i.exec(raw)?.index ?? 0
+    add('P2', 'hash-link', firstHash,
       `${hashLinks} href="#" placeholder link(s).`, 'Use a real destination or a button with behavior.')
   }
 

@@ -150,7 +150,7 @@ for (const width of viewports) {
       // outward, or a button background is ignored in favour of the page.
       const chain = []
       let p = el
-      while (p && p !== document.documentElement) { chain.push(p); p = p.parentElement }
+      while (p) { chain.push(p); p = p.parentElement }
       const layers = chain.map((node) => rgba(getComputedStyle(node).backgroundColor))
       let base = [255, 255, 255]
       let nearestOpaque = -1

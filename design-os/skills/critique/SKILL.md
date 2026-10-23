@@ -5,6 +5,10 @@ description: Run a five-dimension, evidence-backed design review with measured c
 
 # Critique
 
+Kit root: `.design-os/`.
+Read `.design-os/DESIGN-OS.md` first. Write project artifacts under
+`design/<slug>/`; never edit `.design-os/`.
+
 Produce an evidence document, not an opinion. Read the artifact from disk. Do
 not review from memory.
 
@@ -14,10 +18,10 @@ not review from memory.
    browser/tool available. State what cannot be reviewed.
 2. **Read the source and measure the render.** Read the CSS tokens and count
    controls/states. If a browser is available, run
-   `tools/measure-artifact.mjs --strict` for clipped content, rendered contrast,
+   `.design-os/tools/measure-artifact.mjs <artifact> --strict` for clipped content, rendered contrast,
    type-size count and tab stops. If it is not, write "source-only review" and
    do not claim rendered overflow, contrast or font behavior. Still cite source
-   lines. For a state board, use `briefs/CRITIQUE.md` -> "State-board
+   lines. For a state board, use `.design-os/briefs/CRITIQUE.md` -> "State-board
    checklist", and verify size claims against the built widget or source.
 3. **Score five dimensions.** Philosophy consistency, visual hierarchy, detail,
    functionality, innovation. Each 0–10, worst sustained band. Cite evidence.
@@ -29,7 +33,8 @@ not review from memory.
    Quick wins 3–5, 5–15 minutes, disproportional effect.
 6. **State method and scope.** What was inspected, what was not, whether the
    artifact was modified. Default: read-only.
-7. **Output.** Use the schema in `briefs/CRITIQUE.md`. If an HTML report is useful
+7. **Output.** Copy the schema in `.design-os/briefs/CRITIQUE.md` into
+   `design/<slug>/CRITIQUE.md` and fill it. If an HTML report is useful
    or requested, render one self-contained page with a radar, score rows and the
    three lists, following the same design rules.
 
@@ -39,8 +44,10 @@ not review from memory.
 - Do not average away failures. The score is the worst sustained band.
 - Do not grade-inflate. A 7 means strong. An 8+ requires near-professional
   craft and no obvious must-fix.
-- Do not score a dimension you cannot inspect. Mark it "not reviewed" and say
-  why; do not invent a number.
+- Do not score a dimension you cannot inspect. Mark it "not reviewed", say why,
+  and exclude it from the composite mean. List it separately.
+- A passing critique has **no scored dimension below 7 and a composite ≥8.0**.
+  A single broken dimension cannot be averaged away.
 
 ## Fix mode
 
@@ -77,3 +84,7 @@ When the user asks to fix:
 - Keep / Fix / Quick wins.
 - Method, scope, artifact status.
 - No unsupported adjectives.
+
+## When not to use
+
+Do not use to implement fixes; use fix mode after the report, or `redesign`.

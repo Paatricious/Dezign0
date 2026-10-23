@@ -1,0 +1,12 @@
+{
+  "name": "dezign0",
+  "description": "Portable design capability layer for AI coding agents: design OS, craft rules, skills and review tools.",
+  "version": "0.4.0",
+  "author": {
+    "name": "Dezign0"
+  },
+  "license": "Apache-2.0",
+  "skills": [
+    "./design-os/skills/"
+  ]
+}

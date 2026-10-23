@@ -57,7 +57,7 @@ No dependencies. Node 18+.
 - motion but no `prefers-reduced-motion`;
 - `<img>` without `alt`;
 - `font-weight` above the loaded `@font-face` range (silently clamped);
-- page-level `overflow-x: clip`/`hidden` (can hide broken content).
+- page-level `overflow-x: clip`/`hidden` (P2; can hide broken content).
 
 **P2 (polish)**
 

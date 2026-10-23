@@ -5,6 +5,10 @@ description: Build a single-file board that shows every screen and state of a co
 
 # State board
 
+Kit root: `.design-os/`.
+Read `.design-os/DESIGN-OS.md` first. Write project artifacts under
+`design/<slug>/`; never edit `.design-os/`.
+
 A state board is a design deliverable, not documentation. It must render real
 DOM at real sizes, not screenshots, and it must be honest about what the current
 implementation does.
@@ -77,9 +81,9 @@ loading and error screens match.
 - All states present against the inventory; the manifest parses and agrees.
 - Every screen opens; no console errors; no network requests for a self-contained
   board.
-- **No clipped content at 360–1440.** `scrollWidth == viewport` is not proof:
+- **No clipped content at 320–1440.** `scrollWidth == viewport` is not proof:
   `overflow-x: clip` can hide elements that are wider than the viewport. Run
-  `tools/measure-artifact.mjs --viewports=1440,768,390,375,360 --exclude='.stage,[inert]'`
+  `.design-os/tools/measure-artifact.mjs <artifact> --viewports=1440,1024,768,390,375,360,320 --exclude='.stage,[inert]'`
   and fix every clip. Local rails may scroll, but nothing may be unreachable.
 - Every static mock is inside `inert`; only the prototype is focusable. Tab
   through the page and confirm no mock control takes focus.
@@ -95,11 +99,15 @@ loading and error screens match.
 
 ## 6. Critique yourself
 
-Review the board with `briefs/CRITIQUE.md` -> "State-board checklist" before
+Review the board with `.design-os/briefs/CRITIQUE.md` -> "State-board checklist" before
 calling it done. Score the board as a communication artifact, not as the product
 UI, and name the layer.
 
 ## Output
 
-The HTML file is the deliverable. State its path, what is real vs simulated, and
-the measured sizes. Do not add a second copy of the same board as screenshots.
+The HTML file is the deliverable. Write it to `design/<slug>/` and state its
+path, what is real vs simulated, and the measured sizes. Do not add a second copy of the same board as screenshots.
+
+## When not to use
+
+Do not use for product UI screens; use `frontend-design` or `redesign`.

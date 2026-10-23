@@ -1,0 +1,51 @@
+# Changelog
+
+All notable changes are recorded here. The format follows Keep a Changelog and
+the project uses semantic versioning.
+
+## [0.4.0] - 2026-10-23
+
+### Added
+
+- OpenCode tools: `dezign0_lint`, `dezign0_measure`, `dezign0_doctor`.
+- `.design-os/.dezign0-kit.json` version and per-file hash metadata; doctor
+  reports drift.
+- Claude Code plugin and marketplace manifests (`.claude-plugin/`).
+- `SECURITY.md`.
+- Installer `--upgrade`, strict boolean parsing, target pre-flight and a
+  Windows/Linux installer regression test.
+- CI now runs on Ubuntu and Windows.
+
+### Changed
+
+- Plugin no longer guesses a working directory when `ctx.location.directory` is
+  absent; it registers package skills only.
+- Skill bodies reference kit files under `.design-os/`.
+- Critique gate is dimensional: no scored dimension below 7 and composite ≥8.0.
+- Responsive breakpoints are canonical: 320 / 375 / 390 / 768 / 1024 / 1440.
+- Installer examples pass `--target` explicitly.
+
+### Fixed
+
+- `--force=false` and `--dry-run=false` no longer act as true.
+- `.design-os` as a file and installing into the Dezign0 checkout now fail with
+  clear errors instead of stack traces.
+- Missing measurement artifact in documented commands.
+- Dead `templates/` reference.
+- Installer can refresh a managed `AGENTS.md` block with `--force` or
+  `--upgrade`.
+
+## [0.3.0] - 2026-10-23
+
+### Added
+
+- Public npm package `dezign0`, initial OpenChamber/OpenCode 2 install path.
+- Kit copy, six skills, local and npm install docs.
+
+## [0.2.0]
+
+- OpenCode 2 plugin packaging and smoke test.
+
+## [0.1.0]
+
+- Initial Design OS kit, installer and review tools.

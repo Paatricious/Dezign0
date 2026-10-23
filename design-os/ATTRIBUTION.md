@@ -10,7 +10,7 @@ work and are credited:
 | [refero_skill](https://github.com/referodesign/refero_skill) | MIT | Craft-rule tradition behind typography, color, anti-slop and state coverage |
 | [Anthropic frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design) | Apache-2.0 | Frontend design workflow concepts |
 | [taste-skill](https://github.com/Leonxlnx/taste-skill) | MIT, © 2026 Leonxlnx | Design read, dials and AI-tell concepts |
-| [Emil Kowalski skills](https://github.com/emilkowalski/skills) | MIT, © 2026 Matt Pocock | Motion and interaction craft |
+| [Emil Kowalski skills](https://github.com/emilkowalski/skills) | MIT (see upstream) | Motion and interaction craft |
 | [huashu-design critique](https://github.com/alchaincyf/huashu-design) | License not stated | Five-dimension critique concept; verify before reusing its HTML template |
 | [refero](https://styles.refero.design/) and other reference sites | Varies | Reference vocabulary only; no assets included |
 

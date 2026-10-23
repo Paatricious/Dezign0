@@ -21,7 +21,7 @@ states, fidelity, content locks, brand references, output format.
 - Real local state; button actions do not depend on hash/navigation. Local add/
   save uses a click handler plus Enter, not only form submit.
 - Keyboard path, semantic controls, accessible names, non-color status cues.
-- Responsive at 375/768/1024/1440; reflow not scale; no horizontal scroll; fixed
+- Responsive at 320/375/390/768/1024/1440; reflow not scale; no horizontal scroll; fixed
   bars reserve padding.
 - Quality floor: no overflow/clip; image geometry; icon geometry; contrast
   ≥4.5:1 body; dark mode chosen independently; locked content untouched.
@@ -142,4 +142,5 @@ Every deliverable:
 - names its assumptions and known gaps in the response.
 
 When a profile and the Design OS disagree, follow the user first, then the brand
-tokens, then the profile, then the general craft rules.
+tokens, then the Design OS/craft rules, then the profile. `DESIGN-OS.md` is
+canonical.

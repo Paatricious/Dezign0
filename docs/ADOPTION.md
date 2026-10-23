@@ -22,12 +22,13 @@ to `<project>/.design-os` (if missing) and registers six `dezign0-*` skills.
 After publishing (see [PUBLISHING.md](PUBLISHING.md)):
 
 1. **Settings → Plugins → Add plugin → From npm**.
-2. Spec: `dezign0`, or pin a version: `dezign0@0.3.0`.
+2. Spec: `dezign0`, or pin a version: `dezign0@0.4.0`.
 3. Scope: **User** or **Project**.
 4. Add, then reload.
 
-Verified on OpenCode 2.1.3 with both scopes: the kit is copied and six skills are
-registered. Local installs must point at the repo directory; single files are
+Verified on OpenCode 2.1.3 with both scopes: the kit is copied, six skills are
+registered, and the three `dezign0_*` tools appear. `dezign0_doctor` reports the
+install state; `dezign0_lint` and `dezign0_measure` run the mechanical checks. Local installs must point at the repo directory; single files are
 rejected by OpenCode 2's config loader.
 
 ## 2. DSH
@@ -36,13 +37,13 @@ DSH already has `AGENTS.md`, skills, subagents/workflow, file tools and
 Playwright. No new runtime is needed.
 
 ```bash
-node design-os/install.mjs --harness=dsh --with-agents
+node design-os/install.mjs --target=../my-app --harness=dsh --with-agents
 ```
 
 If this DSH build only discovers global skills:
 
 ```bash
-node design-os/install.mjs --harness=dsh --scope=global
+node design-os/install.mjs --target=../my-app --harness=dsh --scope=global
 ```
 
 Then:
@@ -71,7 +72,7 @@ node .design-os/tools/measure-artifact.mjs path/to/artifact.html --strict
 ## 3. OpenCode 1.x
 
 ```bash
-node design-os/install.mjs --harness=opencode --with-agents
+node design-os/install.mjs --target=../my-app --harness=opencode --with-agents
 ```
 
 This creates `.design-os/`, `.opencode/skills/` and three commands:
@@ -86,8 +87,17 @@ OpenCode 2 users should use the plugin above instead.
 
 ## 4. Claude Code
 
+As a plugin:
+
+```text
+/plugin marketplace add Paatricious/Dezign0
+/plugin install dezign0@dezign0
+```
+
+Or with the installer:
+
 ```bash
-node design-os/install.mjs --harness=claude --with-agents
+node design-os/install.mjs --target=../my-app --harness=claude --with-agents
 ```
 
 Skills go to `.claude/skills/<name>/SKILL.md`; instructions go to `CLAUDE.md` or
@@ -99,7 +109,7 @@ Codex and other agent-compatible harnesses can use `.agents/skills/` and
 `AGENTS.md`:
 
 ```bash
-node design-os/install.mjs --harness=codex --with-agents
+node design-os/install.mjs --target=../my-app --harness=codex --with-agents
 ```
 
 If the harness has no native skill system, use `--harness=files`, paste

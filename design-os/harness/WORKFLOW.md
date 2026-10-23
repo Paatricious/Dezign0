@@ -107,16 +107,17 @@ A build passes only if:
 
 1. **P0 lint clean.** No indigo default, purple/trust gradient, emoji icons,
    filler copy, invented metrics, `scrollIntoView`, left-border accent cards.
-   If a browser is available, also run `tools/measure-artifact.mjs --strict`:
-   no clipped content at 360–1440, no rendered contrast failure on text the user
-   must read, no console errors.
+   If a browser is available, also run
+   `tools/measure-artifact.mjs <artifact.html> --strict`: no clipped content at
+   320–1440, no rendered contrast failure on text the user must read, no console
+   errors.
 2. **Artifact opens and runs.** No console errors, no broken assets, primary
    flow works.
 3. **States complete.** Per `briefs/DESIGN-SPEC.md`: data states and interaction
    states.
 4. **Accessibility floor.** 4.5:1 body, 3:1 large/UI, focus visible, labels,
    keyboard, targets, reduced motion.
-5. **Responsive floor.** No horizontal scroll at 320/375/768/1024/1440; no clipped
+5. **Responsive floor.** No horizontal scroll at 320/375/390/768/1024/1440; no clipped
    controls; reflow.
 6. **Critique.** Composite ≥8.0 and no must-fix, or the user explicitly accepts
    the open items.

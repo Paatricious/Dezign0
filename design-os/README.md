@@ -18,6 +18,9 @@ The kit is:
 **Start here:** [DESIGN-OS.md](DESIGN-OS.md), then
 [briefs/BRIEF.md](briefs/BRIEF.md) and [briefs/CRITIQUE.md](briefs/CRITIQUE.md).
 
+Project artifacts go under `design/<slug>/`; the files in `briefs/` are templates.
+Never edit the installed kit. Copy a template into the project folder first.
+
 ---
 
 ## 1. The 60-second version
@@ -59,15 +62,15 @@ them, and writes an `AGENTS.md` fragment:
 
 ```bash
 # OpenCode: .design-os + .opencode/skills + /design-new, /design-review, /design-ship
-node design-os/install.mjs --harness=opencode
+node design-os/install.mjs --target=../my-app --harness=opencode
 
 # DSH: .design-os + .agents/skills (project) or --scope=global for ~/.agents/skills
-node design-os/install.mjs --harness=dsh
+node design-os/install.mjs --target=../my-app --harness=dsh
 
 # Claude Code / Codex / files only
-node design-os/install.mjs --harness=claude
-node design-os/install.mjs --harness=codex
-node design-os/install.mjs --harness=files
+node design-os/install.mjs --target=../my-app --harness=claude
+node design-os/install.mjs --target=../my-app --harness=codex
+node design-os/install.mjs --target=../my-app --harness=files
 ```
 
 **OpenChamber / OpenCode 2:** install the repo as a plugin instead; it copies the

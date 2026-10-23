@@ -17,7 +17,10 @@ work finished and whenever the user asks for a review.
 - Report what holds, what must be fixed, and quick wins. "Fixes" are ordered by
   visual cost per minute, not by how easy they are to describe.
 - Do not grade a design you did not inspect. If a check was impossible (no
-  browser, no screenshot, no source access), say so.
+  browser, no screenshot, no source access), mark that dimension "not reviewed",
+  say why, and exclude it from the mean. List it separately.
+- A passing report has no scored dimension below 7 and a composite of at least
+  8.0. A single broken dimension cannot be averaged away.
 
 ## Measurement
 
@@ -111,7 +114,7 @@ that could define the product.
 
 ```text
 CRITIQUE — <artifact title>
-Score: X.X / 10 (unweighted mean of five)
+Score: X.X / 10 (mean of scored dimensions; no scored dimension below 7)
 Verdict: one line.
 Method: viewport, DPR, browser/Playwright, source access, what was measured.
 Scope: screens/states reviewed; what is out of scope.
@@ -163,7 +166,7 @@ When reviewing a state board, in addition to the five dimensions:
       paths both work.
 - [ ] Focus is visible after every phase change and is restored to the new
       primary action, not dropped to `<body>`.
-- [ ] No clipped content at 360–1440. `scrollWidth == viewport` is not enough;
+- [ ] No clipped content at 320–1440. `scrollWidth == viewport` is not enough;
       `overflow-x: clip` can hide the failure.
 - [ ] Size claims are verified against the built widget, not only the board's
       own mocks.

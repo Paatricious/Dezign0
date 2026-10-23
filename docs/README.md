@@ -11,6 +11,8 @@ OpenChamber/OpenCode plugin, installers for other harnesses, and review tools.
    OpenChamber, OpenCode 1.x, Claude Code and Codex.
 3. **[PUBLISHING.md](PUBLISHING.md)** — publish `dezign0` to npm and install it
    from OpenChamber's "From npm" field.
+4. **[VERIFICATION.md](VERIFICATION.md)** — what was tested and what remains a
+   limit.
 
 ## Current pieces
 

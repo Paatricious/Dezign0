@@ -5,6 +5,10 @@ description: Audit-first redesign of an existing interface. Preserve what works,
 
 # Redesign
 
+Kit root: `.design-os/`.
+Read `.design-os/DESIGN-OS.md` first. Write project artifacts under
+`design/<slug>/`; never edit `.design-os/`.
+
 A redesign is not a fresh design with the old text pasted in. Audit first,
 decide the mode, preserve what works.
 
@@ -20,7 +24,9 @@ State the mode in one line before touching pixels.
 
 ## 2. Audit before editing
 
-Capture the baseline as an artifact or screenshot. Then inspect:
+Capture the baseline as an artifact or screenshot. If neither is available,
+record DOM/CSS counts, source lines and lint output, and label the baseline
+"source-only". Then inspect:
 
 - layout and grid; spacing rhythm; alignment drift;
 - type scale, weights, tracking, line length;
@@ -72,8 +78,8 @@ the old artifact or commit first so the change is reversible.
 
 ## Output
 
-A concise report: mode, baseline, findings, changes, preserved constraints,
-measurements, known limits. Plus the artifact.
+A concise report at `design/<slug>/REDESIGN.md`: mode, baseline, findings,
+changes, preserved constraints, measurements, known limits. Plus the artifact.
 
 ## Failure modes
 
@@ -82,3 +88,7 @@ measurements, known limits. Plus the artifact.
 - Calling it "polish" while changing layout and copy.
 - Applying a new aesthetic that ignores the brand.
 - Fixing the screenshot but not the source.
+
+## When not to use
+
+Do not use for a brand-new artifact with no existing UI; use `frontend-design` instead.

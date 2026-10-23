@@ -28,17 +28,19 @@ The CLI, local studio and additional adapter integrations are next.
 In **Settings → Plugins → Add plugin**:
 
 - **From local path:** the absolute path to this repo directory.
-- **From npm:** `dezign0` once published — see
-  [docs/PUBLISHING.md](docs/PUBLISHING.md).
+- **From npm:** `dezign0` — live at
+  [npmjs.com/package/dezign0](https://www.npmjs.com/package/dezign0).
 
-Choose User or Project scope. On load the plugin copies the kit to `.design-os/`
-and registers six `dezign0-*` skills. It needs no npm dependencies or Playwright.
+Choose User or Project scope. On load the plugin copies the kit to `.design-os/`,
+registers six `dezign0-*` skills and three read-only tools (`dezign0_lint`,
+`dezign0_measure`, `dezign0_doctor`). It needs no npm dependencies; Playwright is
+optional for rendered measurement.
 Details: [plugin/README.md](plugin/README.md).
 
 ### OpenCode 1.x
 
 ```bash
-node design-os/install.mjs --harness=opencode --with-agents
+node design-os/install.mjs --target=../my-app --harness=opencode --with-agents
 ```
 
 Then use `/design-new`, `/design-review`, `/design-ship`. Skills are installed at
@@ -47,16 +49,25 @@ Then use `/design-new`, `/design-review`, `/design-ship`. Skills are installed a
 ### DSH
 
 ```bash
-node design-os/install.mjs --harness=dsh --with-agents
+node design-os/install.mjs --target=../my-app --harness=dsh --with-agents
 ```
 
 If your DSH build only discovers global skills, add `--scope=global`.
 
-### Claude Code / Codex
+### Claude Code plugin
+
+```text
+/plugin marketplace add Paatricious/Dezign0
+/plugin install dezign0@dezign0
+```
+
+This uses `.claude-plugin/` and updates through the marketplace.
+
+### Claude Code / Codex (installer fallback)
 
 ```bash
-node design-os/install.mjs --harness=claude --with-agents
-node design-os/install.mjs --harness=codex --with-agents
+node design-os/install.mjs --target=../my-app --harness=claude --with-agents
+node design-os/install.mjs --target=../my-app --harness=codex --with-agents
 ```
 
 The installer never installs Playwright or deletes files. It copies the kit to
@@ -104,6 +115,9 @@ unclear.
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Product layers, content strategy and roadmap |
 | [docs/ADOPTION.md](docs/ADOPTION.md) | Install and daily-loop instructions per harness |
 | [docs/PUBLISHING.md](docs/PUBLISHING.md) | Publish to npm and install from OpenChamber's "From npm" field |
+| [docs/VERIFICATION.md](docs/VERIFICATION.md) | What was tested, on which versions, and what is still a limit |
+| [CHANGELOG.md](CHANGELOG.md) | Release history |
+| [SECURITY.md](SECURITY.md) | Threat model and reporting |
 
 ## Roadmap
 

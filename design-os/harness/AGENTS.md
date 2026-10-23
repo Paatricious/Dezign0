@@ -16,6 +16,7 @@ any UI, page, deck, document, component, widget, or visual artifact.
    conventions. Preserve them unless explicitly asked to redesign.
 4. If the project has a `design-systems/<brand>/DESIGN.md`, read it fully and
    treat its token values as authoritative.
+5. Write project artifacts under `design/<slug>/`; never edit `.design-os/`.
 
 ## The loop
 
@@ -26,6 +27,21 @@ Design Read → Brief → Direction/Design System → Design Spec → Build
 
 Do not skip from the request to markup. Do not start with a default template.
 Do not ship only the populated state.
+
+## Skill routing
+
+Load only the skill that matches the task. Do not preload all six.
+
+| Request | Load |
+|---|---|
+| New page, screen, component, widget or artifact | `design-os/skills/design-brief/` then `design-os/skills/frontend-design/` |
+| Existing UI needs polish, modernization or a redesign | `design-os/skills/redesign/` |
+| Review, audit or "what is wrong with this?" | `design-os/skills/critique/` |
+| Extract a brand or design system from an existing source | `design-os/skills/design-system-extract/` |
+| Documentation board, state board or multi-screen handoff page | `design-os/skills/state-board/` |
+
+If a task spans two rows, start with the intake skill and load the build skill
+once the brief exists.
 
 ## Files
 

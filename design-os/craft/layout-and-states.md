@@ -37,7 +37,7 @@ design the happy path. Fix both structurally.
   differs.
 - Do not center long body copy. Do not justify it.
 - Reflow, do not scale. Text and controls keep readable sizes at every width.
-- Responsive breakpoints are 375 / 768 / 1024 / 1440 by default. Each breakpoint
+- Responsive breakpoints are 320 / 375 / 390 / 768 / 1024 / 1440 by default. Each breakpoint
   reorganizes content; it does not scale the page. Mobile never scrolls
   horizontally and never disables zoom.
 - "No horizontal scroll" is not enough: no content may be clipped or unreachable.

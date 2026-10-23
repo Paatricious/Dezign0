@@ -5,6 +5,10 @@ description: Turn a vague design request into a checkable brief with numeric con
 
 # Design brief
 
+Kit root: `.design-os/`.
+Read `.design-os/DESIGN-OS.md` first. Write project artifacts under
+`design/<slug>/`; never edit `.design-os/`.
+
 Produce a brief that another person could use to check the result. Do not start
 pixels. This skill is done when every unknown is either answered or written down
 as an assumption with a risk.
@@ -37,8 +41,9 @@ as an assumption with a risk.
 
 ## Output
 
-Fill `briefs/BRIEF.md`. If the harness has no filesystem, output it as a
-fenced markdown block titled `BRIEF.md`. Add a one-paragraph summary and the
+Copy `.design-os/briefs/BRIEF.md` to `design/<slug>/BRIEF.md` and fill it. If
+the harness has no filesystem, output it as a fenced markdown block titled
+`BRIEF.md`. Never edit the template in `.design-os/`. Add a one-paragraph summary and the
 design read at the top. Stop. Do not build in the same turn unless the user
 explicitly asked to plan and build.
 
@@ -49,3 +54,7 @@ explicitly asked to plan and build.
 - Do not add unrequested deliverables.
 - A shorter brief is better than a vague one. If a section does not apply,
   delete it.
+
+## When not to use
+
+Do not use when a current brief already exists; read it instead.

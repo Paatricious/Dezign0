@@ -10,9 +10,21 @@ On load it:
    `dezign0-redesign`, `dezign0-critique`, `dezign0-design-system-extract`,
    `dezign0-state-board`.
 
-It does not register tools, run commands or edit source files. The skills tell
-the agent when to read `DESIGN-OS.md`, create a brief, run a critique and produce
-a handover.
+It registers three read-only tools for the mechanical checks and does not edit
+source files. The skills tell the agent when to read `DESIGN-OS.md`, create a
+brief, run a critique and produce a handover.
+
+## Tools
+
+| Tool | What it does |
+|---|---|
+| `dezign0_lint` | Runs `design-lint.mjs` on an artifact inside the project. |
+| `dezign0_measure` | Runs Playwright measurements; explains clearly if Playwright is missing. |
+| `dezign0_doctor` | Reports plugin/kit version, skill count, lint/measure scripts, Node and Playwright. |
+
+All tools resolve paths with `realpath` and reject anything outside the current
+project. They spawn Node with a fixed script and argument list; there is no
+shell.
 
 ## Install in OpenChamber
 
@@ -24,7 +36,8 @@ a handover.
    directory here; do not point it at `plugin/index.js`.
 4. Scope: **User** (all projects) or **Project** (this repo only).
 5. Add, then restart or reload OpenChamber. The plugin should show **Loaded**.
-6. Open a session; the six `dezign0-*` skills should appear in Skills.
+6. Open a session; the six `dezign0-*` skills appear in Skills and the three
+   `dezign0_*` tools appear in the tool list.
 
 **From npm (after publishing):**
 
@@ -34,7 +47,7 @@ a handover.
    npm publish --access public
    ```
 2. Settings → Plugins → Add plugin → **From npm**.
-3. Spec: `dezign0` (or `dezign0@0.3.0`).
+3. Spec: `dezign0` (or a pinned version such as `dezign0@0.4.0`).
 4. Reload.
 
 Full guide: [docs/PUBLISHING.md](../docs/PUBLISHING.md).
@@ -48,8 +61,23 @@ Full guide: [docs/PUBLISHING.md](../docs/PUBLISHING.md).
 }
 ```
 
-For a local install, use the absolute path instead of `dezign0`. OpenChamber
-writes this list for you.
+For a local install, use the absolute path instead of `dezign0` and use forward
+slashes in JSON, e.g. `"C:/Users/me/Dezign0"`. OpenChamber writes this list for you.
+
+Options:
+
+```json
+{
+  "plugins": [
+    { "package": "dezign0", "options": { "copyKit": false, "tools": false } }
+  ]
+}
+```
+
+`copyKit: false` registers the package skills without creating `.design-os/`;
+`tools: false` skips the three tools. **User scope** copies the kit into every
+project you open, so use Project scope (or `copyKit: false`) if you do not want
+that.
 
 ## Verified
 
@@ -85,6 +113,11 @@ error. OpenCode resolves a local plugin directory by trying `<dir>/server` first
 which is why the repo root has `server.js`; that file re-exports
 `plugin/index.js`.
 
+## Uninstall
+
+Remove `.design-os/` from the project and delete the plugin entry in OpenChamber
+or `opencode.json`. The plugin does not remove project files automatically.
+
 ## What it does not do
 
 - It does not install Playwright or any npm dependency.
@@ -92,6 +125,8 @@ which is why the repo root has `server.js`; that file re-exports
 - It does not bundle third-party design systems, templates or skill bodies.
 - It does not register slash commands. Use the skills conversationally, or use
   the OpenCode 1.x installer for `/design-new`, `/design-review`, `/design-ship`.
+- It does not delete or rewrite existing source files. It only creates
+  `.design-os/` when the kit is missing.
 
 ## Development
 

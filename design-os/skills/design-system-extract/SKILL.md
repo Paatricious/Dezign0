@@ -5,6 +5,10 @@ description: Extract a usable design system (DESIGN.md + tokens.css) from an exi
 
 # Design system extraction
 
+Kit root: `.design-os/`.
+Read `.design-os/DESIGN-OS.md` first. Write project artifacts under
+`design/<slug>/`; never edit `.design-os/`.
+
 Produce a contract another agent can build with. Every value carries evidence.
 When evidence is weak, mark it; never present a guess as measured.
 
@@ -62,9 +66,15 @@ A design system with 40 SOURCE values beats 200 invented ones.
 
 ## Output
 
-- `DESIGN.md`
-- `tokens.css`
-- `TOKENS.md` (if the harness/team uses the full token document)
+- `design-systems/<brand>/DESIGN.md`
+- `design-systems/<brand>/tokens.css`
+- `design-systems/<brand>/TOKENS.md` (if the harness/team uses the full token document)
 - `evidence.md` or a section in DESIGN.md listing sources and unknowns.
 
+Never write these into `.design-os/`.
+
 Then stop. Do not build the full product unless asked.
+
+## When not to use
+
+Do not use to redesign the product; extract the system first.
