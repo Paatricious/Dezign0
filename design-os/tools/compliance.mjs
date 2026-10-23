@@ -978,9 +978,9 @@ function runSelfTest() {
     check('CVD markdown records simulation metadata', renderCvd(report).includes('Machado'))
 
     // CLI: JSON to stdout, out dir, strict exit codes, bad input
-    const cli = (args) => spawnSync(process.execPath, [path.join(HERE, 'compliance.mjs'), ...args], { encoding: 'utf8' })
+    const cli = (args) => spawnSync(process.execPath, [path.join(HERE, 'compliance.mjs'), ...args], { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 })
     const jsonRun = cli([fixtureFile, '--json'])
-    check('--json exits 0 and parses', jsonRun.status === 0 && (() => { try { JSON.parse(jsonRun.stdout); return true } catch { return false } })())
+    check('--json exits 0 and parses', jsonRun.status === 0 && (() => { try { JSON.parse(jsonRun.stdout); return true } catch { return false } })(), `status ${jsonRun.status}, bytes ${jsonRun.stdout?.length}, stderr ${jsonRun.stderr?.slice(0, 120)}`)
     const strictRun = cli([fixtureFile, '--strict'])
     check('--strict exits 1 when a criterion fails', strictRun.status === 1, `status ${strictRun.status}`)
     const markdownRun = cli([fixtureFile])
