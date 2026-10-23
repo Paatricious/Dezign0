@@ -1,0 +1,24 @@
+# Generated / local-only
+node_modules/
+.design-os/
+.dezign0/
+.serena/
+design/
+design-systems/
+design-memory/
+.opencode/skills/
+.opencode/plugins/
+.opencode/commands/design-new.md
+.opencode/commands/design-review.md
+.opencode/commands/design-ship.md
+.agents/skills/
+.claude/skills/
+dist/
+build/
+test-results/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db

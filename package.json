@@ -1,0 +1,45 @@
+{
+  "name": "dezign0",
+  "version": "0.3.0",
+  "description": "Portable design capability layer for AI coding agents: design OS, craft rules, skills and review tools",
+  "license": "Apache-2.0",
+  "private": false,
+  "type": "module",
+  "main": "./plugin/index.js",
+  "exports": {
+    ".": {
+      "import": "./plugin/index.js",
+      "default": "./plugin/index.js"
+    },
+    "./server": "./server.js"
+  },
+  "files": [
+    "server.js",
+    "plugin/",
+    "design-os/",
+    "docs/",
+    "README.md",
+    "ATTRIBUTION.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "check": "node --check design-os/install.mjs && node --check design-os/tools/design-lint.mjs && node --check design-os/tools/measure-artifact.mjs && node --check plugin/index.js && node --check server.js && node plugin/smoke-test.mjs",
+    "plugin:test": "node plugin/smoke-test.mjs",
+    "prepublishOnly": "npm run check"
+  },
+  "keywords": [
+    "opencode",
+    "openchamber",
+    "opencode-plugin",
+    "design",
+    "design-system",
+    "ui",
+    "frontend"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
