@@ -53,7 +53,7 @@ shell.
 3. Spec: `dezign0` (or a pinned version such as `dezign0@0.7.0`).
 4. Reload.
 
-The live npm `0.5.0` package has seven skills and the tools. The `0.7.0` git tag adds the five addon workflows, the 152-package catalog and the 0.5.x fixes.
+The live npm `0.7.0` package has thirteen skills, five tools and the five addon workflows.
 
 **From git (tool-enabled, no npm auth):**
 

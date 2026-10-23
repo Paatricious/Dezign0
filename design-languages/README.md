@@ -54,8 +54,8 @@ npm install https://github.com/Paatricious/Dezign0/releases/download/v0.7.0/dezi
 ```
 
 This works without npm authentication because the tarball is a public GitHub
-release asset. The npm name `dezign0-design-languages` is reserved for a future
-registry release.
+release asset. The npm package name already has an earlier placeholder; use the
+release asset until `dezign0-design-languages@0.2.0` is published.
 
 The plugin searches:
 

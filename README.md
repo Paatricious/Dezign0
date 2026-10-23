@@ -33,16 +33,17 @@ In **Settings → Plugins → Add plugin**:
 - **From local path:** the absolute path to this repo directory.
 - **From npm:** `dezign0` — live at
   [npmjs.com/package/dezign0](https://www.npmjs.com/package/dezign0). The live
-  `0.5.0` release has seven skills and the tools. The `0.7.0` git tag adds the
-  addon workflows, the design-language catalog and the 0.5.x fixes.
+  `0.7.0` release has thirteen skills, five tools and the addon workflows.
 - **From git (no npm publish needed):** `github:Paatricious/Dezign0#v0.7.0`.
   This is the current tool-enabled version; the repository is public.
 
-Optional addon pack — 152 design languages plus templates, Figma bridge, handoff, review and media prompts. Install the public release tarball in the project:
+Optional addon pack — 152 design languages plus templates, Figma bridge, handoff, review and media prompts. Install the release tarball in the project:
 
 ```bash
 npm install https://github.com/Paatricious/Dezign0/releases/download/v0.7.0/dezign0-design-languages-0.2.0.tgz
 ```
+
+Once `dezign0-design-languages@0.2.0` is published, `npm install dezign0-design-languages` is equivalent.
 
 Or use the sibling `design-languages/` folder in a source checkout.
 

@@ -39,8 +39,9 @@ Git release `v0.7.0` (public repository) additionally verified:
 
 - `measure-artifact` needs Playwright; it is optional and not bundled.
 - Skill triggering was sampled on three realistic prompts, not a full benchmark.
-- The npm registry serves `0.5.0`; `0.7.0` is available via the public GitHub tag
-  until it is published. Installing the git spec needs no authentication.
+- The npm registry serves `0.7.0`; installing it returns 13 skills and 5 tools.
+  The addon registry entry is still the earlier `0.0.0-stage` placeholder; install
+  the 0.2.0 release tarball until the corrected package is published.
 
 ## Reproduce
 
