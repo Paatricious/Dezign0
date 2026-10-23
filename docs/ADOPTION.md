@@ -17,14 +17,22 @@ to `<project>/.design-os` (if missing) and registers six `dezign0-*` skills.
 4. Scope: **User** or **Project**.
 5. Add, then reload OpenChamber.
 
-### From npm
+### From npm or git
 
-After publishing (see [PUBLISHING.md](PUBLISHING.md)):
+Registry package (skills only in the live 0.3.0):
 
 1. **Settings → Plugins → Add plugin → From npm**.
-2. Spec: `dezign0`, or pin a version: `dezign0@0.4.0`.
+2. Spec: `dezign0`, or pin a version.
 3. Scope: **User** or **Project**.
-4. Add, then reload.
+
+Tagged git install (current tools, no npm auth):
+
+```text
+github:Paatricious/Dezign0#v0.4.0
+```
+
+Use the **From npm** tab for the git spec too, or put it in `opencode.json`.
+Reload after adding.
 
 Verified on OpenCode 2.1.3 with both scopes: the kit is copied, six skills are
 registered, and the three `dezign0_*` tools appear. `dezign0_doctor` reports the

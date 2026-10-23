@@ -2,9 +2,6 @@ name: publish
 
 on:
   workflow_dispatch:
-  push:
-    tags:
-      - "v*"
 
 permissions:
   contents: read
@@ -20,14 +17,6 @@ jobs:
           node-version: 22
           registry-url: https://registry.npmjs.org
       - run: npm run check
-      - name: Check tag matches package version
-        if: github.ref_type == 'tag'
-        run: |
-          VERSION=$(node -p "require('./package.json').version")
-          test "v$VERSION" = "$GITHUB_REF_NAME" || {
-            echo "tag $GITHUB_REF_NAME does not match package.json $VERSION"
-            exit 1
-          }
       - name: Check whether this version is already published
         id: version
         run: |

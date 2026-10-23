@@ -99,8 +99,8 @@ or use OpenChamber's plugin update action.
 
 ## Optional: GitHub Actions release workflow
 
-The repo includes `.github/workflows/publish.yml`, triggered manually or by a
-`v*` tag.
+The repo includes `.github/workflows/publish.yml`, triggered manually. A git tag
+is not required for release.
 
 1. Create an npm **automation** token:
    <https://www.npmjs.com/settings/~/tokens>

@@ -50,8 +50,22 @@ shell.
 3. Spec: `dezign0` (or a pinned version such as `dezign0@0.4.0`).
 4. Reload.
 
-The live `0.3.0` package has the six skills but not the tools; `0.4.0` is prepared
-and adds `dezign0_lint`, `dezign0_measure` and `dezign0_doctor`.
+The live npm `0.3.0` package has the six skills but not the tools.
+
+**From git (tool-enabled, no npm auth):**
+
+```text
+github:Paatricious/Dezign0#v0.4.0
+```
+
+Use this in the **From npm** spec field, or in `opencode.json`:
+
+```json
+{ "plugins": ["github:Paatricious/Dezign0#v0.4.0"] }
+```
+
+This installs the tagged public repository and includes `dezign0_lint`,
+`dezign0_measure` and `dezign0_doctor`.
 
 Full guide: [docs/PUBLISHING.md](../docs/PUBLISHING.md).
 
