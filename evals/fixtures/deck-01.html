@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Series A update — Q3</title>
+<style>
+  :root {
+    --bg: #f3f0e8;
+    --slide: #fffdf8;
+    --fg: #1b1a17;
+    --muted: #5e594e;
+    --border: #d7d0c1;
+    --accent: #7a3f1d;
+    --accent-on: #ffffff;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-12: 48px;
+    --radius: 12px;
+    --font-body: Georgia, "Times New Roman", serif;
+    --text-sm: 16px;
+    --text-base: 20px;
+    --text-lg: 28px;
+    --text-2xl: 40px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: var(--text-base); line-height: 1.5; }
+  main { max-width: 1180px; margin: 0 auto; padding: var(--space-6) var(--space-4); }
+  .slide {
+    background: var(--slide);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    aspect-ratio: 16 / 9;
+    padding: var(--space-12);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-4);
+  }
+  .slide.is-active { display: flex; }
+  .slide h1 { font-size: var(--text-2xl); line-height: 1.1; margin: 0; max-width: 24ch; }
+  .slide h2 { font-size: var(--text-lg); line-height: 1.2; margin: 0; max-width: 30ch; }
+  .slide p, .slide li { font-size: var(--text-base); margin: 0; max-width: 52ch; }
+  .slide ul { margin: 0; padding-left: var(--space-6); }
+  .slide .kicker { font-size: var(--text-sm); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+  .slide .big { font-size: var(--text-2xl); }
+  .slide .note { color: var(--muted); font-size: var(--text-sm); }
+  nav.deck-nav { display: flex; gap: var(--space-3); align-items: center; margin-top: var(--space-4); flex-wrap: wrap; }
+  button {
+    font: inherit; min-height: 44px; padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--slide); color: var(--fg); cursor: pointer;
+  }
+  #counter { color: var(--muted); font-size: var(--text-sm); }
+  footer { max-width: 1180px; margin: 0 auto; padding: var(--space-4); color: var(--muted); font-size: var(--text-sm); display: flex; justify-content: space-between; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+  @media print {
+    body { background: #ffffff; }
+    main { max-width: none; padding: 0; }
+    .slide, .slide.is-active {
+      display: flex !important;
+      page-break-after: always;
+      border: 0;
+      border-radius: 0;
+      width: 100%;
+      height: 100vh;
+      aspect-ratio: auto;
+    }
+    nav.deck-nav { display: none; }
+    footer { display: none; }
+    @page { size: 1280px 720px; margin: 0; }
+  }
+</style>
+</head>
+<body>
+<main id="deck">
+  <section class="slide is-active" data-slide="1" data-od-id="slide-1" aria-label="Slide 1, title">
+    <p class="kicker">Series A update · Q3</p>
+    <h1>Revenue is up, the product is stable, and we need one hire.</h1>
+    <p>Seven slides: what changed, the evidence behind it, and the decision we are asking for today.</p>
+    <p class="note">Presented to the board, 12 October.</p>
+  </section>
+
+  <section class="slide" data-slide="2" data-od-id="slide-2" aria-label="Slide 2, context">
+    <h2>We came into the quarter with a clear constraint: the support queue.</h2>
+    <ul>
+      <li>Two enterprise accounts were waiting on onboarding.</li>
+      <li>Support response time was the top churn reason.</li>
+      <li>We chose to fix onboarding before adding seats.</li>
+    </ul>
+    <p class="note">Source: churn interviews, June.</p>
+  </section>
+
+  <section class="slide" data-slide="3" data-od-id="slide-3" aria-label="Slide 3, what changed">
+    <h2>We rebuilt onboarding as a guided checklist and cut the queue.</h2>
+    <ul>
+      <li>Self-serve import replaced two manual calls per account.</li>
+      <li>Checklist completion is now visible to the customer.</li>
+      <li>The support queue is below one day for the first time.</li>
+    </ul>
+  </section>
+
+  <section class="slide" data-slide="4" data-od-id="slide-4" aria-label="Slide 4, evidence">
+    <h2>Retention and activation improved together, not one at the cost of the other.</h2>
+    <p class="big">Activation: 61% of new accounts finish onboarding in week one.</p>
+    <p>Net revenue retention held flat while new accounts grew. No discounting was used to get there.</p>
+    <p class="note">Source: product analytics, last 90 days.</p>
+  </section>
+
+  <section class="slide" data-slide="5" data-od-id="slide-5" aria-label="Slide 5, unit economics">
+    <h2>Each new account now pays back in the first quarter.</h2>
+    <ul>
+      <li>Support cost per account is down by a third.</li>
+      <li>Onboarding labour is now one hour, not five.</li>
+      <li>Payback period: 2.4 months, blended.</li>
+    </ul>
+    <p class="note">Source: finance model v6, reviewed by the board.</p>
+  </section>
+
+  <section class="slide" data-slide="6" data-od-id="slide-6" aria-label="Slide 6, plan">
+    <h2>Next two quarters: one senior support engineer, then pricing work.</h2>
+    <ul>
+      <li>Q4: hire one support engineer and document onboarding.</li>
+      <li>Q1: move to usage-based pricing for larger accounts.</li>
+      <li>No other headcount changes.</li>
+    </ul>
+  </section>
+
+  <section class="slide" data-slide="7" data-od-id="slide-7" aria-label="Slide 7, ask">
+    <h2>The ask: approve the support engineer and the Q1 pricing work.</h2>
+    <p>Approval today keeps the Q4 start date. We will bring the pricing model back for review in January.</p>
+    <p class="note">Decision requested by 31 October.</p>
+  </section>
+
+  <nav class="deck-nav" aria-label="Slide navigation">
+    <button type="button" id="prev">Previous slide</button>
+    <button type="button" id="next">Next slide</button>
+    <p id="counter" aria-live="polite">Slide 1 of 7</p>
+  </nav>
+</main>
+<footer>
+  <span>Ledgerly · Board update</span>
+  <span id="page-number">1 / 7</span>
+</footer>
+<script>
+  (function () {
+    var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+    var counter = document.getElementById("counter");
+    var pageNumber = document.getElementById("page-number");
+    var current = 0;
+
+    function show(index) {
+      current = Math.max(0, Math.min(slides.length - 1, index));
+      slides.forEach(function (slide, position) {
+        slide.classList.toggle("is-active", position === current);
+      });
+      counter.textContent = "Slide " + (current + 1) + " of " + slides.length;
+      pageNumber.textContent = (current + 1) + " / " + slides.length;
+    }
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowRight") { show(current + 1); event.preventDefault(); }
+      if (event.key === "ArrowLeft") { show(current - 1); event.preventDefault(); }
+      if (event.key === "Home") { show(0); event.preventDefault(); }
+      if (event.key === "End") { show(slides.length - 1); event.preventDefault(); }
+    });
+    document.getElementById("next").addEventListener("click", function () { show(current + 1); });
+    document.getElementById("prev").addEventListener("click", function () { show(current - 1); });
+    show(0);
+  })();
+</script>
+</body>
+</html>

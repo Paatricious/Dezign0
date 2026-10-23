@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trip receipt</title>
+<style>
+  :root {
+    --bg: #f4f1ea;
+    --surface: #ffffff;
+    --fg: #1c1b17;
+    --muted: #5d584d;
+    --border: #d8d1c1;
+    --accent: #245c4a;
+    --accent-on: #ffffff;
+    --success: #2f7d4f;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --radius: 14px;
+    --text-xs: 13px;
+    --text-base: 16px;
+    --text-lg: 20px;
+    --text-2xl: 28px;
+    --font-body: "Gill Sans", "Trebuchet MS", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: 1.45;
+    padding-bottom: 96px;
+  }
+  header, main, .actions-inner { padding-inline: var(--space-5); }
+  header { padding-top: var(--space-6); }
+  h1 { font-size: var(--text-2xl); margin: 0 0 var(--space-1); }
+  .meta { color: var(--muted); font-size: var(--text-xs); margin: 0; }
+  main { margin-top: var(--space-4); display: grid; gap: var(--space-4); }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-4); }
+  .route { display: grid; gap: var(--space-1); margin: 0 0 var(--space-3); }
+  .route strong { font-size: var(--text-lg); }
+  dl { display: grid; grid-template-columns: 1fr auto; gap: var(--space-2) var(--space-3); margin: 0; font-variant-numeric: tabular-nums; }
+  dt { color: var(--muted); }
+  dd { margin: 0; text-align: right; }
+  .total { border-top: 1px solid var(--border); padding-top: var(--space-2); font-size: var(--text-lg); }
+  h2 { font-size: var(--text-lg); margin: 0 0 var(--space-2); }
+  .rating { display: flex; gap: var(--space-2); margin: 0 0 var(--space-2); }
+  .rating button {
+    width: 48px; height: 48px; min-height: 48px;
+    border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--surface); color: var(--fg); font: inherit;
+  }
+  .rating button[aria-pressed="true"] { background: var(--success); border-color: var(--success); color: var(--accent-on); }
+  .tips { display: grid; gap: var(--space-2); }
+  .tip { display: flex; align-items: center; gap: var(--space-2); min-height: 48px; }
+  .status { color: var(--muted); font-size: var(--text-xs); margin: var(--space-2) 0 0; }
+  .actions {
+    position: sticky; bottom: 0; margin-top: var(--space-4);
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding-top: var(--space-3);
+    padding-bottom: calc(var(--space-3) + env(safe-area-inset-bottom, 0px));
+  }
+  .actions-inner { display: grid; gap: var(--space-2); }
+  .btn {
+    min-height: 48px; border-radius: var(--radius); font: inherit;
+    border: 1px solid var(--border); background: var(--surface); color: var(--fg);
+  }
+  .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-on); }
+  .btn-secondary { background: transparent; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Trip complete</h1>
+  <p class="meta">Today, 18:42 · Receipt 8841</p>
+</header>
+<main>
+  <section class="card" data-od-id="receipt">
+    <p class="route">
+      <span class="meta">Harbour Lane</span>
+      <strong>to Northgate Station</strong>
+    </p>
+    <dl>
+      <dt>Driver</dt><dd>Amara</dd>
+      <dt>Vehicle</dt><dd>Toyota Prius · LN24 KTR</dd>
+      <dt>Duration</dt><dd>18 min</dd>
+      <dt>Distance</dt><dd>6.4 km</dd>
+    </dl>
+  </section>
+
+  <section class="card" data-od-id="fare">
+    <h2>Fare breakdown</h2>
+    <dl>
+      <dt>Base fare</dt><dd>£3.20</dd>
+      <dt>Distance</dt><dd>£7.40</dd>
+      <dt>Time</dt><dd>£2.60</dd>
+      <dt>Service fee</dt><dd>£1.60</dd>
+      <dt class="total">Total</dt><dd class="total">£14.80</dd>
+    </dl>
+  </section>
+
+  <section class="card" data-od-id="rating">
+    <h2>How was the trip?</h2>
+    <div class="rating" role="group" aria-label="Rate the trip from one to five">
+      <button type="button" aria-pressed="false" aria-label="Rate 1 out of 5">1</button>
+      <button type="button" aria-pressed="false" aria-label="Rate 2 out of 5">2</button>
+      <button type="button" aria-pressed="false" aria-label="Rate 3 out of 5">3</button>
+      <button type="button" aria-pressed="false" aria-label="Rate 4 out of 5">4</button>
+      <button type="button" aria-pressed="false" aria-label="Rate 5 out of 5">5</button>
+    </div>
+    <p class="status" id="rating-status" role="status">No rating yet</p>
+
+    <h2>Add a tip</h2>
+    <div class="tips">
+      <label class="tip" for="tip-15"><input type="radio" id="tip-15" name="tip" value="1.50"> £1.50</label>
+      <label class="tip" for="tip-20"><input type="radio" id="tip-20" name="tip" value="2.00" checked> £2.00</label>
+      <label class="tip" for="tip-25"><input type="radio" id="tip-25" name="tip" value="2.50"> £2.50</label>
+    </div>
+  </section>
+</main>
+
+<div class="actions">
+  <div class="actions-inner">
+    <button type="button" class="btn btn-primary" id="done">Done</button>
+    <button type="button" class="btn btn-secondary" id="help">Get help with this trip</button>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var ratingButtons = Array.prototype.slice.call(document.querySelectorAll(".rating button"));
+    var status = document.getElementById("rating-status");
+    ratingButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        ratingButtons.forEach(function (other) { other.setAttribute("aria-pressed", "false"); });
+        button.setAttribute("aria-pressed", "true");
+        status.textContent = "Thanks. You rated this trip " + button.textContent + " out of 5.";
+      });
+    });
+    document.getElementById("done").addEventListener("click", function () {
+      status.textContent = "Receipt saved. You can close this screen.";
+    });
+    document.getElementById("help").addEventListener("click", function () {
+      status.textContent = "Help request started for receipt 8841.";
+    });
+  })();
+</script>
+</body>
+</html>

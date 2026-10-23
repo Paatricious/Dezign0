@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Incident postmortem — payments API, 14 September</title>
+<style>
+  :root {
+    --bg: #f7f4ee;
+    --surface: #ffffff;
+    --fg: #1c1b17;
+    --muted: #5d584d;
+    --border: #d9d2c2;
+    --accent: #7a3f1d;
+    --success: #2f7d4f;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-12: 48px;
+    --radius: 8px;
+    --text-sm: 14px;
+    --text-base: 17px;
+    --text-lg: 24px;
+    --text-2xl: 36px;
+    --font-body: Georgia, "Times New Roman", serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: var(--text-base); line-height: 1.6; }
+  .page { max-width: 900px; margin: 0 auto; padding: var(--space-8) var(--space-4) var(--space-12); }
+  .measure { max-width: 68ch; }
+  h1 { font-size: var(--text-2xl); line-height: 1.15; margin: 0 0 var(--space-3); }
+  h2 { font-size: var(--text-lg); margin: var(--space-8) 0 var(--space-3); }
+  p { margin: 0 0 var(--space-3); }
+  .meta { display: flex; gap: var(--space-4); flex-wrap: wrap; color: var(--muted); font-size: var(--text-sm); margin-bottom: var(--space-6); }
+  .meta dt { font-weight: 600; color: var(--fg); }
+  .meta dd { margin: 0; }
+  nav.toc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-4); margin-bottom: var(--space-6); }
+  nav.toc h2 { font-size: var(--text-base); margin: 0 0 var(--space-2); }
+  nav.toc ol { margin: 0; padding-left: var(--space-6); }
+  nav.toc a { color: var(--accent); }
+  table { border-collapse: collapse; width: 100%; background: var(--surface); font-size: var(--text-sm); }
+  caption { text-align: left; padding: var(--space-2) 0; color: var(--muted); }
+  th, td { text-align: left; padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { font-size: var(--text-sm); color: var(--muted); font-weight: 600; }
+  .callout { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-4); }
+  .callout p:last-child { margin-bottom: 0; }
+  footer { margin-top: var(--space-12); padding-top: var(--space-4); border-top: 1px solid var(--border); color: var(--muted); font-size: var(--text-sm); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media print {
+    body { background: #ffffff; }
+    .page { max-width: none; padding: 0; }
+    nav.toc { display: none; }
+    h2 { break-before: page; page-break-before: always; }
+    table { break-inside: avoid; page-break-inside: avoid; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>Payments API incident postmortem</h1>
+    <dl class="meta">
+      <div><dt>Severity</dt><dd>SEV-2</dd></div>
+      <div><dt>Date</dt><dd><time datetime="2026-09-14T09:12:00Z">14 September 2026</time></dd></div>
+      <div><dt>Owner</dt><dd>Payments platform team</dd></div>
+      <div><dt>Status</dt><dd>Resolved, actions open</dd></div>
+    </dl>
+  </header>
+
+  <nav class="toc" aria-label="Contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#summary">Executive summary</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#cause">Root cause</a></li>
+      <li><a href="#actions">Action items</a></li>
+      <li><a href="#sources">Sources</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <div class="measure">
+      <section id="summary" data-od-id="summary">
+        <h2>Executive summary</h2>
+        <p>Card payments through the public API failed for 47 minutes on 14 September, from 09:12 to 09:59 UTC. Checkout requests returned errors for roughly one in three attempts; no payment data was lost and no duplicate charges were created. The direct cause was a configuration change that reduced the connection pool for the payments service. The decision required from the reader is whether to fund a staged configuration rollout in the next planning cycle.</p>
+      </section>
+
+      <section id="timeline" data-od-id="timeline">
+        <h2>Timeline</h2>
+        <table>
+          <caption>Incident timeline, all times UTC</caption>
+          <thead>
+            <tr><th scope="col">Time</th><th scope="col">Event</th><th scope="col">Actor</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><time datetime="2026-09-14T09:12:00Z">09:12</time></td><td>Error rate alarm fires on checkout endpoint</td><td>Monitoring</td></tr>
+            <tr><td><time datetime="2026-09-14T09:18:00Z">09:18</time></td><td>Incident declared; checkout traffic shifted to the backup path</td><td>On-call engineer</td></tr>
+            <tr><td><time datetime="2026-09-14T09:41:00Z">09:41</time></td><td>Connection-pool change identified and reverted</td><td>Payments platform</td></tr>
+            <tr><td><time datetime="2026-09-14T09:59:00Z">09:59</time></td><td>Error rate back to baseline; incident closed</td><td>On-call engineer</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="impact" data-od-id="impact">
+        <h2>Impact</h2>
+        <p>Approximately one in three checkout attempts failed during the window. Support received 84 tickets, all answered within the same day. Three merchants reported abandoned carts; none reported duplicate charges. Internal dashboards were accurate throughout.</p>
+      </section>
+
+      <section id="cause" data-od-id="cause">
+        <h2>Root cause</h2>
+        <p>A configuration change reduced the payments service connection pool from 40 to 8 connections to address an unrelated warning. Under the morning traffic profile this exhausted the pool and produced timeouts. The change passed review because the review checklist does not ask for a traffic estimate.</p>
+      </section>
+
+      <section id="actions" data-od-id="actions">
+        <h2>Action items</h2>
+        <table>
+          <caption>Action items and owners</caption>
+          <thead>
+            <tr><th scope="col">Action</th><th scope="col">Owner</th><th scope="col">Due</th><th scope="col">Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Add a traffic-estimate question to the configuration review checklist</td><td>Payments platform</td><td>2026-10-04</td><td>In progress</td></tr>
+            <tr><td>Stage configuration changes through a canary for 30 minutes</td><td>Platform reliability</td><td>2026-11-01</td><td>Planned</td></tr>
+            <tr><td>Alert on pool exhaustion rather than only on error rate</td><td>Observability</td><td>2026-10-18</td><td>Planned</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="sources" data-od-id="sources">
+        <h2>Sources</h2>
+        <ul>
+          <li>Checkout error-rate dashboard, 24-hour window ending 12:00 UTC.</li>
+          <li>Payments service configuration history for 14 September.</li>
+          <li>Incident channel transcript, 09:12–10:05 UTC.</li>
+          <li>Support ticket export for the incident window.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="measure">
+    <p>Prepared by the payments platform team. Reviewed by the incident review group. Version 1.0, 16 September 2026.</p>
+  </footer>
+</div>
+</body>
+</html>

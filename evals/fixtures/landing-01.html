@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ledgerly — invoicing for freelancers</title>
+<style>
+  :root {
+    --bg: #f5f2ea;
+    --surface: #fffdf7;
+    --fg: #1f1d18;
+    --muted: #5a554a;
+    --border: #d8d1c0;
+    --accent: #8a4b2a;
+    --accent-hover: #6f3a1f;
+    --accent-on: #ffffff;
+    --success: #2f7d4f;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-12: 48px;
+    --radius: 10px;
+    --text-sm: 14px;
+    --text-base: 17px;
+    --text-lg: 22px;
+    --text-2xl: 40px;
+    --font-body: Georgia, "Times New Roman", serif;
+    --container: 1040px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: var(--text-base); line-height: 1.55; }
+  .wrap { max-width: var(--container); margin: 0 auto; padding-inline: var(--space-4); }
+  a { color: var(--fg); }
+  .brand { font-weight: 700; text-decoration: none; color: var(--fg); }
+  nav { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding-block: var(--space-4); }
+  nav ul { display: flex; gap: var(--space-4); list-style: none; margin: 0; padding: 0; font-size: var(--text-sm); }
+  .hero { padding-block: var(--space-12); display: grid; gap: var(--space-4); max-width: 720px; }
+  h1 { font-size: var(--text-2xl); line-height: 1.1; margin: 0; max-width: 20ch; }
+  h2 { font-size: var(--text-lg); margin: 0 0 var(--space-3); }
+  h3 { font-size: var(--text-base); margin: 0 0 var(--space-2); }
+  .lead { font-size: var(--text-lg); color: var(--muted); margin: 0; max-width: 46ch; }
+  .cta-row { display: flex; gap: var(--space-3); align-items: center; flex-wrap: wrap; }
+  .btn { display: inline-block; min-height: 46px; padding: var(--space-3) var(--space-6); border-radius: var(--radius); text-decoration: none; border: 1px solid var(--border); }
+  .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-on); }
+  .btn-secondary { border-color: var(--border); color: var(--fg); background: transparent; }
+  section { padding-block: var(--space-8); }
+  .steps { display: grid; gap: var(--space-4); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .step { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-4); }
+  .step .n { color: var(--muted); font-size: var(--text-sm); }
+  .plans { display: grid; gap: var(--space-4); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .plan { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-4); display: grid; gap: var(--space-3); }
+  .plan.recommended { border-color: var(--fg); border-width: 2px; }
+  .tag { font-size: var(--text-sm); color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; }
+  .price { font-size: var(--text-lg); margin: 0; }
+  .faq { display: grid; gap: var(--space-4); max-width: 72ch; }
+  blockquote { margin: 0; padding: var(--space-4); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+  figure { margin: 0; }
+  figcaption { font-size: var(--text-sm); color: var(--muted); margin-top: var(--space-2); }
+  .timeline .s-bg { fill: var(--surface); }
+  .timeline .s-accent { fill: var(--accent); }
+  .timeline .s-muted { fill: var(--border); }
+  .timeline .s-success { fill: var(--success); }
+  .timeline .s-line { stroke: var(--border); stroke-width: 3; }
+  .timeline .s-label { fill: var(--fg); font-size: 14px; }
+  footer { border-top: 1px solid var(--border); margin-top: var(--space-8); padding-block: var(--space-6); font-size: var(--text-sm); color: var(--muted); }
+  footer ul { display: flex; gap: var(--space-4); list-style: none; margin: var(--space-2) 0 0; padding: 0; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (max-width: 760px) {
+    .steps, .plans { grid-template-columns: 1fr; }
+    h1 { font-size: var(--text-2xl); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <nav aria-label="Primary">
+      <a class="brand" href="/">Ledgerly</a>
+      <ul>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a class="btn btn-primary" href="#start">Start free</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" id="start" data-od-id="hero">
+      <h1>Invoices that get paid without the chasing.</h1>
+      <p class="lead">Send a branded invoice in a minute, let Ledgerly nudge late payers for you, and see what is still owed in one place.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#start">Start free</a>
+        <a class="btn btn-secondary" href="#how-it-works">See how it works</a>
+      </div>
+      <figure>
+        <svg class="timeline" viewBox="0 0 560 140" role="img" aria-label="An invoice timeline showing sent, viewed and paid states" width="100%" height="140">
+          <rect class="s-bg" x="0" y="0" width="560" height="140" rx="10"></rect>
+          <circle class="s-accent" cx="60" cy="70" r="16"></circle>
+          <circle class="s-muted" cx="220" cy="70" r="16"></circle>
+          <circle class="s-muted" cx="380" cy="70" r="16"></circle>
+          <circle class="s-success" cx="520" cy="70" r="16"></circle>
+          <line class="s-line" x1="76" y1="70" x2="204" y2="70"></line>
+          <line class="s-line" x1="236" y1="70" x2="364" y2="70"></line>
+          <line class="s-line" x1="396" y1="70" x2="504" y2="70"></line>
+          <text class="s-label" x="60" y="112" text-anchor="middle">Sent</text>
+          <text class="s-label" x="220" y="112" text-anchor="middle">Viewed</text>
+          <text class="s-label" x="380" y="112" text-anchor="middle">Reminded</text>
+          <text class="s-label" x="520" y="112" text-anchor="middle">Paid</text>
+        </svg>
+        <figcaption>A late invoice moves through three automatic reminders before it is marked paid.</figcaption>
+      </figure>
+    </section>
+
+    <section id="how-it-works" data-od-id="how-it-works">
+      <h2>Three steps from work done to money in</h2>
+      <div class="steps">
+        <div class="step"><p class="n">1</p><h3>Create the invoice</h3><p>Pick a client, add line items and a due date. Your logo and payment details are already saved.</p></div>
+        <div class="step"><p class="n">2</p><h3>Send and track</h3><p>Ledgerly emails the invoice and shows when it was opened, so you know whether to wait or call.</p></div>
+        <div class="step"><p class="n">3</p><h3>Get paid</h3><p>Clients pay by card or bank transfer. Reminders stop the moment the money lands.</p></div>
+      </div>
+    </section>
+
+    <section id="pricing" data-od-id="pricing">
+      <h2>Pricing that fits a one-person studio</h2>
+      <div class="plans">
+        <div class="plan">
+          <h3>Solo</h3>
+          <p class="price">$9 per month</p>
+          <p>Unlimited invoices, card payments, one reminder schedule.</p>
+          <a class="btn btn-secondary" href="#start">Choose Solo</a>
+        </div>
+        <div class="plan recommended">
+          <p class="tag">Recommended</p>
+          <h3>Studio</h3>
+          <p class="price">$19 per month</p>
+          <p>Everything in Solo plus recurring invoices and a client portal.</p>
+          <a class="btn btn-primary" href="#start">Choose Studio</a>
+        </div>
+        <div class="plan">
+          <h3>Studio plus</h3>
+          <p class="price">$39 per month</p>
+          <p>For two to five freelancers sharing clients and payment records.</p>
+          <a class="btn btn-secondary" href="#start">Choose Studio plus</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" data-od-id="faq">
+      <h2>Questions freelancers ask before switching</h2>
+      <div class="faq">
+        <div><h3>Can my clients pay without an account?</h3><p>Yes. Every invoice has a payment page with card and bank transfer options, and no sign-up is required.</p></div>
+        <div><h3>What happens if an invoice is late?</h3><p>Ledgerly sends three polite reminders on a schedule you set, then tells you to call the client yourself.</p></div>
+        <div><h3>Do you support multiple currencies?</h3><p>Invoices can be issued in your client's currency, and the exchange rate is recorded on the invoice date.</p></div>
+        <div><h3>Can I export my records for tax time?</h3><p>Download a CSV of paid and open invoices for any date range, ready for your accountant.</p></div>
+      </div>
+      <blockquote>
+        <p>“I sent eleven invoices in my first month and stopped writing reminder emails entirely.”</p>
+        <p><strong>Mara Okafor</strong>, independent brand designer</p>
+      </blockquote>
+    </section>
+  </main>
+  <footer>
+    <p>Ledgerly is invoicing software for people who work alone.</p>
+    <ul>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="/privacy">Privacy</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </footer>
+</div>
+</body>
+</html>

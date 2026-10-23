@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Rotate a signing key — Ledgerline docs</title>
+<style>
+  :root {
+    --surface: #ffffff;
+    --bg: #111114;
+    --code-ink: #e8e6e1;
+    --ink: #1b1f24;
+    --border: #dde1e4;
+    --font-body: ui-sans-serif, system-ui, sans-serif;
+  }
+  body { margin: 0; background: var(--surface); color: var(--ink); font-family: var(--font-body); }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 20px; }
+  pre { background: var(--bg); color: var(--code-ink); padding: 16px; overflow-x: auto; }
+  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .form-error { color: #8a2c1f; }
+  .empty-state { padding: 24px; border: 1px dashed var(--border); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Rotate a signing key</h1>
+  <p>Rotate a key before it expires. The gateway keeps the old key for one overlap window, so a rolling deploy does not drop signatures.</p>
+
+  <h2>Prerequisites</h2>
+  <p>You need the <span class="mono">keys:write</span> scope and a token from the admin console.</p>
+  <p>Unlock the account with the recovery key if the admin console is unavailable.</p>
+  <p>Elevate permissions for the service account only for the duration of the rotation.</p>
+  <p>The flag empowers users to opt out of automatic rotation.</p>
+  <p>Call <code>unlock()</code> before teardown when the session is shared.</p>
+
+  <h2>Run the rotation</h2>
+  <pre><code>ledgerline keys rotate --overlap 900
+# Unlock the vault first:
+# unlock() returns a handle.</code></pre>
+
+  <h2>Failure modes</h2>
+  <p class="form-error" role="alert">Token expired. Generate a new token, then run the command again.</p>
+  <p>If the rotation is interrupted, the gateway keeps serving with the old key until the overlap window ends.</p>
+
+  <h2>Next steps</h2>
+  <p><a class="btn" href="/docs/keys/verify">Run the migration</a> <a class="btn" href="/docs/logs">View the logs</a> <a class="btn" href="/docs/tokens">Check the token</a></p>
+
+  <div class="empty-state">
+    <p>No saved queries yet.</p>
+    <a class="btn" href="/queries/new">Create a query</a>
+  </div>
+
+  <p data-no-lint>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Built by Acme Corp for John Doe, 555-0142.</p>
+
+  <img src="./diagram.svg" alt="Request lifecycle: client, gateway and worker in three columns, with the overlap window shaded" width="760" height="240">
+</main>
+</body>
+</html>

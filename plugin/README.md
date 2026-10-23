@@ -16,6 +16,12 @@ It registers five read-only tools for the mechanical checks and does not edit
 source files. The skills tell the agent when to read `DESIGN-OS.md`, create a
 brief, run a critique and produce a handover.
 
+## CLI, MCP and action
+
+- `npx dezign0 ...` — local CLI with JSON and stable exit codes.
+- `npx dezign0 mcp` — stdio MCP server for non-OpenCode harnesses.
+- `.github/actions/dezign0-review` — pull-request gate and sticky comment.
+
 ## Tools
 
 | Tool | What it does |
@@ -50,21 +56,21 @@ shell.
    npm publish --access public
    ```
 2. Settings → Plugins → Add plugin → **From npm**.
-3. Spec: `dezign0` (or a pinned version such as `dezign0@0.7.1`).
+3. Spec: `dezign0` (or a pinned version such as `dezign0@0.8.0`).
 4. Reload.
 
-The live npm `0.7.0` package has thirteen skills and five tools. The white-label `0.7.1` build is on the git tag until published.
+The live npm `0.7.0` package has thirteen skills and five tools. The `0.8.0` build adds the CLI, MCP server, a11y/token/content tools and evals; it is on the git tag until published.
 
 **From git (tool-enabled, no npm auth):**
 
 ```text
-github:Paatricious/Dezign0#v0.7.1
+github:Paatricious/Dezign0#v0.8.0
 ```
 
 Use this in the **From npm** spec field, or in `opencode.json`:
 
 ```json
-{ "plugins": ["github:Paatricious/Dezign0#v0.7.1"] }
+{ "plugins": ["github:Paatricious/Dezign0#v0.8.0"] }
 ```
 
 This installs the tagged public repository and includes `dezign0_lint`,
@@ -146,7 +152,7 @@ or `opencode.json`. The plugin does not remove project files automatically.
   skill bodies. Install the optional catalog for all 152 languages:
 
 ```bash
-npm install https://github.com/Paatricious/Dezign0/releases/download/v0.7.1/dezign0-design-languages-0.2.1.tgz
+npm install https://github.com/Paatricious/Dezign0/releases/download/v0.8.0/dezign0-design-languages-0.2.1.tgz
 ```
 - It does not register slash commands. Use the skills conversationally, or use
   the OpenCode 1.x installer for `/design-new`, `/design-review`, `/design-ship`.

@@ -623,10 +623,17 @@ ${fs.readFileSync(file, "utf8")}`, {
           const tokensPath = path.join(dir, "tokens.css");
           const tokens = fs.existsSync(tokensPath) ? fs.readFileSync(tokensPath, "utf8") : "";
           const designFile = path.join(dir, "DESIGN.md");
+          const packageFiles = [
+            "DESIGN.md", "tokens.css", "USAGE.md", "components.html",
+            "components.manifest.json", "design-tokens.json", "tailwind-v4.css",
+          ].filter((name) => fs.existsSync(path.join(dir, name)));
           const header = [
             `design language: ${manifest.name || slug} (${slug})`,
             `category: ${manifest.category || "Uncategorized"}`,
             `root: ${dir}`,
+            `files: ${packageFiles.join(", ")}`,
+            `preview: ${fs.existsSync(path.join(dir, "preview")) ? path.join(dir, "preview") : "none"}`,
+            `source: ${fs.existsSync(path.join(dir, "source")) ? path.join(dir, "source") : "none"}`,
             `design: ${designFile}`,
             `tokens: ${fs.existsSync(tokensPath) ? tokensPath : "none"}`,
             "",
@@ -636,7 +643,7 @@ ${fs.readFileSync(file, "utf8")}`, {
           const tokenPart = tokens ? tokens.slice(0, 3500) : "";
           return result(
             `${header}\n${designPart}${design.length > designPart.length ? "\n...[DESIGN.md truncated]" : ""}\n\n=== tokens.css${tokens ? " (truncated; read the file for all tokens)" : " (missing)"} ===\n${tokenPart}${tokens.length > tokenPart.length ? "\n...[tokens.css truncated]" : ""}`,
-            { slug, category: manifest.category || null, designFile, tokensFile: fs.existsSync(tokensPath) ? tokensPath : null },
+            { slug, category: manifest.category || null, designFile, tokensFile: fs.existsSync(tokensPath) ? tokensPath : null, files: packageFiles },
           );
         }
         return failure(`unknown action: ${input.action}`);

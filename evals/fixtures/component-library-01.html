@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ledgerly UI kit</title>
+<style>
+  :root {
+    --bg: #f6f3ec;
+    --surface: #ffffff;
+    --surface-2: #efeade;
+    --fg: #1c1b17;
+    --muted: #5d584d;
+    --border: #d8d1c1;
+    --accent: #245c4a;
+    --accent-on: #ffffff;
+    --success: #2f7d4f;
+    --danger: #a33a2a;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --radius: 10px;
+    --radius-pill: 999px;
+    --elev-raised: 0 8px 24px rgba(28, 27, 23, 0.12);
+    --focus-ring: 0 0 0 3px rgba(36, 92, 74, 0.35);
+    --text-xs: 13px;
+    --text-sm: 14px;
+    --text-base: 16px;
+    --text-lg: 22px;
+    --text-2xl: 32px;
+    --font-body: Georgia, "Times New Roman", serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: var(--text-base); line-height: 1.5; }
+  .shell { max-width: 980px; margin: 0 auto; padding: var(--space-6) var(--space-4) var(--space-8); }
+  header { margin-bottom: var(--space-6); }
+  h1 { font-size: var(--text-2xl); margin: 0 0 var(--space-2); }
+  h2 { font-size: var(--text-lg); margin: 0 0 var(--space-3); }
+  h3 { font-size: var(--text-base); margin: 0 0 var(--space-2); }
+  .lead { color: var(--muted); margin: 0; max-width: 60ch; }
+  section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-6); margin-bottom: var(--space-6); }
+  .row { display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center; margin-bottom: var(--space-4); }
+  .label { font-size: var(--text-xs); color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 var(--space-2); }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+    min-height: 44px; padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius); border: 1px solid transparent;
+    font: inherit; font-size: var(--text-sm); cursor: pointer;
+    background: var(--surface-2); color: var(--fg);
+    transition: background-color 120ms ease, color 120ms ease, box-shadow 120ms ease;
+  }
+  .btn--sm { min-height: 36px; padding-inline: var(--space-3); }
+  .btn--lg { min-height: 52px; padding-inline: var(--space-6); }
+  .btn--primary { background: var(--accent); border-color: var(--accent); color: var(--accent-on); }
+  .btn--secondary { background: var(--surface); border-color: var(--border); color: var(--fg); }
+  .btn--ghost { background: transparent; color: var(--fg); }
+  .btn--danger { background: var(--danger); border-color: var(--danger); color: var(--accent-on); }
+  .btn:disabled { opacity: 0.55; cursor: not-allowed; }
+  .btn[aria-busy="true"] { opacity: 0.75; cursor: progress; }
+  .spinner { width: 14px; height: 14px; border: 2px solid currentColor; border-right-color: transparent; border-radius: var(--radius-pill); }
+  .field { display: grid; gap: var(--space-1); margin-bottom: var(--space-4); max-width: 420px; }
+  .field label { font-size: var(--text-sm); color: var(--muted); }
+  .input {
+    font: inherit; font-size: var(--text-base); min-height: 44px;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--surface); color: var(--fg);
+  }
+  .input[aria-invalid="true"] { border-color: var(--danger); }
+  .error { color: var(--danger); font-size: var(--text-sm); margin: 0; }
+  .hint { color: var(--muted); font-size: var(--text-xs); margin: 0; }
+  fieldset { border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-4); margin: 0 0 var(--space-4); }
+  legend { padding-inline: var(--space-2); font-size: var(--text-sm); color: var(--muted); }
+  .choice { display: flex; align-items: center; gap: var(--space-2); min-height: 40px; }
+  .cards { display: grid; gap: var(--space-4); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .card { border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); overflow: hidden; display: grid; }
+  .card__body { padding: var(--space-4); }
+  .card__media { min-height: 96px; background: var(--surface-2); display: grid; place-items: center; color: var(--muted); font-size: var(--text-sm); }
+  .card--raised { box-shadow: var(--elev-raised); }
+  .card__footer { padding: var(--space-3) var(--space-4); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  footer { color: var(--muted); font-size: var(--text-sm); }
+  :focus-visible { outline: none; box-shadow: var(--focus-ring); }
+  @media (max-width: 760px) { .cards { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <header>
+    <h1>Ledgerly UI kit</h1>
+    <p class="lead">Primitive buttons, fields and cards for the Ledgerly product surfaces. Tokens are defined once and every component consumes them.</p>
+  </header>
+  <main>
+    <section id="buttons" data-od-id="buttons">
+      <h2>Buttons</h2>
+      <p class="label">Variants</p>
+      <div class="row">
+        <button type="button" class="btn btn--primary">Start free</button>
+        <button type="button" class="btn btn--secondary">Save draft</button>
+        <button type="button" class="btn btn--ghost">Cancel</button>
+        <button type="button" class="btn btn--danger">Delete invoice</button>
+      </div>
+      <p class="label">Sizes</p>
+      <div class="row">
+        <button type="button" class="btn btn--secondary btn--sm">Small</button>
+        <button type="button" class="btn btn--secondary">Medium</button>
+        <button type="button" class="btn btn--secondary btn--lg">Large</button>
+      </div>
+      <p class="label">States</p>
+      <div class="row">
+        <button type="button" class="btn btn--primary" disabled>Disabled</button>
+        <button type="button" class="btn btn--primary" aria-busy="true"><span class="spinner" aria-hidden="true"></span> Saving</button>
+        <button type="button" class="btn btn--secondary">Focus me with Tab</button>
+      </div>
+      <p class="hint">Use one primary button per view. Destructive actions need a confirmation step.</p>
+    </section>
+
+    <section id="inputs" data-od-id="inputs">
+      <h2>Fields</h2>
+      <div class="field">
+        <label for="f-name">Full name</label>
+        <input class="input" id="f-name" name="name" autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="f-email">Email</label>
+        <input class="input" id="f-email" name="email" type="email" autocomplete="email" aria-invalid="true" aria-describedby="f-email-error">
+        <p class="error" id="f-email-error">Enter an email address in the form name@studio.com.</p>
+      </div>
+      <div class="field">
+        <label for="f-search">Search invoices</label>
+        <input class="input" id="f-search" name="search" type="search">
+        <p class="hint">Search by client, invoice number or amount.</p>
+      </div>
+      <div class="field">
+        <label for="f-plan">Plan</label>
+        <select class="input" id="f-plan" name="plan">
+          <option>Solo</option>
+          <option selected>Studio</option>
+          <option>Studio plus</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-note">Note to client</label>
+        <textarea class="input" id="f-note" name="note" rows="3"></textarea>
+      </div>
+      <fieldset>
+        <legend>Payment terms</legend>
+        <label class="choice" for="terms-14"><input type="radio" id="terms-14" name="terms" value="14" checked> 14 days</label>
+        <label class="choice" for="terms-30"><input type="radio" id="terms-30" name="terms" value="30"> 30 days</label>
+      </fieldset>
+      <p class="hint">Labels stay above the field. Do not rely on the input's placeholder attribute as a label.</p>
+    </section>
+
+    <section id="cards" data-od-id="cards">
+      <h2>Cards</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="card__body">
+            <h3>Default card</h3>
+            <p class="hint">A surface with a border and consistent padding.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__media">Media slot</div>
+          <div class="card__body">
+            <h3>With media</h3>
+            <p class="hint">Use a real image or a labelled slot, never a fake screenshot.</p>
+          </div>
+        </div>
+        <div class="card card--raised">
+          <div class="card__body">
+            <h3>With footer action</h3>
+            <p class="hint">Footer actions align to the end of the card.</p>
+          </div>
+          <div class="card__footer">
+            <span class="hint">Studio plan</span>
+            <button type="button" class="btn btn--secondary btn--sm">Manage</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>Ledgerly design system · primitives only, no product-specific layouts.</footer>
+</div>
+</body>
+</html>

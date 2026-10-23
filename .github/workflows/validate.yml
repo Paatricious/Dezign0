@@ -17,3 +17,7 @@ jobs:
         with:
           node-version: 22
       - run: npm run check
+      - name: Check capability manifest and docs
+        run: node scripts/check-docs.mjs
+      - name: CLI smoke test
+        run: node bin/dezign0.test.mjs

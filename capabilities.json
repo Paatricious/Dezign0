@@ -1,0 +1,101 @@
+{
+  "schema": "dezign0/capabilities/v1",
+  "name": "dezign0",
+  "version": "0.8.0",
+  "node": ">=18",
+  "skills": {
+    "count": 13,
+    "names": [
+      "code-handoff",
+      "critique",
+      "design-brief",
+      "design-language",
+      "design-system-extract",
+      "figma-context",
+      "figma-to-code",
+      "frontend-design",
+      "media-brief",
+      "redesign",
+      "state-board",
+      "template-start",
+      "visual-review"
+    ]
+  },
+  "tools": {
+    "count": 5,
+    "names": [
+      "dezign0_lint",
+      "dezign0_measure",
+      "dezign0_doctor",
+      "dezign0_design_systems",
+      "dezign0_addons"
+    ]
+  },
+  "adapters": {
+    "count": 12,
+    "ids": [
+      "aider",
+      "claude",
+      "cline",
+      "codex",
+      "cursor",
+      "dsh",
+      "files",
+      "gemini",
+      "opencode",
+      "openhands",
+      "roo",
+      "windsurf"
+    ]
+  },
+  "designLanguages": {
+    "count": 152,
+    "pack": "dezign0-design-languages",
+    "version": "0.2.1"
+  },
+  "addons": {
+    "count": 13,
+    "ids": [
+      "template-deck",
+      "template-live-dashboard",
+      "template-mobile-prototype",
+      "figma-bridge",
+      "handoff-contract",
+      "handoff-react",
+      "handoff-next",
+      "handoff-vue",
+      "review-checklist",
+      "review-a11y",
+      "review-report-template",
+      "media-image-prompts",
+      "media-video-storyboards"
+    ]
+  },
+  "commands": {
+    "count": 8,
+    "names": [
+      "lint",
+      "measure",
+      "audit",
+      "doctor",
+      "systems",
+      "addons",
+      "new",
+      "export"
+    ]
+  },
+  "compatibility": {
+    "core": "0.8.0",
+    "addonPack": {
+      "name": "dezign0-design-languages",
+      "version": "0.2.1"
+    },
+    "kitSchema": 1,
+    "node": ">=18",
+    "exitCodes": {
+      "ok": 0,
+      "findings": 1,
+      "usage": 2
+    }
+  }
+}

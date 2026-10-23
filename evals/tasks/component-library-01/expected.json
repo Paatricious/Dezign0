@@ -1,0 +1,31 @@
+{
+  "schema": "dezign0/eval-task/v1",
+  "id": "component-library-01",
+  "profile": "component-library",
+  "title": "Component library fixture page",
+  "artifact": "components.html",
+  "a11y": true,
+  "interactive": true,
+  "motion": true,
+  "structure": { "minBytes": 5500 },
+  "mustHave": [
+    { "id": "root", "pattern": ":root\\s*\\{", "description": "Single token layer in :root" },
+    { "id": "accent", "pattern": "--accent\\s*:", "description": "Accent token declared" },
+    { "id": "tokens", "pattern": "var\\(--", "min": 15, "description": "Components consume tokens" },
+    { "id": "buttons-section", "pattern": "id\\s*=\\s*[\"']buttons[\"']", "description": "Buttons section" },
+    { "id": "inputs-section", "pattern": "id\\s*=\\s*[\"']inputs[\"']", "description": "Inputs section" },
+    { "id": "cards-section", "pattern": "id\\s*=\\s*[\"']cards[\"']", "description": "Cards section" },
+    { "id": "button-count", "pattern": "<button[\\s>]", "min": 8, "description": "Eight or more button examples" },
+    { "id": "disabled", "pattern": ":disabled", "description": "Disabled state styles" },
+    { "id": "invalid", "pattern": "aria-invalid\\s*=\\s*[\"']true[\"']", "description": "Invalid field state" },
+    { "id": "focus", "pattern": ":focus-visible", "description": "Visible keyboard focus" },
+    { "id": "reduced", "pattern": "prefers-reduced-motion", "description": "Reduced-motion handling" },
+    { "id": "sections", "pattern": "<h2[\\s>]", "min": 3, "description": "One heading per component section" }
+  ],
+  "forbidden": [
+    { "id": "placeholder", "pattern": "lorem ipsum|your (?:text|content) here", "description": "No placeholder copy" },
+    { "id": "todos", "pattern": "\\bTODO\\b|\\bFIXME\\b", "description": "No unfinished markers" },
+    { "id": "deadlinks", "pattern": "href\\s*=\\s*[\"']#[\"']", "description": "No dead links" },
+    { "id": "invented", "pattern": "trusted by\\s+\\d|logoipsum", "description": "No fake social proof" }
+  ]
+}

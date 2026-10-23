@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Habit tracker</title>
+<style>
+  :root {
+    --bg: #f6f3ec;
+    --surface: #fffdf8;
+    --fg: #211f1a;
+    --muted: #5c574c;
+    --border: #d9d2c3;
+    --accent: #2f5d50;
+    --accent-on: #ffffff;
+    --success: #2f7d4f;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-6: 24px;
+    --radius: 12px;
+    --text-sm: 14px;
+    --text-base: 16px;
+    --text-lg: 22px;
+    --font-body: Georgia, "Times New Roman", serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: 1.5;
+  }
+  header, main, footer { max-width: 640px; margin: 0 auto; padding-inline: var(--space-4); }
+  header { padding-top: var(--space-6); }
+  h1 { font-size: var(--text-lg); margin: 0 0 var(--space-1); }
+  .sub { color: var(--muted); font-size: var(--text-sm); margin: 0 0 var(--space-4); }
+  #status { font-size: var(--text-sm); color: var(--muted); margin: 0 0 var(--space-3); }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+  .habit {
+    display: flex; align-items: center; gap: var(--space-3);
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: var(--space-3) var(--space-4);
+  }
+  .habit .name { flex: 1 1 auto; min-width: 0; }
+  .habit .streak { color: var(--muted); font-size: var(--text-sm); }
+  button {
+    font: inherit; cursor: pointer; min-height: 44px;
+    border-radius: var(--radius); border: 1px solid var(--border);
+    background: var(--surface); color: var(--fg);
+    padding: var(--space-2) var(--space-3);
+    transition: background-color 120ms ease, color 120ms ease;
+  }
+  button[aria-pressed="true"] { background: var(--success); border-color: var(--success); color: var(--accent-on); }
+  #add-form { display: flex; gap: var(--space-2); margin: var(--space-4) 0; flex-wrap: wrap; }
+  #add-form label { flex: 1 1 100%; font-size: var(--text-sm); color: var(--muted); }
+  #habit-name { flex: 1 1 220px; min-height: 44px; font: inherit; padding: var(--space-2); border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); color: var(--fg); }
+  #empty { background: var(--surface); border: 1px dashed var(--border); border-radius: var(--radius); padding: var(--space-4); color: var(--muted); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (max-width: 480px) {
+    .habit { flex-wrap: wrap; }
+    .habit .streak { order: 3; width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+  footer { padding-block: var(--space-6); font-size: var(--text-sm); color: var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Today's habits</h1>
+  <p class="sub">Small repetitions, kept honest. Four habits, one day at a time.</p>
+</header>
+<main>
+  <p id="status" aria-live="polite">0 of 4 done today</p>
+  <p id="empty" hidden>No habits yet. Add one below to start a streak.</p>
+  <ul id="habits">
+    <li class="habit" data-id="water">
+      <span class="name">Drink water</span>
+      <span class="streak">4 of 7 days</span>
+      <button type="button" aria-pressed="false">Mark done</button>
+    </li>
+    <li class="habit" data-id="walk">
+      <span class="name">Walk 20 minutes</span>
+      <span class="streak">3 of 7 days</span>
+      <button type="button" aria-pressed="false">Mark done</button>
+    </li>
+    <li class="habit" data-id="read">
+      <span class="name">Read 10 pages</span>
+      <span class="streak">5 of 7 days</span>
+      <button type="button" aria-pressed="false">Mark done</button>
+    </li>
+    <li class="habit" data-id="stretch">
+      <span class="name">Stretch</span>
+      <span class="streak">2 of 7 days</span>
+      <button type="button" aria-pressed="false">Mark done</button>
+    </li>
+  </ul>
+  <form id="add-form">
+    <label for="habit-name">New habit</label>
+    <input id="habit-name" name="habit" autocomplete="off" required>
+    <button type="submit">Add habit</button>
+  </form>
+</main>
+<footer>Streaks reset at local midnight. Data stays in this browser.</footer>
+<script>
+  (function () {
+    var STORAGE_KEY = "habit-tracker-v1";
+    var list = document.getElementById("habits");
+    var status = document.getElementById("status");
+    var empty = document.getElementById("empty");
+    var form = document.getElementById("add-form");
+    var input = document.getElementById("habit-name");
+
+    function state() {
+      var done = {};
+      list.querySelectorAll(".habit").forEach(function (row) {
+        var button = row.querySelector("button");
+        if (button.getAttribute("aria-pressed") === "true") done[row.dataset.id] = true;
+      });
+      return done;
+    }
+    function save() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state())); } catch (error) {}
+    }
+    function load() {
+      var saved = {};
+      try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch (error) { saved = {}; }
+      list.querySelectorAll(".habit").forEach(function (row) {
+        var button = row.querySelector("button");
+        var isDone = Boolean(saved[row.dataset.id]);
+        button.setAttribute("aria-pressed", String(isDone));
+        button.textContent = isDone ? "Done today" : "Mark done";
+      });
+      refresh();
+    }
+    function refresh() {
+      var rows = list.querySelectorAll(".habit");
+      var total = rows.length;
+      var done = list.querySelectorAll('button[aria-pressed="true"]').length;
+      status.textContent = done + " of " + total + " done today";
+      empty.hidden = total > 0;
+    }
+    list.addEventListener("click", function (event) {
+      var button = event.target.closest("button");
+      if (!button) return;
+      var next = button.getAttribute("aria-pressed") !== "true";
+      button.setAttribute("aria-pressed", String(next));
+      button.textContent = next ? "Done today" : "Mark done";
+      save();
+      refresh();
+    });
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var name = input.value.trim();
+      if (!name) return;
+      var row = document.createElement("li");
+      row.className = "habit";
+      row.dataset.id = name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+      var label = document.createElement("span");
+      label.className = "name";
+      label.textContent = name;
+      var streak = document.createElement("span");
+      streak.className = "streak";
+      streak.textContent = "0 of 7 days";
+      var button = document.createElement("button");
+      button.type = "button";
+      button.setAttribute("aria-pressed", "false");
+      button.textContent = "Mark done";
+      row.append(label, streak, button);
+      list.append(row);
+      input.value = "";
+      input.focus();
+      save();
+      refresh();
+    });
+    load();
+  })();
+</script>
+</body>
+</html>

@@ -1,11 +1,12 @@
 # Architecture
 
 Dezign0 is a design capability layer, not a desktop application. It has three
-layers and an optional fourth.
+content layers, an interface layer and an optional studio.
 
 ```text
 Design OS          the rules, process, templates, skills and tools
-Adapters           installers and native plugins for agent harnesses
+Interfaces         CLI, MCP server, GitHub Action, native plugins
+Adapters           installers for agent harnesses
 Projects           a standard folder per design deliverable
 Studio (planned)   local browser UI for preview, library, comments and versions
 ```
@@ -101,7 +102,7 @@ browser. A first version can be a single-page app over the project folder.
 | Phase | Scope | Effort |
 |---|---|---|
 | Current | Kit, installer, plugin, docs, npm packaging | done |
-| 1 | `dezign0` CLI (`init`, `add`, `new`, `measure`) | 3–5 days |
+| 1 | `dezign0` CLI, MCP server, GitHub Action, scaffold, evals | done |
 | 2 | Studio v1: preview, library, comments, versions | 1–2 weeks |
 | 3 | Brand extraction, reference browser, multi-agent critic, export | 2–4 weeks |
 

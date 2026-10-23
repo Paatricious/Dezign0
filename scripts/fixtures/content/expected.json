@@ -1,0 +1,107 @@
+{
+  "description": "Self-test fixtures for content-lint. Each fixture declares the finding ids it must produce and the ids it must never produce; expectClean fixtures must produce no findings at all. Run: node design-os/tools/content-lint.mjs --self-test",
+  "fixtures": [
+    {
+      "file": "clean-interface.html",
+      "expectClean": true,
+      "mustInclude": [],
+      "mustExclude": [
+        "copy-lorem",
+        "copy-fake-metric",
+        "ai-cream-terracotta-serif",
+        "ai-card-kit",
+        "copy-cta-inconsistent",
+        "realism-placeholder-image"
+      ]
+    },
+    {
+      "file": "clean-technical-doc.html",
+      "expectClean": true,
+      "mustInclude": [],
+      "mustExclude": [
+        "copy-generic-phrase",
+        "ai-near-black-acid",
+        "ai-mono-micro",
+        "realism-placeholder-identity",
+        "copy-todo",
+        "copy-fake-metric"
+      ]
+    },
+    {
+      "file": "ai-cream-terracotta.html",
+      "mustInclude": [
+        "ai-cream-terracotta-serif",
+        "ai-eyebrow-caps",
+        "ai-middot-meta",
+        "ai-mono-micro",
+        "ai-arrow-cta",
+        "ai-card-kit",
+        "copy-generic-phrase",
+        "ai-emdash-density"
+      ],
+      "mustExclude": [
+        "copy-lorem",
+        "copy-fake-metric",
+        "realism-placeholder-identity"
+      ]
+    },
+    {
+      "file": "ai-night-acid.html",
+      "mustInclude": [
+        "ai-near-black-acid",
+        "ai-mono-micro",
+        "ai-arrow-cta",
+        "ai-eyebrow-caps",
+        "ai-middot-meta"
+      ],
+      "mustExclude": [
+        "ai-cream-terracotta-serif",
+        "copy-lorem",
+        "realism-placeholder-link"
+      ]
+    },
+    {
+      "file": "copy-failures.html",
+      "mustInclude": [
+        "copy-lorem",
+        "copy-filler",
+        "copy-fake-metric",
+        "copy-todo",
+        "realism-placeholder-identity",
+        "realism-placeholder-image",
+        "realism-alt-unhelpful",
+        "realism-placeholder-link",
+        "copy-vague-cta",
+        "copy-cta-inconsistent",
+        "copy-error-vague",
+        "copy-empty-thin",
+        "copy-generic-cta",
+        "copy-cta-casing",
+        "copy-sentence-long",
+        "ai-emdash-density"
+      ],
+      "mustExclude": [
+        "ai-cream-terracotta-serif",
+        "ai-near-black-acid",
+        "ai-card-kit",
+        "copy-generic-phrase"
+      ]
+    },
+    {
+      "file": "false-positive-guards.html",
+      "expectClean": true,
+      "mustInclude": [],
+      "mustExclude": [
+        "ai-cream-terracotta-serif",
+        "ai-card-kit",
+        "ai-arrow-cta",
+        "ai-middot-meta",
+        "copy-generic-phrase",
+        "realism-placeholder-identity",
+        "realism-placeholder-link",
+        "realism-placeholder-image",
+        "copy-todo"
+      ]
+    }
+  ]
+}

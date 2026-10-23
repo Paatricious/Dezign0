@@ -1,0 +1,30 @@
+{
+  "schema": "dezign0/eval-task/v1",
+  "id": "email-01",
+  "profile": "email",
+  "title": "Product update email",
+  "artifact": "email.html",
+  "a11y": true,
+  "interactive": false,
+  "motion": false,
+  "structure": { "minBytes": 3000, "viewport": false },
+  "mustHave": [
+    { "id": "tables", "pattern": "<table[\\s>]", "min": 2, "description": "Nested table layout" },
+    { "id": "presentation", "pattern": "role\\s*=\\s*[\"']presentation[\"']", "min": 1, "description": "Layout tables marked presentational" },
+    { "id": "inline", "pattern": "style\\s*=\\s*[\"'][^\"]*", "min": 10, "description": "Inline styles for email clients" },
+    { "id": "width600", "pattern": "width\\s*:\\s*600px|width\\s*=\\s*[\"']600[\"']", "description": "600px email width" },
+    { "id": "preheader", "pattern": "preheader", "description": "Hidden preheader line" },
+    { "id": "unsubscribe", "pattern": "unsubscribe", "description": "Unsubscribe link" },
+    { "id": "mso", "pattern": "\\[if mso\\]", "description": "Outlook conditional comment" },
+    { "id": "mobile", "pattern": "@media\\s*\\(", "description": "Mobile media query" },
+    { "id": "h1", "pattern": "<h1[\\s>]", "description": "Headline" }
+  ],
+  "forbidden": [
+    { "id": "script", "pattern": "<script[\\s>]", "description": "No scripts in email" },
+    { "id": "stylesheet", "pattern": "<link[^>]+stylesheet", "description": "No external stylesheet" },
+    { "id": "remote-images", "pattern": "<img[^>]+src\\s*=\\s*[\"']https?:", "description": "No remote images" },
+    { "id": "placeholder", "pattern": "lorem ipsum|your (?:text|content) here", "description": "No placeholder copy" },
+    { "id": "todos", "pattern": "\\bTODO\\b|\\bFIXME\\b", "description": "No unfinished markers" },
+    { "id": "deadlinks", "pattern": "href\\s*=\\s*[\"']#[\"']", "description": "No dead links" }
+  ]
+}

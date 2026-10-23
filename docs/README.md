@@ -15,6 +15,8 @@ OpenChamber/OpenCode plugin, installers for other harnesses, and review tools.
    limit.
 5. **[figma.md](figma.md)** — optional Figma MCP bridge; no token storage or paid
    dependency.
+6. **[ENHANCEMENT-RESEARCH.md](ENHANCEMENT-RESEARCH.md)** — researched feature and
+   integration options, prioritized, with sources and non-goals.
 
 ## Current pieces
 
@@ -24,7 +26,21 @@ OpenChamber/OpenCode plugin, installers for other harnesses, and review tools.
 - **Linter:** `design-os/tools/design-lint.mjs`
 - **Measurement:** `design-os/tools/measure-artifact.mjs`
 
+## Interfaces
+
+- **CLI:** `bin/dezign0.mjs` — lint, measure, audit, doctor, systems, addons,
+  new, export.
+- **MCP server:** `mcp/server.mjs` — seven stdio tools.
+- **GitHub Action:** `.github/actions/dezign0-review`.
+- **Evals:** `evals/run.mjs` — WITH/WITHOUT delta.
+
+## Content packs and addons
+
+- **Design languages:** 152 packages in the optional `design-languages` pack.
+- **Templates, Figma bridge, handoff, review and media:** 13 addon entries.
+- **Brand extraction:** `design-system-extract` skill plus `ds-validate`.
+
 ## What is not built yet
 
-The `dezign0` CLI, local studio, content packs and brand-extraction workflow.
-[ARCHITECTURE.md](ARCHITECTURE.md) sequences them.
+The `dezign0` CLI and local studio. [ARCHITECTURE.md](ARCHITECTURE.md) sequences
+them.

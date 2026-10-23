@@ -1,0 +1,29 @@
+{
+  "schema": "dezign0/eval-task/v1",
+  "id": "landing-01",
+  "profile": "landing",
+  "title": "Landing page for an invoicing tool",
+  "artifact": "index.html",
+  "a11y": true,
+  "interactive": true,
+  "motion": false,
+  "structure": { "minBytes": 4500 },
+  "mustHave": [
+    { "id": "main", "pattern": "<main[\\s>]", "description": "Main landmark" },
+    { "id": "nav", "pattern": "<nav[\\s>]", "description": "Header navigation" },
+    { "id": "footer", "pattern": "<footer[\\s>]", "description": "Footer" },
+    { "id": "h1", "pattern": "<h1[\\s>]", "description": "Single hero headline" },
+    { "id": "cta", "pattern": "href\\s*=\\s*[\"']#start[\"']", "description": "Primary CTA to #start" },
+    { "id": "how", "pattern": "id\\s*=\\s*[\"']how-it-works[\"']", "description": "How-it-works section" },
+    { "id": "pricing", "pattern": "id\\s*=\\s*[\"']pricing[\"']", "description": "Pricing section" },
+    { "id": "faq", "pattern": "id\\s*=\\s*[\"']faq[\"']", "description": "FAQ section" },
+    { "id": "svg", "pattern": "<svg[\\s>]", "description": "Real inline SVG visual" },
+    { "id": "accent", "pattern": "--accent\\s*:", "description": "Declared accent token" }
+  ],
+  "forbidden": [
+    { "id": "placeholder", "pattern": "lorem ipsum|your (?:text|content|headline) here", "description": "No placeholder copy" },
+    { "id": "todos", "pattern": "\\bTODO\\b|\\bFIXME\\b", "description": "No unfinished markers" },
+    { "id": "deadlinks", "pattern": "href\\s*=\\s*[\"']#[\"']", "description": "No dead # links" },
+    { "id": "invented", "pattern": "trusted by\\s+\\d|\\b\\d{1,3}(?:\\.\\d+)?%\\s*(?:uptime|faster|conversion)|logoipsum", "description": "No invented social proof or fake logos" }
+  ]
+}

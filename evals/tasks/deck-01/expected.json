@@ -1,0 +1,27 @@
+{
+  "schema": "dezign0/eval-task/v1",
+  "id": "deck-01",
+  "profile": "deck",
+  "title": "Seven-slide investor update deck",
+  "artifact": "deck.html",
+  "a11y": true,
+  "interactive": true,
+  "motion": true,
+  "structure": { "minBytes": 6000 },
+  "mustHave": [
+    { "id": "main", "pattern": "<main[\\s>]", "description": "Main landmark" },
+    { "id": "h1", "pattern": "<h1[\\s>]", "description": "Title slide headline" },
+    { "id": "slides", "pattern": "class\\s*=\\s*[\"'][^\"']*\\bslide\\b", "min": 7, "description": "At least seven slide elements" },
+    { "id": "takeaways", "pattern": "<h2[\\s>]", "min": 6, "description": "Takeaway headline per content slide" },
+    { "id": "print", "pattern": "@media\\s+print", "description": "Print stylesheet for PDF" },
+    { "id": "keyboard", "pattern": "addEventListener\\s*\\(\\s*[\"']keydown[\"']|onkeydown", "description": "Keyboard navigation" },
+    { "id": "counter", "pattern": "data-slide|aria-live\\s*=", "description": "Slide counter or live position" },
+    { "id": "footer", "pattern": "<footer[\\s>]", "description": "Footer with company and page number" }
+  ],
+  "forbidden": [
+    { "id": "placeholder", "pattern": "lorem ipsum|your (?:text|content) here", "description": "No placeholder copy" },
+    { "id": "todos", "pattern": "\\bTODO\\b|\\bFIXME\\b", "description": "No unfinished markers" },
+    { "id": "deadlinks", "pattern": "href\\s*=\\s*[\"']#[\"']", "description": "No dead links" },
+    { "id": "fake-proof", "pattern": "trusted by\\s+\\d|logoipsum", "description": "No invented social proof or fake logos" }
+  ]
+}

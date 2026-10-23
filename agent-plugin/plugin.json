@@ -1,0 +1,23 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dezign0",
+  "version": "0.8.0",
+  "description": "Design OS, craft rules, thirteen workflow skills and review tools for AI coding agents, packaged as a portable Agent Plugin with a local stdio MCP server.",
+  "author": {
+    "name": "Dezign0",
+    "url": "https://github.com/Paatricious/Dezign0"
+  },
+  "homepage": "https://github.com/Paatricious/Dezign0#readme",
+  "repository": "https://github.com/Paatricious/Dezign0",
+  "license": "Apache-2.0",
+  "keywords": [
+    "design",
+    "design-system",
+    "design-os",
+    "ui",
+    "frontend",
+    "accessibility",
+    "mcp",
+    "agent-skills"
+  ]
+}

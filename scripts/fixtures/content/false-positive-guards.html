@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Edge cases — false-positive guards</title>
+<style>
+  :root { --paper: #f4f1ea; --ink: #201d1a; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: ui-sans-serif, system-ui, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 40px 20px; }
+  .card { border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); padding: 20px; }
+  .card-secondary { border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); padding: 12px; }
+  .form-error { color: #8a2c1f; }
+  .empty-state { padding: 24px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Edge cases</h1>
+
+  <!-- A cream surface alone is not the cluster: no serif, no terracotta. -->
+  <p>The paper stock is warm. Nothing else about this page is the generated default.</p>
+
+  <p class="meta">v2 · 2026</p>
+
+  <div class="card">Only two cards exist, so this is not a uniform card kit.</div>
+  <div class="card-secondary">Two radii that match by token are still not a kit of three or more.</div>
+
+  <p><a class="btn" href="/pricing">View pricing →</a></p>
+
+  <p><a href="#">Terms</a> and <a href="/privacy">Privacy</a> are ordinary links.</p>
+
+  <img src="./icon.svg">
+  <img src="./spacer.gif" alt="">
+
+  <p class="form-error" role="alert">Card declined. Try another card.</p>
+
+  <div class="empty-state">
+    <h2>No invoices yet</h2>
+    <p>Invoices you send appear here with their payment status.</p>
+    <a class="btn" href="/invoices/new">Create invoice</a>
+  </div>
+
+  <p>Unlock the account with the recovery key. Elevate permissions only for the service account. The flag empowers users to opt out.</p>
+
+  <pre><code>// TODO: replace the fixture token
+unlock()
+seamlessly()
+</code></pre>
+
+  <p data-no-lint>TODO: Lorem ipsum dolor sit amet. Acme Corp, John Doe, 555-0142, hello@example.com.</p>
+
+  <p>Short sentences do not trigger the sentence-length rule. Each one carries a single idea.</p>
+</main>
+</body>
+</html>

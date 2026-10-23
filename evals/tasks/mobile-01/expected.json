@@ -1,0 +1,29 @@
+{
+  "schema": "dezign0/eval-task/v1",
+  "id": "mobile-01",
+  "profile": "mobile",
+  "title": "Mobile ride receipt screen",
+  "artifact": "index.html",
+  "a11y": true,
+  "interactive": true,
+  "motion": true,
+  "structure": { "minBytes": 3500 },
+  "mustHave": [
+    { "id": "main", "pattern": "<main[\\s>]", "description": "Main landmark" },
+    { "id": "h1", "pattern": "<h1[\\s>]", "description": "Screen title" },
+    { "id": "safe-area", "pattern": "env\\(\\s*safe-area-inset-bottom", "description": "Bottom safe-area handling" },
+    { "id": "targets", "pattern": "min-height\\s*:\\s*48px", "description": "48px touch targets" },
+    { "id": "pinned", "pattern": "position\\s*:\\s*(?:sticky|fixed)", "description": "Pinned bottom actions" },
+    { "id": "buttons", "pattern": "<button[\\s>]", "min": 3, "description": "Real action buttons" },
+    { "id": "radios", "pattern": "type\\s*=\\s*[\"']radio[\"']", "min": 3, "description": "Tip selector radios" },
+    { "id": "focus", "pattern": ":focus-visible", "description": "Visible keyboard focus" },
+    { "id": "reduced", "pattern": "prefers-reduced-motion", "description": "Reduced-motion handling" },
+    { "id": "tokens", "pattern": "var\\(--", "description": "Consumes CSS custom properties" }
+  ],
+  "forbidden": [
+    { "id": "tiny-type", "pattern": "font-size\\s*:\\s*(?:[0-9]|10|11)px", "description": "No type below 12px" },
+    { "id": "page-overflow", "pattern": "overflow-x\\s*:\\s*(?:hidden|clip)", "description": "No page-level overflow hiding" },
+    { "id": "placeholder", "pattern": "lorem ipsum|your (?:text|content) here", "description": "No placeholder copy" },
+    { "id": "deadlinks", "pattern": "href\\s*=\\s*[\"']#[\"']", "description": "No dead links" }
+  ]
+}

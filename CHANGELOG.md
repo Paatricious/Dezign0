@@ -3,6 +3,28 @@
 All notable changes are recorded here. The format follows Keep a Changelog and
 the project uses semantic versioning.
 
+## [0.8.0] - 2026-10-23
+
+### Added
+
+- `dezign0` CLI: lint, measure, audit, doctor, systems, addons, new, export;
+  JSON envelopes and stable exit codes.
+- GitHub composite action with sticky review output, screenshots and P0 gate.
+- MCP stdio server with seven tools and an Agent Plugins 1.0 package.
+- Optional axe-core, WCAG 2.2 mapping, target size, non-text contrast, reflow,
+  text spacing, forced-colors, print, runtime and keyboard/ARIA checks.
+- Token export to DTCG, Tailwind v4, shadcn, SwiftUI, Compose and Flutter;
+  token lint and design-system package validation.
+- AI-tell and content lint.
+- Project scaffold, annotations, review bundle and ADR template.
+- Eval harness with WITH/WITHOUT delta.
+- `capabilities.json`, doc consistency check and expanded CI smoke suite.
+
+### Changed
+
+- Core 0.8.0 pairs with addon pack 0.2.1.
+- CLI/MCP tests, content fixtures and evals are in the expanded check suite.
+
 ## [0.7.1] - 2026-10-23
 
 ### Changed

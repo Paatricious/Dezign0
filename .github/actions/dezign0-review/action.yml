@@ -1,0 +1,204 @@
+name: Dezign0 design review
+description: >
+  Lint a design artifact with the Dezign0 CLI, run rendered measurement at
+  desktop, mobile and 145x188 widget viewports with accessibility checks,
+  upload screenshots and publish a sticky-comment body to the job summary.
+author: Dezign0
+branding:
+  icon: layout
+  color: purple
+
+inputs:
+  artifact:
+    description: Artifact path to review, relative to working-directory (HTML, SVG or URL).
+    required: true
+  working-directory:
+    description: Project directory that contains the artifact and Playwright.
+    required: false
+    default: "."
+  viewports:
+    description: Comma-separated WIDTHxHEIGHT list for rendered measurement.
+    required: false
+    default: "1440x900,390x844,145x188"
+  screenshots-directory:
+    description: Directory for full-page screenshots, relative to working-directory.
+    required: false
+    default: ".dezign0/screenshots"
+  node-version:
+    description: Node.js version used by the CLI.
+    required: false
+    default: "20"
+  install-playwright:
+    description: Install Playwright and Chromium in the project before measuring. Set false to lint only.
+    required: false
+    default: "true"
+  fail-on-findings:
+    description: Fail the job when lint or measurement exits non-zero. Set false to report only.
+    required: false
+    default: "true"
+  dezign0-cli:
+    description: Path to a Dezign0 checkout, package root or bin/dezign0.mjs. Empty auto-detects the workspace.
+    required: false
+    default: ""
+  dezign0-version:
+    description: npm dist-tag or version used only when no local CLI is found.
+    required: false
+    default: "latest"
+  title:
+    description: Heading for the sticky-comment body.
+    required: false
+    default: "Dezign0 design review"
+
+outputs:
+  comment-body:
+    description: Markdown body with the dezign0-review marker for a sticky PR comment.
+    value: ${{ steps.summary.outputs.comment-body }}
+  body-file:
+    description: Path to a file containing the sticky-comment body.
+    value: ${{ steps.summary.outputs.body-file }}
+  verdict:
+    description: Pass, Findings or Error.
+    value: ${{ steps.summary.outputs.verdict }}
+  lint-exit-code:
+    description: Exit code from `dezign0 lint --strict`.
+    value: ${{ steps.lint.outputs.exit-code }}
+  measure-exit-code:
+    description: Exit code from `dezign0 measure --a11y`.
+    value: ${{ steps.measure.outputs.exit-code }}
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Node.js
+      uses: actions/setup-node@v5
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - name: Resolve the Dezign0 CLI
+      id: cli
+      shell: bash
+      env:
+        INPUT_CLI: ${{ inputs.dezign0-cli }}
+        INPUT_VERSION: ${{ inputs.dezign0-version }}
+        INPUT_WORKDIR: ${{ inputs.working-directory }}
+      run: |
+        set -euo pipefail
+        cli=""
+        workdir="${INPUT_WORKDIR:-.}"
+        if [ -n "${INPUT_CLI}" ]; then
+          if [ -d "${INPUT_CLI}" ] && [ -f "${INPUT_CLI}/bin/dezign0.mjs" ]; then
+            cli="${INPUT_CLI}/bin/dezign0.mjs"
+          elif [ -f "${INPUT_CLI}" ]; then
+            cli="${INPUT_CLI}"
+          fi
+        fi
+        if [ -z "${cli}" ] && [ -f "${GITHUB_WORKSPACE}/bin/dezign0.mjs" ]; then
+          cli="${GITHUB_WORKSPACE}/bin/dezign0.mjs"
+        fi
+        if [ -z "${cli}" ] && [ -f "${workdir}/node_modules/dezign0/bin/dezign0.mjs" ]; then
+          cli="${workdir}/node_modules/dezign0/bin/dezign0.mjs"
+        fi
+        if [ -z "${cli}" ]; then
+          echo "No local Dezign0 CLI found; installing dezign0@${INPUT_VERSION} into RUNNER_TEMP."
+          prefix="${RUNNER_TEMP}/dezign0-cli"
+          npm install --prefix "${prefix}" --no-save --no-package-lock --no-audit --no-fund "dezign0@${INPUT_VERSION}" >/dev/null
+          cli="${prefix}/node_modules/dezign0/bin/dezign0.mjs"
+        fi
+        if [ ! -f "${cli}" ]; then
+          echo "::error::Dezign0 CLI not found. Pass dezign0-cli or use a release that ships bin/dezign0.mjs."
+          exit 1
+        fi
+        echo "path=${cli}" >> "${GITHUB_OUTPUT}"
+        node "${cli}" --version
+
+    - name: Install Playwright (optional)
+      if: ${{ inputs.install-playwright == 'true' }}
+      shell: bash
+      env:
+        INPUT_WORKDIR: ${{ inputs.working-directory }}
+      run: |
+        set -euo pipefail
+        cd "${INPUT_WORKDIR:-.}"
+        npm install --no-save --no-package-lock --no-audit --no-fund playwright
+        if [ "${RUNNER_OS:-}" = "Linux" ]; then
+          npx --no-install playwright install --with-deps chromium
+        else
+          npx --no-install playwright install chromium
+        fi
+
+    - name: Static lint (strict)
+      id: lint
+      shell: bash
+      env:
+        CLI: ${{ steps.cli.outputs.path }}
+        INPUT_ARTIFACT: ${{ inputs.artifact }}
+        INPUT_WORKDIR: ${{ inputs.working-directory }}
+      run: |
+        set +e
+        cd "${INPUT_WORKDIR:-.}"
+        node "${CLI}" lint "${INPUT_ARTIFACT}" --strict --json \
+          > "${RUNNER_TEMP}/dezign0-lint.json" 2> "${RUNNER_TEMP}/dezign0-lint.err"
+        code=$?
+        echo "exit-code=${code}" >> "${GITHUB_OUTPUT}"
+        echo "--- dezign0 lint --strict (exit ${code}) ---"
+        cat "${RUNNER_TEMP}/dezign0-lint.json" 2>/dev/null | head -c 200000 || true
+        cat "${RUNNER_TEMP}/dezign0-lint.err" >&2 || true
+        exit 0
+
+    - name: Rendered measurement with accessibility
+      id: measure
+      if: ${{ always() }}
+      shell: bash
+      env:
+        CLI: ${{ steps.cli.outputs.path }}
+        INPUT_ARTIFACT: ${{ inputs.artifact }}
+        INPUT_WORKDIR: ${{ inputs.working-directory }}
+        INPUT_VIEWPORTS: ${{ inputs.viewports }}
+        INPUT_SHOTS: ${{ inputs.screenshots-directory }}
+      run: |
+        set +e
+        cd "${INPUT_WORKDIR:-.}"
+        mkdir -p "${INPUT_SHOTS}"
+        node "${CLI}" measure "${INPUT_ARTIFACT}" \
+          --viewports="${INPUT_VIEWPORTS}" --a11y --json --shots="${INPUT_SHOTS}" \
+          > "${RUNNER_TEMP}/dezign0-measure.json" 2> "${RUNNER_TEMP}/dezign0-measure.err"
+        code=$?
+        echo "exit-code=${code}" >> "${GITHUB_OUTPUT}"
+        echo "--- dezign0 measure --a11y (exit ${code}) ---"
+        cat "${RUNNER_TEMP}/dezign0-measure.json" 2>/dev/null | head -c 200000 || true
+        cat "${RUNNER_TEMP}/dezign0-measure.err" >&2 || true
+        exit 0
+
+    - name: Upload screenshots
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: dezign0-review-screenshots
+        path: ${{ inputs.working-directory }}/${{ inputs.screenshots-directory }}
+        if-no-files-found: ignore
+        retention-days: 14
+
+    - name: Write sticky-comment body
+      id: summary
+      if: ${{ always() }}
+      shell: bash
+      env:
+        LINT_JSON: ${{ runner.temp }}/dezign0-lint.json
+        MEASURE_JSON: ${{ runner.temp }}/dezign0-measure.json
+        LINT_EXIT: ${{ steps.lint.outputs.exit-code }}
+        MEASURE_EXIT: ${{ steps.measure.outputs.exit-code }}
+        ARTIFACT: ${{ inputs.artifact }}
+        SHOTS: ${{ inputs.working-directory }}/${{ inputs.screenshots-directory }}
+        TITLE: ${{ inputs.title }}
+      run: node "${{ github.action_path }}/summary.mjs"
+
+    - name: Fail on findings
+      if: ${{ always() && inputs.fail-on-findings == 'true' && (steps.lint.outputs.exit-code != '0' || steps.measure.outputs.exit-code != '0') }}
+      shell: bash
+      env:
+        LINT_EXIT: ${{ steps.lint.outputs.exit-code }}
+        MEASURE_EXIT: ${{ steps.measure.outputs.exit-code }}
+        INPUT_ARTIFACT: ${{ inputs.artifact }}
+      run: |
+        echo "::error title=Dezign0 review::${INPUT_ARTIFACT}: lint exit ${LINT_EXIT}, measure exit ${MEASURE_EXIT}. See the job summary."
+        exit 1

@@ -1,0 +1,29 @@
+{
+  "schema": "dezign0/eval-task/v1",
+  "id": "prototype-01",
+  "profile": "prototype",
+  "title": "Single-screen habit tracker",
+  "artifact": "index.html",
+  "a11y": true,
+  "interactive": true,
+  "motion": true,
+  "structure": { "minBytes": 3000 },
+  "mustHave": [
+    { "id": "main", "pattern": "<main[\\s>]", "description": "Main landmark" },
+    { "id": "heading", "pattern": "<h1[\\s>]", "description": "Page heading" },
+    { "id": "form", "pattern": "<form[\\s>]", "description": "Inline add-habit form" },
+    { "id": "button", "pattern": "<button[\\s>]", "description": "Real buttons" },
+    { "id": "live", "pattern": "aria-live\\s*=", "description": "Live region for state changes" },
+    { "id": "focus", "pattern": ":focus-visible", "description": "Visible keyboard focus" },
+    { "id": "reduced", "pattern": "prefers-reduced-motion", "description": "Reduced-motion handling" },
+    { "id": "storage", "pattern": "localStorage", "description": "Persists habits locally" },
+    { "id": "tokens", "pattern": "var\\(--", "description": "Consumes CSS custom properties" },
+    { "id": "responsive", "pattern": "@media\\s*\\(", "description": "Responsive rule" }
+  ],
+  "forbidden": [
+    { "id": "placeholder", "pattern": "lorem ipsum|your (?:text|content) here", "description": "No placeholder copy" },
+    { "id": "todos", "pattern": "\\bTODO\\b|\\bFIXME\\b", "description": "No unfinished markers" },
+    { "id": "deadlinks", "pattern": "href\\s*=\\s*[\"']#", "description": "No dead links" },
+    { "id": "invented", "pattern": "trusted by\\s+\\d|\\b\\d+(?:\\.\\d+)?\\s*[x\\u00d7]\\s*faster", "description": "No invented social proof" }
+  ]
+}

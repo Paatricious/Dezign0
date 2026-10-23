@@ -9,15 +9,17 @@ On setup, the OpenCode plugin:
 
 - copies the bundled `design-os/` kit to `<project>/.design-os` if it is missing;
 - writes `.design-os/.dezign0-kit.json` (version and file hashes);
-- registers six skills and three tools with OpenCode.
+- registers thirteen skills and five tools with OpenCode.
 
-It does not edit existing source files, run package install scripts, or send
-data anywhere.
+The CLI and MCP server are local entry points over the same tools. The MCP
+server uses stdio only, resolves paths inside the project with `realpath`, and
+makes no network calls. The plugin, CLI and MCP server do not edit existing
+source files, run package install scripts, or send data anywhere.
 
 ## Tools
 
-`dezign0_lint`, `dezign0_measure` and `dezign0_doctor` only read files inside the
-current project. Paths are resolved with `realpath` and rejected if they escape
+`dezign0_lint`, `dezign0_measure`, `dezign0_doctor`, `dezign0_design_systems` and
+`dezign0_addons` only read files inside the current project or the optional pack. Paths are resolved with `realpath` and rejected if they escape
 the project directory. They spawn Node with a fixed script path and arguments;
 there is no shell, so file names cannot inject commands. Lint and measurement
 output is capped and returned to the agent.

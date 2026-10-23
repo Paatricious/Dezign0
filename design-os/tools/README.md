@@ -1,10 +1,17 @@
 # Tools
 
-Two complementary checks:
+The mechanical layer:
 
 - `design-lint.mjs` — static, dependency-free, catches source patterns.
-- `measure-artifact.mjs` — rendered, requires Playwright, catches what only a
-  browser can see: clipped content, actual contrast, type-size count, tab stops.
+- `measure-artifact.mjs` — rendered, requires Playwright, catches clipped
+  content, contrast, type sizes, tab stops, a11y/WCAG, reflow, forced colors,
+  print, runtime and pixel baselines.
+- `content-lint.mjs` — AI tells, copy and content realism.
+- `token-export.mjs` / `token-lint.mjs` — DTCG, Tailwind, shadcn and platform
+  exports plus token discipline.
+- `ds-validate.mjs` — design-system package contract.
+- `scaffold.mjs` / `bundle.mjs` — project scaffold and self-contained review
+  bundle.
 
 Static lint alone cannot see a 375px layout clipping content behind
 `overflow-x: clip`, or a grade numeral failing AA at its rendered size. Use both

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Invoices — Ledgerline</title>
+<style>
+  :root {
+    --surface: #ffffff;
+    --canvas: #f7f8f7;
+    --ink: #16201b;
+    --muted: #5a6660;
+    --accent: #2f6f4e;
+    --border: #e3e6e3;
+    --radius: 8px;
+    --font-body: "Inter", system-ui, sans-serif;
+  }
+  body {
+    margin: 0;
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  main { max-width: 880px; margin: 0 auto; padding: 32px 20px; }
+  h1 { font-size: 28px; margin: 0 0 4px; }
+  .lede { color: var(--muted); margin: 0 0 24px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--border); }
+  .btn {
+    display: inline-block;
+    padding: 9px 14px;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    background: var(--accent);
+    color: #ffffff;
+    font: inherit;
+    text-decoration: none;
+  }
+  .btn-secondary { background: transparent; color: var(--accent); }
+  .form-error { color: #8a2c1f; border-left: 3px solid #8a2c1f; padding-left: 10px; }
+  .empty-state { text-align: center; padding: 32px 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Invoices</h1>
+  <p class="lede">Three invoices are open this month. Two are due within seven days.</p>
+
+  <div class="card">
+    <table>
+      <thead>
+        <tr><th scope="col">Invoice</th><th scope="col">Client</th><th scope="col">Due</th><th scope="col">Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>INV-1041</td><td>Northline Studio</td><td>Oct 24</td><td>$2,400.00</td></tr>
+        <tr><td>INV-1040</td><td>Bracken &amp; Co</td><td>Oct 28</td><td>$960.00</td></tr>
+        <tr><td>INV-1038</td><td>Mira Patel</td><td>Nov 2</td><td>$1,150.00</td></tr>
+      </tbody>
+    </table>
+    <p>In the staging run, the new reminder flow produced 42% fewer clicks (n=12).</p>
+    <a class="btn" href="/invoices/new">Create invoice</a>
+    <a class="btn btn-secondary" href="/settings/reminders">Send reminder</a>
+  </div>
+
+  <div class="card">
+    <h2>Saved views</h2>
+    <p>Views keep the columns and filters you use for one client.</p>
+    <a class="btn btn-secondary" href="/views/new">Compare plans</a>
+  </div>
+
+  <p class="form-error" role="alert">Card declined. Check the card details or try another payment method.</p>
+
+  <div class="empty-state">
+    <h2>No invoices yet</h2>
+    <p>Invoices you send will appear here with their payment status.</p>
+    <a class="btn" href="/invoices/new">Create invoice</a>
+  </div>
+
+  <img src="./assets/invoice-table.webp" alt="Invoice table with three open rows, the oldest marked overdue" width="880" height="320">
+</main>
+</body>
+</html>

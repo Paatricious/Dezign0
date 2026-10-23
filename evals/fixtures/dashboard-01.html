@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support queue — open tickets</title>
+<style>
+  :root {
+    --bg: #f4f2ee;
+    --surface: #ffffff;
+    --fg: #1d1c19;
+    --muted: #5b574e;
+    --border: #d6d0c4;
+    --accent: #245c4a;
+    --accent-on: #ffffff;
+    --success: #2f7d4f;
+    --warn: #8a5a00;
+    --danger: #a33a2a;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --radius: 8px;
+    --text-sm: 13px;
+    --text-base: 15px;
+    --text-lg: 22px;
+    --font-body: "Segoe UI", "Gill Sans", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: var(--text-base); line-height: 1.45; }
+  .shell { max-width: 1120px; margin: 0 auto; padding: var(--space-6) var(--space-4); }
+  header { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
+  h1 { font-size: var(--text-lg); margin: 0; }
+  .summary { color: var(--muted); margin: var(--space-2) 0 var(--space-4); }
+  .filters { display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: end; margin-bottom: var(--space-4); }
+  .field { display: grid; gap: var(--space-1); }
+  .field label { font-size: var(--text-sm); color: var(--muted); }
+  input[type="search"], select {
+    font: inherit; min-height: 40px; padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); color: var(--fg);
+  }
+  input[type="search"] { min-width: 260px; }
+  .table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+  table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+  caption { text-align: left; padding: var(--space-3) var(--space-4); color: var(--muted); font-size: var(--text-sm); }
+  th, td { text-align: left; padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--border); white-space: nowrap; }
+  th { font-size: var(--text-sm); color: var(--muted); font-weight: 600; }
+  tbody tr:last-child td { border-bottom: 0; }
+  .status { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .status-open .dot { background: var(--warn); }
+  .status-waiting .dot { background: var(--muted); }
+  .status-escalated .dot { background: var(--danger); }
+  .status-resolved .dot { background: var(--success); }
+  .row-actions { display: flex; gap: var(--space-2); }
+  button, .link-btn {
+    font: inherit; min-height: 36px; padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--surface); color: var(--fg); text-decoration: none;
+    display: inline-flex; align-items: center;
+  }
+  #empty-state { background: var(--surface); border: 1px dashed var(--border); border-radius: var(--radius); padding: var(--space-6); color: var(--muted); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (max-width: 720px) {
+    th, td { padding: var(--space-2) var(--space-3); }
+    input[type="search"] { min-width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <header>
+    <h1>Support queue</h1>
+    <p class="summary" id="summary" aria-live="polite">8 open tickets, oldest 3 days</p>
+  </header>
+  <main>
+    <section data-od-id="filters">
+      <div class="filters">
+        <div class="field">
+          <label for="search">Search tickets</label>
+          <input type="search" id="search" name="search" placeholder="Customer or ticket id">
+        </div>
+        <div class="field">
+          <label for="priority">Priority</label>
+          <select id="priority" name="priority">
+            <option value="">All priorities</option>
+            <option value="high">High</option>
+            <option value="normal">Normal</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+      </div>
+    </section>
+    <section data-od-id="queue">
+      <div class="table-wrap">
+        <table>
+          <caption>Open tickets sorted by age, oldest first</caption>
+          <thead>
+            <tr>
+              <th scope="col">Ticket</th>
+              <th scope="col">Customer</th>
+              <th scope="col">Priority</th>
+              <th scope="col">Age</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="rows">
+            <tr data-priority="high">
+              <td>T-1042</td><td>Northwind Studio</td><td>High</td><td>3 days</td>
+              <td><span class="status status-escalated"><span class="dot"></span>Escalated</span></td>
+              <td class="row-actions"><button type="button">Assign</button><a class="link-btn" href="/tickets/T-1042">Open</a></td>
+            </tr>
+            <tr data-priority="high">
+              <td>T-1043</td><td>Harbour Dental</td><td>High</td><td>2 days</td>
+              <td><span class="status status-open"><span class="dot"></span>Open</span></td>
+              <td class="row-actions"><button type="button">Assign</button><a class="link-btn" href="/tickets/T-1043">Open</a></td>
+            </tr>
+            <tr data-priority="normal">
+              <td>T-1044</td><td>Field Notes Co</td><td>Normal</td><td>2 days</td>
+              <td><span class="status status-waiting"><span class="dot"></span>Waiting on customer</span></td>
+              <td class="row-actions"><button type="button">Assign</button><a class="link-btn" href="/tickets/T-1044">Open</a></td>
+            </tr>
+            <tr data-priority="normal">
+              <td>T-1045</td><td>Ridgeway Bakery</td><td>Normal</td><td>1 day</td>
+              <td><span class="status status-open"><span class="dot"></span>Open</span></td>
+              <td class="row-actions"><button type="button">Assign</button><a class="link-btn" href="/tickets/T-1045">Open</a></td>
+            </tr>
+            <tr data-priority="low">
+              <td>T-1046</td><td>Alma Interiors</td><td>Low</td><td>1 day</td>
+              <td><span class="status status-waiting"><span class="dot"></span>Waiting on customer</span></td>
+              <td class="row-actions"><button type="button">Assign</button><a class="link-btn" href="/tickets/T-1046">Open</a></td>
+            </tr>
+            <tr data-priority="normal">
+              <td>T-1047</td><td>Kestrel Cycles</td><td>Normal</td><td>6 hours</td>
+              <td><span class="status status-open"><span class="dot"></span>Open</span></td>
+              <td class="row-actions"><button type="button">Assign</button><a class="link-btn" href="/tickets/T-1047">Open</a></td>
+            </tr>
+            <tr data-priority="high">
+              <td>T-1048</td><td>Pine &amp; Co</td><td>High</td><td>4 hours</td>
+              <td><span class="status status-open"><span class="dot"></span>Open</span></td>
+              <td class="row-actions"><button type="button">Assign</button><a class="link-btn" href="/tickets/T-1048">Open</a></td>
+            </tr>
+            <tr data-priority="low">
+              <td>T-1049</td><td>Wren Legal</td><td>Low</td><td>2 hours</td>
+              <td><span class="status status-resolved"><span class="dot"></span>Resolved pending close</span></td>
+              <td class="row-actions"><button type="button">Assign</button><a class="link-btn" href="/tickets/T-1049">Open</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p id="empty-state" hidden>No tickets match these filters. Clear the search or choose a different priority.</p>
+    </section>
+  </main>
+</div>
+<script>
+  (function () {
+    var search = document.getElementById("search");
+    var priority = document.getElementById("priority");
+    var rows = Array.prototype.slice.call(document.querySelectorAll("#rows tr"));
+    var summary = document.getElementById("summary");
+    var empty = document.getElementById("empty-state");
+
+    function apply() {
+      var query = search.value.trim().toLowerCase();
+      var level = priority.value;
+      var visible = 0;
+      rows.forEach(function (row) {
+        var matchesText = row.textContent.toLowerCase().indexOf(query) !== -1;
+        var matchesLevel = !level || row.dataset.priority === level;
+        var show = matchesText && matchesLevel;
+        row.hidden = !show;
+        if (show) visible += 1;
+      });
+      empty.hidden = visible !== 0;
+      summary.textContent = visible + " open " + (visible === 1 ? "ticket" : "tickets") + ", oldest first";
+    }
+    search.addEventListener("input", apply);
+    priority.addEventListener("change", apply);
+    apply();
+  })();
+</script>
+</body>
+</html>
