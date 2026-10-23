@@ -6,7 +6,7 @@ generic installer. Pick the host you already use.
 ## 1. OpenChamber / OpenCode 2 (recommended)
 
 The repo root is a zero-dependency OpenCode 2 plugin. On load it copies the kit
-to `<project>/.design-os` (if missing) and registers seven `dezign0-*` skills.
+to `<project>/.design-os` (if missing) and registers eight `dezign0-*` skills.
 
 ### From local path
 
@@ -19,7 +19,7 @@ to `<project>/.design-os` (if missing) and registers seven `dezign0-*` skills.
 
 ### From npm or git
 
-Registry package (live 0.5.0; 0.5.1 fixes are on the git tag):
+Registry package (live 0.5.0; 0.6.0 adds the design-language catalog):
 
 1. **Settings → Plugins → Add plugin → From npm**.
 2. Spec: `dezign0`, or pin a version.
@@ -28,13 +28,13 @@ Registry package (live 0.5.0; 0.5.1 fixes are on the git tag):
 Tagged git install (current tools, no npm auth):
 
 ```text
-github:Paatricious/Dezign0#v0.5.2
+github:Paatricious/Dezign0#v0.6.0
 ```
 
 Use the **From npm** tab for the git spec too, or put it in `opencode.json`.
 Reload after adding.
 
-Verified on OpenCode 2.1.3 with both scopes: the kit is copied, seven skills are
+Verified on OpenCode 2.1.3 with both scopes: the kit is copied, eight skills are
 registered, and the three `dezign0_*` tools appear. `dezign0_doctor` reports the
 install state; `dezign0_lint` and `dezign0_measure` run the mechanical checks. Local installs must point at the repo directory; single files are
 rejected by OpenCode 2's config loader.
@@ -56,6 +56,21 @@ node design-os/install.mjs --target=../my-app --harness=aider --with-agents
 
 Each adapter installs the kit and the instruction block; skill directories differ
 by harness. See `design-os/adapters/<id>.json`.
+
+### Design languages
+
+Install the optional catalog separately:
+
+```bash
+npm install ./design-languages
+# or, after publishing:
+npm install dezign0-design-languages
+```
+
+The plugin discovers `<project>/design-systems`, the installed package under
+`node_modules`, or the sibling pack in a source checkout. Use
+`dezign0_design_systems` to list/search and the `design-language` skill to apply
+one system.
 
 ## 2. DSH
 
@@ -170,7 +185,8 @@ Run the critique skill before handover; fix the artifact, not the critique text.
 
 ## 7. What the kit does not do
 
-- It does not bundle third-party design systems, templates or skill bodies.
+- The core kit does not bundle third-party design systems. The optional
+  `design-languages` pack adds the 152-package catalog.
 - It does not install Playwright. Measurement is optional; lint works without it.
 - It does not replace the harness. It gives the agent rules, templates, skills
   and checks.

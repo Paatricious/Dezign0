@@ -19,8 +19,8 @@ The core is harness-agnostic. It owns:
 - `craft/`: checkable rules for typography, color, layout and states,
   accessibility, motion, content and anti-slop.
 - `briefs/`: brief, design spec, critique, handover, tokens and memory templates.
-- `skills/`: seven workflow skills for intake, build, redesign, review,
-  extraction, state boards and Figma context.
+- `skills/`: eight workflow skills for intake, build, redesign, review,
+  extraction, state boards, Figma context and design-language selection.
 - `tools/`: a static linter and an optional Playwright measurement tool.
 
 The OS never depends on a specific model or UI. Any harness with file access can
@@ -65,13 +65,15 @@ for the early product.
 
 ## 4. Content strategy
 
-The package does not bundle third-party design systems, templates, fonts,
-images or skill bodies. Three reasons:
+The core package does not bundle third-party design systems, templates, fonts,
+images or skill bodies. The optional `design-languages` pack adds all 152
+OpenDesign systems, with Apache-2.0 attribution and a separate install. The core
+stays small for three reasons:
 
-1. licensing and attribution are unclear for most bundled corpora;
+1. the full catalog adds ~4.8 MB packed / 32.5 MB unpacked;
 2. prompt quality depends on selecting a few relevant systems, not loading a
    library;
-3. a small package is easier to install and audit.
+3. a small core package is easier to install and audit.
 
 Bring a licensed design system, or use the design-system extraction skill to
 create an original `DESIGN.md` and `tokens.css`. A future content-pack system can

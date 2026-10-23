@@ -4,7 +4,7 @@
  * Zero runtime dependencies. OpenCode 2 calls `setup(ctx)` for each location.
  * On setup it:
  *   1. copies the bundled design kit to `<project>/.design-os` (only if missing)
- *   2. registers the seven design skills from the kit
+ *   2. registers the eight design skills from the kit
  *   3. registers tools for lint, rendered measurement and a doctor check
  *
  * The tools only read files inside the current project. They never write source
@@ -39,8 +39,9 @@ const SKILLS = [
   "design-system-extract",
   "state-board",
   "figma-context",
+  "design-language",
 ];
-const TOOL_NAMES = ["dezign0_lint", "dezign0_measure", "dezign0_doctor"];
+const TOOL_NAMES = ["dezign0_lint", "dezign0_measure", "dezign0_doctor", "dezign0_design_systems"];
 const VERSION = (() => {
   try {
     return JSON.parse(fs.readFileSync(path.resolve(HERE, "..", "package.json"), "utf8")).version || "0.0.0";
@@ -346,7 +347,60 @@ function commandOutput(command, run) {
   return parts.join("\n");
 }
 
-function makeTools(projectDir, kitDir, scriptKit) {
+function findDesignLanguages(projectDir) {
+  const candidates = [
+    process.env.DEZIGN0_DESIGN_LANGUAGES,
+    path.join(projectDir, "design-systems"),
+    path.join(projectDir, "node_modules", "dezign0-design-languages", "design-systems"),
+    path.resolve(KIT, "..", "design-languages", "design-systems"),
+  ].filter(Boolean);
+  for (const candidate of candidates) {
+    try {
+      const root = fs.realpathSync(candidate);
+      if (fs.statSync(root).isDirectory()) {
+        if (fs.existsSync(path.join(root, "..", "index.json"))) return root;
+        const hasSystem = fs.readdirSync(root).some((name) => fs.existsSync(path.join(root, name, "DESIGN.md")));
+        if (hasSystem) return root;
+      }
+    } catch {
+      // Try the next candidate.
+    }
+  }
+  return null;
+}
+
+function readDesignCatalog(root) {
+  const indexPath = path.join(root, "..", "index.json");
+  try {
+    const index = JSON.parse(fs.readFileSync(indexPath, "utf8"));
+    if (Array.isArray(index.items)) return index.items;
+  } catch {
+    // Fall back to scanning packages.
+  }
+  return fs.readdirSync(root, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && fs.existsSync(path.join(root, entry.name, "DESIGN.md")))
+    .map((entry) => {
+      let manifest = {};
+      try {
+        manifest = JSON.parse(fs.readFileSync(path.join(root, entry.name, "manifest.json"), "utf8"));
+      } catch {
+        // Legacy package without a manifest.
+      }
+      return {
+        slug: entry.name,
+        name: manifest.name || entry.name,
+        category: manifest.category || "Uncategorized",
+        description: manifest.description || "",
+        tokens: fs.existsSync(path.join(root, entry.name, "tokens.css")) ? "tokens.css" : null,
+        components: fs.existsSync(path.join(root, entry.name, "components.html")) ? "components.html" : null,
+        usage: fs.existsSync(path.join(root, entry.name, "USAGE.md")) ? "USAGE.md" : null,
+        source: manifest.source || null,
+      };
+    })
+    .sort((a, b) => a.slug.localeCompare(b.slug));
+}
+
+function formatDesignLanguages(root, items) {const lines = [`design languages: ${items.length}`, `root: ${root}`, ""];for (const item of items.slice(0, 40)) lines.push(`${item.slug} — ${item.name} [${item.category}]`);if (items.length > 40) lines.push(`... ${items.length - 40} more; use action=search with a query`);return lines.join("\n");}function makeTools(projectDir, kitDir, scriptKit) {
   return [
     {
       name: "dezign0_lint",
@@ -420,9 +474,77 @@ function makeTools(projectDir, kitDir, scriptKit) {
       },
     },
     {
+      name: "dezign0_design_systems",
+      description:
+        "Browse the optional Dezign0 design-language pack (152 OpenDesign design systems). Actions: list, search (query), get (slug). Returns catalog metadata or the selected DESIGN.md and tokens.css. Use before building when the user wants a known visual language.",
+      input: {
+        type: "object",
+        properties: {
+          action: { type: "string", enum: ["list", "search", "get"] },
+          query: { type: "string", description: "Search text for action=search." },
+          slug: { type: "string", description: "Package slug for action=get." },
+        },
+        required: ["action"],
+        additionalProperties: false,
+      },
+      async execute(input) {
+        const root = findDesignLanguages(projectDir);
+        if (!root) {
+          return result(
+            "No design-language pack found. Install `dezign0-design-languages` in the project, copy a `design-systems/` folder into the project, or set DEZIGN0_DESIGN_LANGUAGES.",
+          );
+        }
+        const items = readDesignCatalog(root);
+        if (input.action === "list") return result(formatDesignLanguages(root, items), { count: items.length });
+        if (input.action === "search") {
+          const query = String(input.query || "").toLowerCase().trim();
+          if (!query) return failure("query is required for action=search");
+          const matches = items.filter((item) =>
+            [item.slug, item.name, item.category, item.description].join(" ").toLowerCase().includes(query),
+          );
+          return result(formatDesignLanguages(root, matches), { count: matches.length, query });
+        }
+        if (input.action === "get") {
+          const slug = String(input.slug || "");
+          if (!/^[a-z0-9-]+$/.test(slug)) return failure("slug must be lowercase letters, numbers or hyphens");
+          const dir = path.join(root, slug);
+          if (!isInside(root, dir) || !fs.existsSync(path.join(dir, "DESIGN.md"))) {
+            return failure(`unknown design language: ${slug}`);
+          }
+          const manifest = (() => {
+            try {
+              return JSON.parse(fs.readFileSync(path.join(dir, "manifest.json"), "utf8"));
+            } catch {
+              return {};
+            }
+          })();
+          const design = fs.readFileSync(path.join(dir, "DESIGN.md"), "utf8");
+          const tokensPath = path.join(dir, "tokens.css");
+          const tokens = fs.existsSync(tokensPath) ? fs.readFileSync(tokensPath, "utf8") : "";
+          const designFile = path.join(dir, "DESIGN.md");
+          const header = [
+            `design language: ${manifest.name || slug} (${slug})`,
+            `category: ${manifest.category || "Uncategorized"}`,
+            `root: ${dir}`,
+            `design: ${designFile}`,
+            `tokens: ${fs.existsSync(tokensPath) ? tokensPath : "none"}`,
+            "",
+            "=== DESIGN.md (truncated; read the file for the full text) ===",
+          ].join("\n");
+          const designPart = design.slice(0, 7000);
+          const tokenPart = tokens ? tokens.slice(0, 3500) : "";
+          return result(
+            `${header}\n${designPart}${design.length > designPart.length ? "\n...[DESIGN.md truncated]" : ""}\n\n=== tokens.css${tokens ? " (truncated; read the file for all tokens)" : " (missing)"} ===\n${tokenPart}${tokens.length > tokenPart.length ? "\n...[tokens.css truncated]" : ""}`,
+            { slug, category: manifest.category || null, designFile, tokensFile: fs.existsSync(tokensPath) ? tokensPath : null },
+          );
+        }
+        return failure(`unknown action: ${input.action}`);
+      },
+    },
+    {
       name: "dezign0_doctor",
       description:
-        "Check the installed Dezign0 kit: plugin version, kit location/version, seven skills, lint/measure scripts, Node and Playwright. Use when the plugin seems installed but skills or checks are missing.",
+        "Check the installed Dezign0 kit: plugin version, kit location/version, eight skills, lint/measure scripts, Node and Playwright. Use when the plugin seems installed but skills or checks are missing.",
       input: { type: "object", properties: {}, additionalProperties: false },
       async execute() {
         const metaFile = path.join(kitDir, META);
@@ -444,6 +566,8 @@ function makeTools(projectDir, kitDir, scriptKit) {
         const drift = meta ? countDrift(kitDir, meta.files) : null;
         const projectLint = fs.existsSync(path.join(kitDir, "tools", "design-lint.mjs"));
         const projectMeasure = fs.existsSync(path.join(kitDir, "tools", "measure-artifact.mjs"));
+        const designRoot = findDesignLanguages(projectDir);
+        const designCount = designRoot ? readDesignCatalog(designRoot).length : 0;
         const lines = [
           `dezign0 doctor`,
           `plugin: ${VERSION}`,
@@ -454,6 +578,7 @@ function makeTools(projectDir, kitDir, scriptKit) {
           `kit drift: ${drift === null ? "unknown (no hash metadata)" : drift === 0 ? "none" : `${drift} modified/missing file(s)`}`,
           `project lint/measure: ${projectLint ? "ok" : "missing"}/${projectMeasure ? "ok" : "missing"}`,
           `package scripts: lint/measure from ${KIT_VERSION}`,
+          `design languages: ${designRoot ? `${designCount} (${designRoot})` : "none (optional pack not installed)"}`,
           `node: ${process.version}`,
           `playwright: ${playwright}`,
           `tools: ${TOOL_NAMES.join(", ")} (scripts from package ${KIT_VERSION})`,

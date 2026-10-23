@@ -15,8 +15,8 @@ The CLI, local studio and additional adapter integrations are next.
 - **Craft rules** — typography, color, layout, states, accessibility, motion and
   content rules with mechanical checks.
 - **Templates** — brief, design spec, critique, handover, tokens and memory.
-- **Seven skills** — design brief, frontend design, redesign, critique,
-  design-system extraction, state boards and Figma context.
+- **Eight skills** — design brief, frontend design, redesign, critique,
+  design-system extraction, state boards, Figma context and design-language selection.
 - **Plugin** — zero-dependency OpenCode 2 / OpenChamber integration that installs
   the kit into a project and registers the skills.
 - **Tools** — a static linter and a Playwright-based rendered measurement tool.
@@ -30,13 +30,13 @@ In **Settings → Plugins → Add plugin**:
 - **From local path:** the absolute path to this repo directory.
 - **From npm:** `dezign0` — live at
   [npmjs.com/package/dezign0](https://www.npmjs.com/package/dezign0). The live
-  `0.5.0` release has seven skills and the tools. The `0.5.1` Playwright and
-  kit-upgrade fixes are on the git tag until published.
-- **From git (no npm publish needed):** `github:Paatricious/Dezign0#v0.5.2`.
+  `0.5.0` release has seven skills and the tools. The `0.6.0` git tag adds the
+  eighth skill, the design-language catalog and the 0.5.x fixes.
+- **From git (no npm publish needed):** `github:Paatricious/Dezign0#v0.6.0`.
   This is the current tool-enabled version; the repository is public.
 
 Choose User or Project scope. On load the plugin copies the kit to `.design-os/`,
-registers seven `dezign0-*` skills and three read-only tools (`dezign0_lint`,
+registers eight `dezign0-*` skills and four read-only tools (`dezign0_lint`,
 `dezign0_measure`, `dezign0_doctor`). It needs no npm dependencies; Playwright is
 optional for rendered measurement.
 Details: [plugin/README.md](plugin/README.md).
@@ -85,7 +85,7 @@ node design-os/install.mjs --target=../my-app --harness=codex --with-agents
 ```
 
 The installer never installs Playwright or deletes files. It copies the kit to
-`.design-os/`, installs the seven skills to the harness's native path and writes an
+`.design-os/`, installs the eight skills to the harness's native path and writes an
 `AGENTS.md` fragment. Use `--dry-run` to inspect first.
 
 ## How it works
@@ -112,12 +112,13 @@ node .design-os/tools/measure-artifact.mjs path/to/artifact.html --strict
 
 ## Bring your own design systems
 
-Dezign0 does not bundle third-party design systems, templates, fonts, images or
-skill bodies. Use the design-system extraction skill to create a `DESIGN.md` and
-`tokens.css` for the brand you are working on, or bring your own licensed system.
+The **core** package does not bundle third-party design systems, templates,
+fonts, images or skill bodies. The optional [design-languages](design-languages/README.md)
+pack adds all 152 OpenDesign design systems with their Apache-2.0 license and
+attribution. Install it separately when you want the catalog.
 
-This keeps the package small and avoids redistributing content whose terms are
-unclear.
+Use the design-system extraction skill to create a `DESIGN.md` and `tokens.css`
+for a brand, or select a prebuilt language with the `design-language` skill.
 
 ## Repository map
 
@@ -131,6 +132,7 @@ unclear.
 | [docs/PUBLISHING.md](docs/PUBLISHING.md) | Publish to npm and install from OpenChamber's "From npm" field |
 | [docs/VERIFICATION.md](docs/VERIFICATION.md) | What was tested, on which versions, and what is still a limit |
 | [docs/figma.md](docs/figma.md) | Optional Figma MCP bridge and evidence rules |
+| [design-languages/](design-languages/README.md) | Optional 152-package design-language pack from OpenDesign |
 | [CHANGELOG.md](CHANGELOG.md) | Release history |
 | [SECURITY.md](SECURITY.md) | Threat model and reporting |
 
@@ -149,5 +151,6 @@ The repository is Apache-2.0 (see [LICENSE](LICENSE)). Prior-art credits are in
 [ATTRIBUTION.md](ATTRIBUTION.md) and
 [design-os/ATTRIBUTION.md](design-os/ATTRIBUTION.md).
 
-No third-party application code, design-system packages, templates or skill
-bodies are included.
+No third-party application code is included in the core package. The optional
+design-languages pack contains the OpenDesign catalog under its own license and
+notice.

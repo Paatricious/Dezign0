@@ -1,0 +1,32 @@
+# NOTICE
+
+This pack contains design-system packages curated by the OpenDesign project:
+
+- Source: https://github.com/nexu-io/open-design
+- Pinned commit: e03d5c23f308c39f4de7c057568df66c29a84385
+- License: Apache-2.0 (see LICENSE)
+- Upstream attribution: see OPEN-DESIGN-README.md and ATTRIBUTION.md
+
+OpenDesign's design-systems README credits these upstream sources:
+
+- VoltAgent/awesome-design-md (MIT) — upstream-derived product systems
+- bergside/awesome-design-skills — normalized design-skill systems
+- tw93/kami (MIT) — the `kami` package
+- Tom-Opencart/tom-modern-html-style-rule (MIT) — the `tom-modern` package
+
+Brand-referencing packages are aesthetic inspirations. They are not official
+assets of the brands they reference, and their inclusion does not imply
+endorsement.
+
+If a package declares its own license or source terms in `manifest.json` or
+`source/`, those terms take precedence over this notice. Verify before
+redistributing a modified package.
+
+Upstream MIT license texts are preserved under `licenses/`:
+
+- `licenses/volt-agent-awesome-design-md-LICENSE`
+- `licenses/bergside-awesome-design-skills-LICENSE`
+- `licenses/tw93-kami-LICENSE`
+- `licenses/tom-modern-html-style-rule-LICENSE`
+
+The packaging script, catalog and formatting are original to Dezign0.

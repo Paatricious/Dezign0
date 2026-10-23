@@ -3,6 +3,24 @@
 All notable changes are recorded here. The format follows Keep a Changelog and
 the project uses semantic versioning.
 
+## [0.6.0] - 2026-10-23
+
+### Added
+
+- Optional `design-languages` pack: all **152** OpenDesign design-system
+  packages, pinned at `e03d5c23f308c39f4de7c057568df66c29a84385`, with Apache-2.0
+  license, NOTICE, attribution and upstream MIT license texts.
+- `dezign0_design_systems` tool: list, search and get a design language.
+- `design-language` skill: choose one prebuilt language and apply it.
+- `docs/figma.md` and Figma context skill from the research round.
+- Harness adapters and Claude Code bootstrap from 0.5.x.
+
+### Changed
+
+- Core package remains small; the 4.8 MB (packed) / 32.5 MB (unpacked) catalog
+  installs separately.
+- Eight skills and four tools.
+
 ## [0.5.2] - 2026-10-23
 
 ### Added

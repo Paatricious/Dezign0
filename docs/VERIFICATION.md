@@ -14,11 +14,11 @@ the date/commit for a release.
 - The public package has no third-party design systems, templates, fonts or
   images.
 
-Git release `v0.5.2` (public repository) additionally verified:
+Git release `v0.6.0` (public repository) additionally verified:
 
-- Anonymous `npm pack github:Paatricious/Dezign0#v0.5.2` succeeded.
+- Anonymous `npm pack github:Paatricious/Dezign0#v0.6.0` succeeded.
 - OpenCode 2 installed that git spec, loaded the kit and reported
-  `kit version: 0.5.2`, `skills: 7/7`.
+  `kit version: 0.6.0`, `skills: 8/8`, design languages: 152.
 - `dezign0_lint`, `dezign0_measure`, `dezign0_doctor` are registered and
   callable through OpenCode 2.
 - `dezign0_lint` returns P0/P1 findings for a fixture and rejects paths outside
@@ -26,7 +26,9 @@ Git release `v0.5.2` (public repository) additionally verified:
 - `dezign0_measure` resolves Playwright from the project `node_modules` and
   succeeds through the plugin path.
 - A legacy `.design-os` with no metadata is refreshed, and a 0.5.0 project kit
-  upgrades to 0.5.1 while preserving local edits.
+  upgrades while preserving local edits.
+- The optional pack contains all 152 design systems, indexed from OpenDesign
+  commit `e03d5c23f308c39f4de7c057568df66c29a84385`.
 - Installer regression test covers dry-run, install with spaces, `--force=false`,
   file conflict at `.design-os`, and `--upgrade`.
 - CI runs `npm run check` on Ubuntu and Windows; both pass.
@@ -37,7 +39,7 @@ Git release `v0.5.2` (public repository) additionally verified:
 
 - `measure-artifact` needs Playwright; it is optional and not bundled.
 - Skill triggering was sampled on three realistic prompts, not a full benchmark.
-- The npm registry serves `0.5.0`; `0.5.2` is available via the public GitHub tag
+- The npm registry serves `0.5.0`; `0.6.0` is available via the public GitHub tag
   until it is published. Installing the git spec needs no authentication.
 
 ## Reproduce

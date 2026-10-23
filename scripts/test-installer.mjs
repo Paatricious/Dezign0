@@ -30,8 +30,8 @@ try {
     fs.readdirSync(path.join(target, ".opencode", "skills")).filter((name) =>
       fs.existsSync(path.join(target, ".opencode", "skills", name, "SKILL.md")),
     ).length,
-    7,
-    "seven skills installed",
+    8,
+    "eight skills installed",
   );
   assert.match(fs.readFileSync(path.join(target, "AGENTS.md"), "utf8"), /design-os:start/);
   const meta = JSON.parse(fs.readFileSync(path.join(target, ".design-os", ".dezign0-kit.json"), "utf8"));

@@ -1,0 +1,31 @@
+{
+  "name": "dezign0-design-languages",
+  "version": "0.1.0",
+  "description": "All 152 design-system packages from OpenDesign, packaged as an optional content pack for Dezign0",
+  "license": "Apache-2.0",
+  "private": false,
+  "type": "module",
+  "files": [
+    "design-systems/",
+    "index.json",
+    "OPEN-DESIGN-README.md",
+    "NOTICE",
+    "ATTRIBUTION.md",
+    "LICENSE",
+    "README.md",
+    "licenses/"
+  ],
+  "keywords": [
+    "design-systems",
+    "design-languages",
+    "dezign0",
+    "opendesign",
+    "design-tokens"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
