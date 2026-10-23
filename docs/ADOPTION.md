@@ -62,10 +62,10 @@ by harness. See `design-os/adapters/<id>.json`.
 Install the optional catalog separately:
 
 ```bash
-npm install ./design-languages
-# or, after publishing:
-npm install dezign0-design-languages
+npm install https://github.com/Paatricious/Dezign0/releases/download/v0.6.0/dezign0-design-languages-0.1.0.tgz
 ```
+
+From a source checkout you can also run `npm install ./design-languages`.
 
 The plugin discovers `<project>/design-systems`, the installed package under
 `node_modules`, or the sibling pack in a source checkout. Use

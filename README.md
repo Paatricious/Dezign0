@@ -35,6 +35,14 @@ In **Settings → Plugins → Add plugin**:
 - **From git (no npm publish needed):** `github:Paatricious/Dezign0#v0.6.0`.
   This is the current tool-enabled version; the repository is public.
 
+Optional 152-language catalog: install the public release tarball in the project:
+
+```bash
+npm install https://github.com/Paatricious/Dezign0/releases/download/v0.6.0/dezign0-design-languages-0.1.0.tgz
+```
+
+Or use the sibling `design-languages/` folder in a source checkout.
+
 Choose User or Project scope. On load the plugin copies the kit to `.design-os/`,
 registers eight `dezign0-*` skills and four read-only tools (`dezign0_lint`,
 `dezign0_measure`, `dezign0_doctor`). It needs no npm dependencies; Playwright is

@@ -38,8 +38,12 @@ run from the source checkout:
 For an installed plugin, install this pack in the project:
 
 ```bash
-npm install dezign0-design-languages
+npm install https://github.com/Paatricious/Dezign0/releases/download/v0.6.0/dezign0-design-languages-0.1.0.tgz
 ```
+
+This works without npm authentication because the tarball is a public GitHub
+release asset. The npm name `dezign0-design-languages` is reserved for a future
+registry release.
 
 The plugin searches:
 

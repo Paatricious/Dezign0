@@ -141,7 +141,11 @@ or `opencode.json`. The plugin does not remove project files automatically.
 - It does not install Playwright or any npm dependency.
 - It does not overwrite an existing `.design-os`.
 - The core plugin does not bundle third-party design systems, templates or
-  skill bodies. Install the optional `design-languages` pack for the catalog.
+  skill bodies. Install the optional catalog for all 152 languages:
+
+```bash
+npm install https://github.com/Paatricious/Dezign0/releases/download/v0.6.0/dezign0-design-languages-0.1.0.tgz
+```
 - It does not register slash commands. Use the skills conversationally, or use
   the OpenCode 1.x installer for `/design-new`, `/design-review`, `/design-ship`.
 - It does not delete or rewrite existing source files. It only creates
