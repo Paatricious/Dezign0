@@ -220,7 +220,7 @@ function commandOutput(command, run) {
   return parts.join("\n");
 }
 
-function makeTools(projectDir, kitDir) {
+function makeTools(projectDir, kitDir, scriptKit) {
   return [
     {
       name: "dezign0_lint",
@@ -238,7 +238,7 @@ function makeTools(projectDir, kitDir) {
       async execute(input) {
         try {
           const file = resolveArtifact(projectDir, input.path);
-          const script = path.join(kitDir, "tools", "design-lint.mjs");
+          const script = path.join(scriptKit, "tools", "design-lint.mjs");
           if (!fs.existsSync(script)) return failure("design-lint.mjs is missing from the installed kit");
           const args = input.strict ? ["--strict", file] : [file];
           const run = await runNode(script, args, projectDir);
@@ -273,7 +273,7 @@ function makeTools(projectDir, kitDir) {
       async execute(input) {
         try {
           const file = resolveArtifact(projectDir, input.path);
-          const script = path.join(kitDir, "tools", "measure-artifact.mjs");
+          const script = path.join(scriptKit, "tools", "measure-artifact.mjs");
           if (!fs.existsSync(script)) return failure("measure-artifact.mjs is missing from the installed kit");
           const args = [file];
           if (input.viewports) args.push(`--viewports=${input.viewports}`);
@@ -384,7 +384,7 @@ export const Dezign0Plugin = {
 
     if (options.tools !== false && typeof ctx?.tool?.transform === "function") {
       // Tool scripts come from the immutable package, not the project copy.
-      const tools = makeTools(projectDir, KIT);
+      const tools = makeTools(projectDir, kitDir, KIT);
       await ctx.tool.transform((editor) => {
         for (const tool of tools) editor.add(tool);
       });
