@@ -5,7 +5,7 @@ content layers, an interface layer and an optional studio.
 
 ```text
 Design OS          the rules, process, templates, skills and tools
-Interfaces         CLI, MCP server, GitHub Action, native plugins
+Interfaces         CLI, MCP server, GitHub Action, lifecycle hooks, native plugins
 Adapters           installers for agent harnesses
 Projects           a standard folder per design deliverable
 Studio (planned)   local browser UI for preview, library, comments and versions

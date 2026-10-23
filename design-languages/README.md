@@ -50,7 +50,7 @@ run from the source checkout:
 For an installed plugin, install this pack in the project:
 
 ```bash
-npm install https://github.com/Paatricious/Dezign0/releases/download/v0.8.0/dezign0-design-languages-0.2.1.tgz
+npm install https://github.com/Paatricious/Dezign0/releases/download/v0.8.1/dezign0-design-languages-0.2.1.tgz
 ```
 
 This works without npm authentication because the tarball is a public GitHub

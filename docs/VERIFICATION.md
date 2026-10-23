@@ -14,11 +14,11 @@ the date/commit for a release.
 - The public package has no third-party design systems, templates, fonts or
   images.
 
-Git release `v0.8.0` (public repository) additionally verified:
+Git release `v0.8.1` (public repository) additionally verified:
 
-- Anonymous `npm pack github:Paatricious/Dezign0#v0.8.0` succeeded.
+- Anonymous `npm pack github:Paatricious/Dezign0#v0.8.1` succeeded.
 - OpenCode 2 installed that git spec, loaded the kit and reported
-  `kit version: 0.8.0`, `skills: 13/13`, design languages: 152, addons: 13.
+  `kit version: 0.8.1`, `skills: 13/13`, design languages: 152, addons: 13.
 - `dezign0_lint`, `dezign0_measure`, `dezign0_doctor` are registered and
   callable through OpenCode 2.
 - `dezign0_lint` returns P0/P1 findings for a fixture and rejects paths outside
@@ -40,8 +40,10 @@ Git release `v0.8.0` (public repository) additionally verified:
 - `measure-artifact` needs Playwright; it is optional and not bundled.
 - Skill triggering was sampled on three realistic prompts, not a full benchmark.
 - The npm registry serves `0.7.0`; installing it returns 13 skills and 5 tools.
-  `0.8.0` is the CLI/MCP/review build to publish. The addon registry has `0.2.0`;
+  `0.8.1` is the CLI/MCP/hooks build to publish. The addon registry has `0.2.0`;
   publish `0.2.1` for the white-label build.
+- `node scripts/test-hooks.mjs` covers clean HTML, P0 HTML, non-HTML, missing
+  paths and Stop-loop suppression.
 
 ## Reproduce
 
