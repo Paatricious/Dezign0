@@ -26,6 +26,16 @@ const TOOLS = path.join(DESIGN_OS, "tools");
 const LINT_SCRIPT = path.join(TOOLS, "design-lint.mjs");
 const MEASURE_SCRIPT = path.join(TOOLS, "measure-artifact.mjs");
 const CAPABILITIES_PATH = path.join(ROOT, "capabilities.json");
+const TOOL_SCRIPTS = {
+  ingest: "ingest.mjs",
+  gallery: "gallery.mjs",
+  conformance: "conformance.mjs",
+  review: "review.mjs",
+  "safety-scan": "safety-scan.mjs",
+  "audit-matrix": "audit-matrix.mjs",
+  compliance: "compliance.mjs",
+  "context-report": "context-report.mjs",
+};
 
 const EXIT = { OK: 0, FINDINGS: 1, USAGE: 2 };
 const COMMANDS = ["lint", "measure", "audit", "doctor", "systems", "addons", "new", "export"];
@@ -159,6 +169,9 @@ Commands:
   addons [id]             List addons or print one addon document
   new <slug>              Scaffold design/<slug>/ from the profile templates
   export [capabilities|system]  Export the manifest or a design-system package
+  tool <name> [args...]   Run an advanced tool: ingest, gallery, conformance,
+                          review, safety-scan, audit-matrix, compliance,
+                          context-report
 
 Flags:
   --json                  Machine-readable JSON on stdout
@@ -936,6 +949,18 @@ function commandDoctor(flags) {
   return code;
 }
 
+function commandTool(name, rest) {
+  if (!name || name === "--help" || name === "-h") {
+    out("usage: dezign0 tool <" + Object.keys(TOOL_SCRIPTS).join("|") + "> [args...]");
+    return EXIT.OK;
+  }
+  const script = TOOL_SCRIPTS[name];
+  if (!script) throw new CliError(`unknown tool: ${name} (run dezign0 tool --help)`);
+  const result = spawnSync(process.execPath, [path.join(TOOLS, script), ...rest], { stdio: "inherit", cwd: process.cwd() });
+  if (result.error) throw new CliError(`failed to run ${name}: ${result.error.message}`);
+  return result.status ?? EXIT.USAGE;
+}
+
 function route(flags, positionals) {
   const command = positionals.shift();
   if (flags.version) {
@@ -976,6 +1001,7 @@ function route(flags, positionals) {
 function main(argv) {
   const wantsJson = argv.includes("--json");
   try {
+    if (argv[0] === "tool") return commandTool(argv[1], argv.slice(2));
     const { flags, positionals } = parseArgs(argv);
     if (flags.version) {
       out(`dezign0 ${getVersion()}`);

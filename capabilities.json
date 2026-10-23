@@ -1,7 +1,7 @@
 {
   "schema": "dezign0/capabilities/v1",
   "name": "dezign0",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "node": ">=18",
   "skills": {
     "count": 13,
@@ -72,7 +72,7 @@
     ]
   },
   "commands": {
-    "count": 8,
+    "count": 9,
     "names": [
       "lint",
       "measure",
@@ -81,11 +81,12 @@
       "systems",
       "addons",
       "new",
-      "export"
+      "export",
+      "tool"
     ]
   },
   "compatibility": {
-    "core": "0.8.1",
+    "core": "0.9.0",
     "addonPack": {
       "name": "dezign0-design-languages",
       "version": "0.2.1"
@@ -109,5 +110,18 @@
       "session.idle"
     ],
     "blocking": "claude PostToolUse/Stop only"
+  },
+  "advancedTools": {
+    "count": 8,
+    "names": [
+      "ingest",
+      "gallery",
+      "conformance",
+      "review",
+      "safety-scan",
+      "audit-matrix",
+      "compliance",
+      "context-report"
+    ]
   }
 }

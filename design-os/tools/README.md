@@ -12,6 +12,14 @@ The mechanical layer:
 - `ds-validate.mjs` — design-system package contract.
 - `scaffold.mjs` / `bundle.mjs` — project scaffold and self-contained review
   bundle.
+- `ingest.mjs` — URL/repo/screenshot/reference capture with provenance.
+- `gallery.mjs` — static 152-system design-language gallery.
+- `conformance.mjs` — artifact/system conformance, components, theme parity.
+- `review.mjs` / `safety-scan.mjs` — history, approval, annotations, protocol
+  and artifact safety.
+- `audit-matrix.mjs` — cross-browser, SARIF, JUnit, watch, multi-page.
+- `compliance.mjs` / `context-report.mjs` — WCAG/ACR/EAA drafts, context cost
+  and migration checklists.
 
 Static lint alone cannot see a 375px layout clipping content behind
 `overflow-x: clip`, or a grade numeral failing AA at its rendered size. Use both

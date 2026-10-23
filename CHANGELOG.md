@@ -3,6 +3,27 @@
 All notable changes are recorded here. The format follows Keep a Changelog and
 the project uses semantic versioning.
 
+## [0.9.0] - 2026-10-23
+
+### Added
+
+- `dezign0 tool` access to eight advanced tools: ingest, gallery, conformance,
+  review, safety-scan, audit-matrix, compliance and context-report.
+- URL/repo/screenshot/reference ingestion with provenance.
+- Static 152-system gallery.
+- Conformance, component matrix, theme parity and user-system registration.
+- Git-backed review history, approval, annotations and edit protocol.
+- Artifact safety scan.
+- Cross-browser matrix, SARIF, JUnit, watch and multi-page crawl.
+- WCAG/ACR/EAA draft scaffolds, colour-vision checklist, context-cost and
+  migration/deprecation reports.
+- OpenCode commands, Codex native `.agents/skills` installer and macOS CI.
+
+### Changed
+
+- Core 0.9.0 pairs with addon pack 0.2.1.
+- Advanced-tool and Codex-installer smoke tests wired into `npm run check`.
+
 ## [0.8.1] - 2026-10-23
 
 ### Added

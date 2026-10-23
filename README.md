@@ -26,7 +26,7 @@ The CLI, local studio and additional adapter integrations are next.
 
 ## Compatibility
 
-- Core `dezign0` 0.8.1 pairs with addon pack `dezign0-design-languages` 0.2.1.
+- Core `dezign0` 0.9.0 pairs with addon pack `dezign0-design-languages` 0.2.1.
 - The pack is optional; core skills and tools work without it.
 - Design-system discovery checks the project `design-systems/`, an installed pack, and the sibling source checkout.
 
@@ -41,6 +41,7 @@ The CLI, local studio and additional adapter integrations are next.
 - **Lifecycle hooks:** Claude `PostToolUse`/`Stop` gates lint HTML and block P0
   findings; `stop_hook_active` prevents loops. OpenCode observes `file.edited`
   and `session.idle` and raises a warning toast.
+- **Advanced tools:** `dezign0 tool ingest|gallery|conformance|review|safety-scan|audit-matrix|compliance|context-report`.
 - **Evals:** `npm run eval -- --adapter "..."` reports WITH/WITHOUT deltas.
 
 ## Quick start
@@ -52,15 +53,16 @@ In **Settings → Plugins → Add plugin**:
 - **From local path:** the absolute path to this repo directory.
 - **From npm:** `dezign0` — live at
   [npmjs.com/package/dezign0](https://www.npmjs.com/package/dezign0). The live
-  `0.7.0` release is stable; the `0.8.1` build (CLI, MCP server, lifecycle hooks,
-  deeper review and evals) is on the git tag until published.
-- **From git (no npm publish needed):** `github:Paatricious/Dezign0#v0.8.1`.
+  `0.7.0` release is stable; the `0.9.0` build (CLI, MCP server, lifecycle hooks,
+  ingestion, conformance, compliance, wider audit and evals) is on the git tag
+  until published.
+- **From git (no npm publish needed):** `github:Paatricious/Dezign0#v0.9.0`.
   This is the current tool-enabled version; the repository is public.
 
 Optional addon pack — 152 design languages plus templates, Figma bridge, handoff, review and media prompts. Install the release tarball in the project:
 
 ```bash
-npm install https://github.com/Paatricious/Dezign0/releases/download/v0.8.1/dezign0-design-languages-0.2.1.tgz
+npm install https://github.com/Paatricious/Dezign0/releases/download/v0.9.0/dezign0-design-languages-0.2.1.tgz
 ```
 
 Once `dezign0-design-languages@0.2.1` is published, `npm install dezign0-design-languages` is equivalent.

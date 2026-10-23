@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v5
@@ -21,3 +21,8 @@ jobs:
         run: node scripts/check-docs.mjs
       - name: CLI smoke test
         run: node bin/dezign0.test.mjs
+      - name: Validate OpenCode command files
+        run: |
+          node -e "const fs=require('node:fs');const m={'design-critique':'critique','design-handoff':'code-handoff','design-fix':'redesign'};for(const [n,s] of Object.entries(m)){const p='.opencode/commands/'+n+'.md';if(!fs.existsSync(p))throw new Error('missing '+p);const t=fs.readFileSync(p,'utf8');if(!/^---/.test(t)||!t.includes('description:'))throw new Error(p+' lacks frontmatter description');if(!t.includes('ARGUMENTS'))throw new Error(p+' does not use arguments');if(!t.includes('skills/'+s+'/SKILL.md'))throw new Error(p+' does not load skills/'+s+'/SKILL.md');}const f=fs.readFileSync('.opencode/commands/design-fix.md','utf8');if(!f.includes('skills/critique/SKILL.md'))throw new Error('design-fix must also load the critique skill');console.log('opencode commands: 3/3 ok')"
+      - name: Codex skills install self-test
+        run: node scripts/install-codex-skills.mjs --self-test
