@@ -1,7 +1,7 @@
 {
   "schema": "dezign0/capabilities/v1",
   "name": "dezign0",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "node": ">=18",
   "skills": {
     "count": 13,
@@ -86,7 +86,7 @@
     ]
   },
   "compatibility": {
-    "core": "0.9.0",
+    "core": "0.9.1",
     "addonPack": {
       "name": "dezign0-design-languages",
       "version": "0.2.1"

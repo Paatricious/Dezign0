@@ -86,13 +86,13 @@ The twelve changes with the highest leverage:
 - Opened vendor and standards pages directly where an item depends on a specific
   API or specification (Anthropic's frontend-design skill, v0 Design Mode,
   Agent Plugins 1.0, Builder.io's design-system enforcement write-up,
-  OpenDesign's catalog, Claude Code plugin evals).
+  the upstream catalog, Claude Code plugin evals).
 - Ran three parallel research passes (AI design tools, design-QA tooling, agent
   distribution ecosystem) to widen coverage; their items are marked `lane`.
 - Deliberately excluded: pricing/revenue analysis, non-English ecosystems,
   and anything requiring a Dezign0-hosted service.
 
-**What this document is not:** a competitive teardown of OpenDesign. Dezign0
+**What this document is not:** a competitive teardown of the upstream catalog. Dezign0
 shares an upstream catalog with it and is deliberately narrower; copying its
 surface area would contradict Dezign0's own non-goals.
 
@@ -496,7 +496,7 @@ These need a product decision, not more research.
 - Builder.io, "How to Make AI Agents Follow Your Design System" (restricted
   imports, typed props, deterministic token enforcement, golden directory,
   verification loop): https://www.builder.io/blog/how-to-make-ai-agents-follow-your-design-system
-- OpenDesign catalog (244 skills, 265 templates, 451+ plugins, 152 systems,
+- upstream catalog (244 skills, 265 templates, 451+ plugins, 152 systems,
   comparisons, agent guides): https://open-design.ai/ ,
   https://open-design.ai/plugins/ , https://open-design.ai/skills/ ,
   https://open-design.ai/agents/ , https://open-design.ai/compare/

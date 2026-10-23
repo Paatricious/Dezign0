@@ -19,7 +19,7 @@ to `<project>/.design-os` (if missing) and registers thirteen `dezign0-*` skills
 
 ### From npm or git
 
-Registry package (0.7.0 live; 0.9.0 is the current full-tooling build):
+Registry package (0.9.0 live; 0.9.1 is the branding-clean build):
 
 1. **Settings → Plugins → Add plugin → From npm**.
 2. Spec: `dezign0`, or pin a version.
@@ -28,7 +28,7 @@ Registry package (0.7.0 live; 0.9.0 is the current full-tooling build):
 Tagged git install (current tools, no npm auth):
 
 ```text
-github:Paatricious/Dezign0#v0.9.0
+github:Paatricious/Dezign0#v0.9.1
 ```
 
 Use the **From npm** tab for the git spec too, or put it in `opencode.json`.
@@ -62,7 +62,7 @@ by harness. See `design-os/adapters/<id>.json`.
 Install the optional catalog separately:
 
 ```bash
-npm install https://github.com/Paatricious/Dezign0/releases/download/v0.9.0/dezign0-design-languages-0.2.1.tgz
+npm install https://github.com/Paatricious/Dezign0/releases/download/v0.9.1/dezign0-design-languages-0.2.1.tgz
 ```
 
 From a source checkout you can also run `npm install ./design-languages`.

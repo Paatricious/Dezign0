@@ -5,7 +5,7 @@
  * Sources (any mix, order = priority):
  *   tokens.css         CSS custom properties; :root = light, .dark/[data-theme="dark"]/
  *                      [data-mode="dark"]/@media (prefers-color-scheme: dark) = dark
- *   design-tokens.json DTCG ($value) or Dezign0/OpenDesign { tokens: [{ name, value }] }
+ *   design-tokens.json DTCG ($value) or Dezign0 { tokens: [{ name, value }] }
  *   DESIGN.md          fenced ```css``` blocks and | token | value | markdown tables
  *
  * Outputs (--format):
@@ -198,7 +198,7 @@ function parseDtcgNode(node, pathParts, inheritedType, out, file) {
   }
 }
 
-/** Parse design-tokens.json: DTCG, OpenDesign {tokens:[...]}, or a flat map. */
+/** Parse design-tokens.json: DTCG, upstream catalog {tokens:[...]}, or a flat map. */
 export function parseTokensJson(parsed, file) {
   const out = [];
   if (Array.isArray(parsed)) {

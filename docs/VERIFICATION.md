@@ -14,11 +14,11 @@ the date/commit for a release.
 - The public package has no third-party design systems, templates, fonts or
   images.
 
-Git release `v0.9.0` (public repository) additionally verified:
+Git release `v0.9.1` (public repository) additionally verified:
 
-- Anonymous `npm pack github:Paatricious/Dezign0#v0.9.0` succeeded.
+- Anonymous `npm pack github:Paatricious/Dezign0#v0.9.1` succeeded.
 - OpenCode 2 installed that git spec, loaded the kit and reported
-  `kit version: 0.9.0`, `skills: 13/13`, design languages: 152, addons: 13.
+  `kit version: 0.9.1`, `skills: 13/13`, design languages: 152, addons: 13.
 - `dezign0_lint`, `dezign0_measure`, `dezign0_doctor` are registered and
   callable through OpenCode 2.
 - `dezign0_lint` returns P0/P1 findings for a fixture and rejects paths outside

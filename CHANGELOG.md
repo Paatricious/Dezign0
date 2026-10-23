@@ -3,6 +3,14 @@
 All notable changes are recorded here. The format follows Keep a Changelog and
 the project uses semantic versioning.
 
+## [0.9.1] - 2026-10-23
+
+### Fixed
+
+- Removed remaining upstream-brand comments from `token-export.mjs`,
+  `ds-validate.mjs` and the enhancement-research document.
+- Core package now passes a zero-brand audit alongside addon 0.2.1.
+
 ## [0.9.0] - 2026-10-23
 
 ### Added

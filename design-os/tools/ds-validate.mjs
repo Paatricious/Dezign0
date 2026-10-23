@@ -24,7 +24,7 @@
  *
  * Exit codes: 0 valid, 1 P0 (or P1 with --strict), 2 unusable path/usage error.
  *
- * A pack is the OpenDesign/Dezign0 design-system shape:
+ * A pack is the Dezign0 design-system shape:
  *   manifest.json, DESIGN.md, tokens.css, design-tokens.json, components.html,
  *   components.manifest.json, tailwind-v4.css, USAGE.md, preview/, source/
  */
