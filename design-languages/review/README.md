@@ -331,3 +331,12 @@ pack's `package.json` lists `review/` in `files`, and `addons/index.json` catalo
 `visual-review` skill runs the pass this directory describes.
 
 Nothing here is loaded by the core `dezign0` plugin, which stays small.
+
+
+## Pixel baseline diff
+
+`measure-artifact --baseline=<dir>` compares full-page screenshots against
+`artifact-<view>.png` baselines. `--max-diff=0.001` sets the changed-pixel
+tolerance; a missing baseline, size mismatch or over-tolerance diff is blocking
+under `--strict`. Create baselines deliberately with `--shots=<dir>`, review them
+before promoting, and never re-baseline to make a failure disappear.

@@ -33,6 +33,10 @@ const shotsArg = args.find((a) => a.startsWith('--shots='))
 const excludeArg = args.find((a) => a.startsWith('--exclude='))
 const selectorArg = args.find((a) => a.startsWith('--selector='))
 const selector = selectorArg ? selectorArg.split('=').slice(1).join('=') : null
+const baselineArg = args.find((a) => a.startsWith('--baseline='))
+const baselineDir = baselineArg ? baselineArg.split('=').slice(1).join('=') : null
+const maxDiffArg = args.find((a) => a.startsWith('--max-diff='))
+const maxDiff = maxDiffArg ? Number(maxDiffArg.split('=')[1]) : 0.001
 const a11y = args.includes('--a11y')
 const excludes = (excludeArg ? excludeArg.split('=')[1] : '')
   .split(',').map((s) => s.trim()).filter(Boolean)
@@ -50,7 +54,8 @@ if (!target || args.includes('--help') || args.includes('-h')) {
 
 Usage: node measure-artifact.mjs <file-or-url> [--viewports=1440x900,768x900,390x844]
                                    [--json] [--strict] [--shots=dir] [--a11y]
-                                   [--selector=.widget]
+                                   [--selector=.widget] [--baseline=dir]
+                                   [--max-diff=0.001]
                                    [--exclude=.selector,other-selector]
 
 Requires Playwright: npm i -D playwright && npx playwright install chromium
@@ -59,9 +64,11 @@ Reports: console errors, clipped elements per viewport, rendered contrast
 failures, distinct type sizes and text below 11px, focusable controls,
 data-od-id hooks and optional accessibility checks. Viewports accept WIDTH or
 WIDTHxHEIGHT; use 145x188 for an exact widget cell. --selector also captures
-the element box. --strict exits 1 on clipped content, contrast failures,
-console errors or --a11y findings. --exclude skips intentionally reproduced
-regions (for example inert mock widgets on a state board).`)
+the element box. --baseline compares full-page screenshots (same viewport) and
+fails --strict when the changed-pixel ratio exceeds --max-diff. --strict exits 1
+on clipped content, contrast failures, console errors, a11y findings or a
+baseline diff. --exclude skips intentionally reproduced regions (for example
+inert mock widgets on a state board).`)
   process.exit(target ? 0 : 2)
 }
 
@@ -105,11 +112,15 @@ const results = []
 for (const viewport of viewports) {
   await page.setViewportSize({ width: viewport.width, height: viewport.height })
   await page.waitForTimeout(150)
-  if (shotsDir) {
-    fs.mkdirSync(shotsDir, { recursive: true })
-    const safe = viewport.label.replace(/[^a-z0-9x-]+/gi, '-')
-    await page.screenshot({ path: path.join(shotsDir, `artifact-${safe}.png`), fullPage: true })
-    if (selector) {
+  const safe = viewport.label.replace(/[^a-z0-9x-]+/gi, '-')
+  let screenshotBuffer = null
+  if (shotsDir || baselineDir) {
+    screenshotBuffer = await page.screenshot({ fullPage: true })
+    if (shotsDir) {
+      fs.mkdirSync(shotsDir, { recursive: true })
+      fs.writeFileSync(path.join(shotsDir, `artifact-${safe}.png`), screenshotBuffer)
+    }
+    if (shotsDir && selector) {
       const element = page.locator(selector).first()
       if (await element.count()) await element.screenshot({ path: path.join(shotsDir, `artifact-${safe}-element.png`) }).catch(() => {})
     }
@@ -275,7 +286,44 @@ for (const viewport of viewports) {
     const box = await page.locator(selector).first().boundingBox().catch(() => null)
     if (box) elementBox = { x: Math.round(box.x), y: Math.round(box.y), width: Math.round(box.width), height: Math.round(box.height) }
   }
-  results.push({ width: viewport.width, height: viewport.height, label: viewport.label, selector, elementBox, ...measure })
+  let diff = null
+  if (baselineDir && screenshotBuffer) {
+    const baselinePath = path.join(baselineDir, `artifact-${safe}.png`)
+    if (fs.existsSync(baselinePath)) {
+      const baseline = fs.readFileSync(baselinePath).toString('base64')
+      const candidate = screenshotBuffer.toString('base64')
+      diff = await page.evaluate(async ({ baseline, candidate, maxDiff }) => {
+        const load = (b64) => new Promise((resolve, reject) => {
+          const img = new Image()
+          img.onload = () => resolve(img)
+          img.onerror = reject
+          img.src = `data:image/png;base64,${b64}`
+        })
+        const [a, b] = await Promise.all([load(baseline), load(candidate)])
+        if (a.width !== b.width || a.height !== b.height) {
+          return { status: 'size-mismatch', baseline: [a.width, a.height], candidate: [b.width, b.height], ratio: 1 }
+        }
+        const canvas = document.createElement('canvas')
+        canvas.width = a.width
+        canvas.height = a.height
+        const ctx = canvas.getContext('2d', { willReadFrequently: true })
+        ctx.drawImage(a, 0, 0)
+        const da = ctx.getImageData(0, 0, a.width, a.height).data
+        ctx.clearRect(0, 0, a.width, a.height)
+        ctx.drawImage(b, 0, 0)
+        const db = ctx.getImageData(0, 0, a.width, a.height).data
+        let changed = 0
+        for (let i = 0; i < da.length; i += 4) {
+          if (Math.max(Math.abs(da[i] - db[i]), Math.abs(da[i + 1] - db[i + 1]), Math.abs(da[i + 2] - db[i + 2]), Math.abs(da[i + 3] - db[i + 3])) > 12) changed += 1
+        }
+        return { status: 'compared', changed, total: a.width * a.height, ratio: changed / (a.width * a.height), maxDiff }
+      }, { baseline, candidate, maxDiff })
+      diff.path = baselinePath
+    } else {
+      diff = { status: 'no-baseline', path: baselinePath }
+    }
+  }
+  results.push({ width: viewport.width, height: viewport.height, label: viewport.label, selector, elementBox, diff, ...measure })
 }
 
 await browser.close()
@@ -283,7 +331,8 @@ await browser.close()
 const blocking =
   results.some((r) => r.clippedCount > 0 || r.contrastCount > 0) ||
   consoleErrors.length > 0 || pageErrors.length > 0 ||
-  (a11y && results.some((r) => r.a11yCount > 0))
+  (a11y && results.some((r) => r.a11yCount > 0)) ||
+  (baselineDir && results.some((r) => r.diff && r.diff.status !== 'compared' || (r.diff?.status === 'compared' && r.diff.ratio > maxDiff)))
 
 if (json) {
   console.log(JSON.stringify({ url, viewports, results, consoleErrors, pageErrors, requests, blocking }, null, 2))
@@ -293,7 +342,7 @@ if (json) {
   for (const r of results) {
     const clip = r.clippedCount ? `CLIPPED ${r.clippedCount}` : 'no clipped content'
     const con = r.contrastCount ? `contrast failures ${r.contrastCount}` : 'contrast ok'
-    console.log(`${String(r.label || r.width).padStart(9)}  scrollWidth=${r.scrollWidth}  ${clip}  ${con}  typeSizes=${r.typeSizeCount}  tabStops=${r.tabStops}  odHooks=${r.odHooks}${a11y ? `  a11y=${r.a11yCount}` : ''}${r.elementBox ? `  element=${r.elementBox.width}x${r.elementBox.height}` : ''}`)
+    console.log(`${String(r.label || r.width).padStart(9)}  scrollWidth=${r.scrollWidth}  ${clip}  ${con}  typeSizes=${r.typeSizeCount}  tabStops=${r.tabStops}  odHooks=${r.odHooks}${a11y ? `  a11y=${r.a11yCount}` : ''}${r.elementBox ? `  element=${r.elementBox.width}x${r.elementBox.height}` : ''}${r.diff ? `  diff=${r.diff.status === 'compared' ? (r.diff.ratio * 100).toFixed(2) + '%' : r.diff.status}` : ''}`)
     for (const c of r.clipped.slice(0, 4)) console.log(`      clip: <${c.tag.toLowerCase()} class="${c.cls}"> ${c.left}..${c.right}`)
     for (const c of r.contrast.slice(0, 4)) console.log(`      contrast ${c.ratio}:1 (need ${c.required}) ${c.size}px "${c.text}"`)
     if (r.tiny.length) console.log(`      text <11px: ${r.tiny.map((t) => `${t.size}px ${t.tag.toLowerCase()}.${t.cls}`).join(', ')}`)

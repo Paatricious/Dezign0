@@ -488,6 +488,8 @@ function makeTools(projectDir, kitDir, scriptKit) {
           },
           selector: { type: "string", description: "Optional CSS selector; captures and reports the element box." },
           a11y: { type: "boolean", description: "Run accessibility checks and fail under --strict." },
+          baseline: { type: "string", description: "Optional directory of artifact-<size>.png baselines for pixel diff." },
+          maxDiff: { type: "number", description: "Allowed changed-pixel ratio with a baseline (default 0.001)." },
           strict: { type: "boolean", description: "Fail on clipped content, contrast failures, console errors or a11y findings." },
         },
         required: ["path"],
@@ -502,6 +504,8 @@ function makeTools(projectDir, kitDir, scriptKit) {
           if (input.viewports) args.push(`--viewports=${input.viewports}`);
           if (input.selector) args.push(`--selector=${input.selector}`);
           if (input.a11y) args.push("--a11y");
+          if (input.baseline) args.push(`--baseline=${input.baseline}`);
+          if (typeof input.maxDiff === "number") args.push(`--max-diff=${input.maxDiff}`);
           if (input.strict) args.push("--strict");
           const run = await runNode(script, args, projectDir);
           if (run.spawnError) return failure("Node.js was not found. Install Node 18+ to use measurement.");

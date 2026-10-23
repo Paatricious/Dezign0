@@ -157,3 +157,10 @@ explain the fix. Do not add taste-as-script rules that cannot be verified.
 `measure-artifact` accepts `WIDTHxHEIGHT` viewports, an optional
 `--selector=.widget` element box/screenshot, and `--a11y`. Use `145x188` for a
 single widget cell and pair it with `--strict` in review.
+
+
+### Pixel baselines
+
+`--baseline=<dir>` compares `artifact-<view> .png` full-page shots against
+existing baselines before the run; `--max-diff=0.001` sets the allowed changed-pixel
+ratio. Missing, mismatched or over-tolerance baselines fail `--strict`.
