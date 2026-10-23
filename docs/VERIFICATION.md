@@ -14,24 +14,27 @@ the date/commit for a release.
 - The public package has no third-party design systems, templates, fonts or
   images.
 
-Unpublished working tree (targeting `0.4.0`) additionally verified:
+Git release `v0.4.0` (public repository) additionally verified:
 
+- Anonymous `npm pack github:Paatricious/Dezign0#v0.4.0` succeeded.
+- OpenCode 2 installed that git spec, loaded the kit and reported
+  `kit version: 0.4.0`, `skills: 6/6`.
 - `dezign0_lint`, `dezign0_measure`, `dezign0_doctor` are registered and
   callable through OpenCode 2.
 - `dezign0_lint` returns P0/P1 findings for a fixture and rejects paths outside
   the project.
-- `dezign0_doctor` reports six skills and the kit state.
 - Installer regression test covers dry-run, install with spaces, `--force=false`,
   file conflict at `.design-os`, and `--upgrade`.
-- CI runs `npm run check` on Ubuntu and Windows.
+- CI runs `npm run check` on Ubuntu and Windows; both pass.
 - `claude plugin validate . --strict` passes.
 
 ## Known limits
 
 - `measure-artifact` needs Playwright; it is optional and not bundled.
 - Skill triggering was sampled on three realistic prompts, not a full benchmark.
-- The published `0.3.0` package predates the tools, kit metadata and docs fixes;
-  `0.4.0` is prepared but not published at the time of writing.
+- The npm registry still serves `0.3.0`; `0.4.0` is available via the public
+  GitHub tag because npm publishing needs 2FA. Installing the git spec needs no
+  authentication.
 
 ## Reproduce
 
