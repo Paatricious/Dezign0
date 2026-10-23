@@ -97,5 +97,17 @@
       "findings": 1,
       "usage": 2
     }
+  },
+  "hooks": {
+    "claude": [
+      "SessionStart",
+      "PostToolUse",
+      "Stop"
+    ],
+    "opencode": [
+      "file.edited",
+      "session.idle"
+    ],
+    "blocking": "claude PostToolUse/Stop only"
   }
 }

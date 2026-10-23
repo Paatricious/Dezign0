@@ -16,6 +16,8 @@ import crypto from "node:crypto";
 import { execFile } from "node:child_process";
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
+import { Dezign0OpenCodePlugin } from "./opencode-lifecycle.mjs";
+export { Dezign0OpenCodePlugin };
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const KIT = path.resolve(HERE, "..", "design-os");

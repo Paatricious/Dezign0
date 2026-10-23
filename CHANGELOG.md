@@ -10,7 +10,7 @@ the project uses semantic versioning.
 - Claude Code `PostToolUse` and `Stop` lifecycle hooks. Edits to HTML are linted;
   P0 findings block with an actionable message, and `stop_hook_active` prevents
   loops.
-- Hook regression test wired into `npm run check`.
+- Hook regression tests for Claude and OpenCode wired into `npm run check`.
 
 ## [0.8.0] - 2026-10-23
 

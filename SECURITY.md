@@ -11,6 +11,10 @@ On setup, the OpenCode plugin:
 - writes `.design-os/.dezign0-kit.json` (version and file hashes);
 - registers thirteen skills and five tools with OpenCode.
 
+The lifecycle hooks are local: Claude hooks call the CLI on edited HTML;
+OpenCode observes file/idle events and only emits a warning. Neither hook sends
+data anywhere.
+
 The CLI and MCP server are local entry points over the same tools. The MCP
 server uses stdio only, resolves paths inside the project with `realpath`, and
 makes no network calls. The plugin, CLI and MCP server do not edit existing

@@ -22,6 +22,13 @@ brief, run a critique and produce a handover.
 - `npx dezign0 mcp` — stdio MCP server for non-OpenCode harnesses.
 - `.github/actions/dezign0-review` — pull-request gate and sticky comment.
 
+## Lifecycle hooks
+
+- Claude Code: `SessionStart`, `PostToolUse`, `Stop`; P0 HTML edits block.
+- OpenCode: `file.edited` lint accumulator, `session.idle` warning toast.
+- The Claude path is blocking; the OpenCode path is advisory because its
+  post-tool hook cannot veto a write.
+
 ## Tools
 
 | Tool | What it does |

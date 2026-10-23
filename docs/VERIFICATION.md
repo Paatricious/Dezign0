@@ -44,6 +44,7 @@ Git release `v0.8.1` (public repository) additionally verified:
   publish `0.2.1` for the white-label build.
 - `node scripts/test-hooks.mjs` covers clean HTML, P0 HTML, non-HTML, missing
   paths and Stop-loop suppression.
+- `node scripts/test-opencode-hooks.mjs` covers the OpenCode file/idle observer.
 
 ## Reproduce
 

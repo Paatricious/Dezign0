@@ -39,7 +39,8 @@ The CLI, local studio and additional adapter integrations are next.
 - **GitHub Action:** `.github/actions/dezign0-review` runs a P0/P1 gate, uploads
   screenshots and writes one sticky review comment.
 - **Lifecycle hooks:** Claude `PostToolUse`/`Stop` gates lint HTML and block P0
-  findings; `stop_hook_active` prevents loops.
+  findings; `stop_hook_active` prevents loops. OpenCode observes `file.edited`
+  and `session.idle` and raises a warning toast.
 - **Evals:** `npm run eval -- --adapter "..."` reports WITH/WITHOUT deltas.
 
 ## Quick start
