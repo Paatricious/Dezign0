@@ -7,7 +7,7 @@ the date/commit for a release.
 
 - **OpenCode 2.1.3** (managed by OpenChamber 2.5.1) loaded the published
   `dezign0@0.3.0` from npm in a temp project.
-- `.design-os/` was created; seven `dezign0-*` skills appeared.
+- `.design-os/` was created; six `dezign0-*` skills appeared (the 0.3.0 release).
 - A local-directory install loaded the same way.
 - `npm view dezign0 version` returned `0.3.0`; anonymous download of the tarball
   worked.
@@ -26,7 +26,8 @@ Git release `v0.5.0` (public repository) additionally verified:
 - Installer regression test covers dry-run, install with spaces, `--force=false`,
   file conflict at `.design-os`, and `--upgrade`.
 - CI runs `npm run check` on Ubuntu and Windows; both pass.
-- `claude plugin validate . --strict` passes.
+- `claude plugin validate . --strict` passes; `claude plugin details` shows 7 skills and 1 SessionStart hook.
+- The installer adapter check covers 12 harness targets and the Codex path regression.
 
 ## Known limits
 
