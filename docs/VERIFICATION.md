@@ -14,11 +14,11 @@ the date/commit for a release.
 - The public package has no third-party design systems, templates, fonts or
   images.
 
-Git release `v0.5.1` (public repository) additionally verified:
+Git release `v0.5.2` (public repository) additionally verified:
 
-- Anonymous `npm pack github:Paatricious/Dezign0#v0.5.1` succeeded.
+- Anonymous `npm pack github:Paatricious/Dezign0#v0.5.2` succeeded.
 - OpenCode 2 installed that git spec, loaded the kit and reported
-  `kit version: 0.5.1`, `skills: 7/7`.
+  `kit version: 0.5.2`, `skills: 7/7`.
 - `dezign0_lint`, `dezign0_measure`, `dezign0_doctor` are registered and
   callable through OpenCode 2.
 - `dezign0_lint` returns P0/P1 findings for a fixture and rejects paths outside
@@ -37,7 +37,7 @@ Git release `v0.5.1` (public repository) additionally verified:
 
 - `measure-artifact` needs Playwright; it is optional and not bundled.
 - Skill triggering was sampled on three realistic prompts, not a full benchmark.
-- The npm registry serves `0.5.0`; `0.5.1` is available via the public GitHub tag
+- The npm registry serves `0.5.0`; `0.5.2` is available via the public GitHub tag
   until it is published. Installing the git spec needs no authentication.
 
 ## Reproduce

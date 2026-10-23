@@ -14,6 +14,7 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { execFile } from "node:child_process";
+import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -226,6 +227,15 @@ function countDrift(kitDir, files) {
   return changed;
 }
 
+function repairMissing(dest) {
+  for (const rel of walkFiles(KIT)) {
+    const dst = path.join(dest, rel);
+    if (fs.existsSync(dst)) continue;
+    fs.mkdirSync(path.dirname(dst), { recursive: true });
+    fs.copyFileSync(path.join(KIT, rel), dst);
+  }
+}
+
 function ensureKit(projectDir) {
   const dest = path.join(projectDir, ".design-os");
   if (fs.existsSync(dest)) {
@@ -243,6 +253,8 @@ function ensureKit(projectDir) {
       } catch (error) {
         console.warn(`[dezign0] kit upgrade failed: ${error instanceof Error ? error.message : String(error)}`);
       }
+    } else if (meta?.version === KIT_VERSION) {
+      repairMissing(dest);
     }
     return dest;
   }
@@ -422,18 +434,26 @@ function makeTools(projectDir, kitDir, scriptKit) {
         }
         const skillFiles = SKILLS.map((id) => path.join(kitDir, "skills", id, "SKILL.md"));
         const found = skillFiles.filter((file) => fs.existsSync(file)).length;
-        const playwright = fs.existsSync(path.join(projectDir, "node_modules", "playwright"))
-          ? "installed in project"
-          : "not found in project node_modules";
+        let playwright = "not found in project";
+        try {
+          createRequire(path.join(projectDir, "__dezign0_resolve__.js")).resolve("playwright");
+          playwright = "installed in project";
+        } catch {
+          // Keep the clear not-found message.
+        }
+        const drift = meta ? countDrift(kitDir, meta.files) : null;
+        const projectLint = fs.existsSync(path.join(kitDir, "tools", "design-lint.mjs"));
+        const projectMeasure = fs.existsSync(path.join(kitDir, "tools", "measure-artifact.mjs"));
         const lines = [
           `dezign0 doctor`,
           `plugin: ${VERSION}`,
           `project: ${projectDir}`,
           `kit: ${kitDir}`,
-          `kit version: ${meta?.version || "unknown (legacy install; delete .design-os to refresh)"}${meta?.version && meta.version !== VERSION ? ` (plugin is ${VERSION})` : ""}`,
+          `kit version: ${meta?.version || "unknown (legacy install; delete .design-os to refresh)"}${meta?.version && meta.version !== KIT_VERSION ? ` (plugin is ${KIT_VERSION})` : ""}`,
           `skills: ${found}/${SKILLS.length}`,
-          `lint: ${fs.existsSync(path.join(kitDir, "tools", "design-lint.mjs")) ? "ok" : "missing"}`,
-          `measure: ${fs.existsSync(path.join(kitDir, "tools", "measure-artifact.mjs")) ? "ok" : "missing"}`,
+          `kit drift: ${drift === null ? "unknown (no hash metadata)" : drift === 0 ? "none" : `${drift} modified/missing file(s)`}`,
+          `project lint/measure: ${projectLint ? "ok" : "missing"}/${projectMeasure ? "ok" : "missing"}`,
+          `package scripts: lint/measure from ${KIT_VERSION}`,
           `node: ${process.version}`,
           `playwright: ${playwright}`,
           `tools: ${TOOL_NAMES.join(", ")} (scripts from package ${KIT_VERSION})`,

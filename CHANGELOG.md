@@ -3,6 +3,18 @@
 All notable changes are recorded here. The format follows Keep a Changelog and
 the project uses semantic versioning.
 
+## [0.5.2] - 2026-10-23
+
+### Added
+
+- Doctor reports kit drift and whether Playwright resolves from the project.
+- Missing files in a current-version kit are repaired on setup.
+
+### Fixed
+
+- Doctor now distinguishes the project kit from the packaged lint/measure
+  scripts, so "doctor says missing, tool works" cannot happen silently.
+
 ## [0.5.1] - 2026-10-23
 
 ### Fixed

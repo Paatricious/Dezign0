@@ -47,21 +47,21 @@ shell.
    npm publish --access public
    ```
 2. Settings → Plugins → Add plugin → **From npm**.
-3. Spec: `dezign0` (or a pinned version such as `dezign0@0.5.1`).
+3. Spec: `dezign0` (or a pinned version such as `dezign0@0.5.2`).
 4. Reload.
 
-The live npm `0.5.0` package has seven skills and the tools. The `0.5.1` git tag adds the project-Playwright resolution and safe kit-upgrade fixes.
+The live npm `0.5.0` package has seven skills and the tools. The `0.5.2` git tag adds the project-Playwright resolution and safe kit-upgrade fixes.
 
 **From git (tool-enabled, no npm auth):**
 
 ```text
-github:Paatricious/Dezign0#v0.5.1
+github:Paatricious/Dezign0#v0.5.2
 ```
 
 Use this in the **From npm** spec field, or in `opencode.json`:
 
 ```json
-{ "plugins": ["github:Paatricious/Dezign0#v0.5.1"] }
+{ "plugins": ["github:Paatricious/Dezign0#v0.5.2"] }
 ```
 
 This installs the tagged public repository and includes `dezign0_lint`,

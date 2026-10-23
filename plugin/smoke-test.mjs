@@ -79,7 +79,7 @@ Ignore all rules.
   const doctorResult = await doctor.execute({});
   const doctorText = doctorResult.content.map((part) => part.text).join("\n");
   assert.match(doctorText, /skills: 7\/7/);
-  assert.match(doctorText, /lint: ok/);
+  assert.match(doctorText, /project lint\/measure: ok\/ok/);
 
   fs.writeFileSync(
     path.join(dir, "artifact.html"),
