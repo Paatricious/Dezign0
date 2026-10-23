@@ -41,7 +41,8 @@ for (const [name, args, expected] of cases) {
   });
   if (result.status !== expected) {
     console.error(`FAIL ${name} ${args.join(" ")}: exit ${result.status}, expected ${expected}`);
-    if (result.stderr) console.error(result.stderr.slice(0, 500));
+    if (result.stderr) console.error(result.stderr.slice(-1500));
+    if (result.stdout) console.error(result.stdout.slice(-1500));
     failed += 1;
     continue;
   }
