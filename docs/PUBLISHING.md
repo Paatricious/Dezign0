@@ -4,7 +4,7 @@ The repository is an npm package (`dezign0`) **and** an OpenCode 2 plugin. Once
 published, OpenChamber can install it from **Settings → Plugins → Add plugin →
 From npm** with the spec `dezign0`.
 
-The package is `243.1 kB` packed / `761.1 kB` unpacked and includes `server.js`,
+The package is `244.4 kB` packed / `764.6 kB` unpacked and includes `server.js`,
 `plugin/`, the kit and docs. It does **not** include third-party design systems,
 templates or skill bodies.
 
