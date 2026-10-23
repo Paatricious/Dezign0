@@ -4,9 +4,9 @@ The repository is an npm package (`dezign0`) **and** an OpenCode 2 plugin. Once
 published, OpenChamber can install it from **Settings → Plugins → Add plugin →
 From npm** with the spec `dezign0`.
 
-The package is `149.6 kB` packed / `621 kB` unpacked and includes `server.js`,
-`plugin/`, the kit and docs. It does **not** include
-third-party design systems, templates or skill bodies.
+The package is `77.6 kB` packed / `208.9 kB` unpacked and includes `server.js`,
+`plugin/`, the kit and docs. It does **not** include third-party design systems,
+templates or skill bodies.
 
 ## One-time setup
 
@@ -33,8 +33,8 @@ If npm asks for a one-time code:
 npm publish --access public --otp=123456
 ```
 
-`prepublishOnly` runs `npm run check` first: syntax checks, the plugin smoke test
-and the plugin smoke test. A failure stops the publish.
+`prepublishOnly` runs `npm run check` first: syntax checks and the plugin smoke
+test. A failure stops the publish.
 
 Verify:
 
@@ -42,6 +42,19 @@ Verify:
 npm view dezign0 version
 npm view dezign0 dist.tarball
 ```
+
+### New-package staging
+
+For a package name that has never been published, npm may first create a
+`0.0.0-stage` placeholder and process the real version asynchronously. The
+publish command exits successfully while the registry briefly still shows the
+placeholder. Poll until the real version appears:
+
+```bash
+npm view dezign0 version
+```
+
+This can take a few minutes. The `dezign0@0.3.0` release went through this state.
 
 ## Install in OpenChamber
 

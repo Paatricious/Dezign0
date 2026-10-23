@@ -20,6 +20,18 @@ jobs:
           node-version: 22
           registry-url: https://registry.npmjs.org
       - run: npm run check
-      - run: npm publish --provenance --access public
+      - name: Check whether this version is already published
+        id: version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if npm view "dezign0@$VERSION" version >/dev/null 2>&1; then
+            echo "published=true" >> "$GITHUB_OUTPUT"
+            echo "dezign0@$VERSION already exists; skipping publish."
+          else
+            echo "published=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Publish to npm
+        if: steps.version.outputs.published != 'true'
+        run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
