@@ -37,9 +37,8 @@ Git release `v0.5.1` (public repository) additionally verified:
 
 - `measure-artifact` needs Playwright; it is optional and not bundled.
 - Skill triggering was sampled on three realistic prompts, not a full benchmark.
-- The npm registry still serves `0.3.0`; `0.5.1` is available via the public
-  GitHub tag because npm publishing needs 2FA. Installing the git spec needs no
-  authentication.
+- The npm registry serves `0.5.0`; `0.5.1` is available via the public GitHub tag
+  until it is published. Installing the git spec needs no authentication.
 
 ## Reproduce
 

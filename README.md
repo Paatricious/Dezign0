@@ -30,7 +30,8 @@ In **Settings → Plugins → Add plugin**:
 - **From local path:** the absolute path to this repo directory.
 - **From npm:** `dezign0` — live at
   [npmjs.com/package/dezign0](https://www.npmjs.com/package/dezign0). The live
-  `0.3.0` release has the six skills.
+  `0.5.0` release has seven skills and the tools. The `0.5.1` Playwright and
+  kit-upgrade fixes are on the git tag until published.
 - **From git (no npm publish needed):** `github:Paatricious/Dezign0#v0.5.1`.
   This is the current tool-enabled version; the repository is public.
 

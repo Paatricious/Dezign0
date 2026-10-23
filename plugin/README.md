@@ -50,7 +50,7 @@ shell.
 3. Spec: `dezign0` (or a pinned version such as `dezign0@0.5.1`).
 4. Reload.
 
-The live npm `0.3.0` package has six skills and no tools. The `0.5.1` git tag adds the Figma skill, tools and the Claude Code bootstrap hook.
+The live npm `0.5.0` package has seven skills and the tools. The `0.5.1` git tag adds the project-Playwright resolution and safe kit-upgrade fixes.
 
 **From git (tool-enabled, no npm auth):**
 

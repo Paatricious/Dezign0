@@ -19,7 +19,7 @@ to `<project>/.design-os` (if missing) and registers seven `dezign0-*` skills.
 
 ### From npm or git
 
-Registry package (skills only in the live 0.3.0):
+Registry package (live 0.5.0; 0.5.1 fixes are on the git tag):
 
 1. **Settings → Plugins → Add plugin → From npm**.
 2. Spec: `dezign0`, or pin a version.
