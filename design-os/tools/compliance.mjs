@@ -1112,7 +1112,7 @@ automated finding in the subset that was checked.`)
       return 2
     }
   } else if (opts.json) {
-    console.log(JSON.stringify(report, null, 2))
+    console.log(JSON.stringify(report))
   } else {
     const separator = String.fromCharCode(10, 10) + '---' + String.fromCharCode(10, 10)
     console.log(outputsFor(report, onlyRaw === 'all' ? 'all' : onlyRaw).map((d) => d.content).join(separator))
