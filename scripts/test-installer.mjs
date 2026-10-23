@@ -34,6 +34,9 @@ try {
     "seven skills installed",
   );
   assert.match(fs.readFileSync(path.join(target, "AGENTS.md"), "utf8"), /design-os:start/);
+  const meta = JSON.parse(fs.readFileSync(path.join(target, ".design-os", ".dezign0-kit.json"), "utf8"));
+  assert.equal(meta.version, JSON.parse(fs.readFileSync(path.join(root, "design-os", "kit.json"), "utf8")).version);
+  assert.ok(meta.files && Object.keys(meta.files).length > 40, "installer writes per-file hashes");
 
   const canary = path.join(target, ".design-os", "canary.txt");
   fs.writeFileSync(canary, "keep");

@@ -12,10 +12,12 @@ const read = (rel) => JSON.parse(fs.readFileSync(path.join(root, rel), "utf8"));
 const pkg = read("package.json");
 const plugin = read(".claude-plugin/plugin.json");
 const market = read(".claude-plugin/marketplace.json");
+const kit = read("design-os/kit.json");
 const skills = fs.readdirSync(path.join(root, "design-os", "skills"))
   .filter((name) => fs.existsSync(path.join(root, "design-os", "skills", name, "SKILL.md")));
 
 assert.equal(plugin.version, pkg.version, ".claude-plugin/plugin.json version must match package.json");
+assert.equal(kit.version, pkg.version, "design-os/kit.json version must match package.json");
 assert.equal(market.plugins[0].version, pkg.version, "marketplace plugin version must match package.json");
 assert.equal(skills.length, 7, "expected seven SKILL.md files");
 assert.ok(pkg.files.includes(".claude-plugin/"), "package files must include .claude-plugin/");

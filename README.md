@@ -31,7 +31,7 @@ In **Settings → Plugins → Add plugin**:
 - **From npm:** `dezign0` — live at
   [npmjs.com/package/dezign0](https://www.npmjs.com/package/dezign0). The live
   `0.3.0` release has the six skills.
-- **From git (no npm publish needed):** `github:Paatricious/Dezign0#v0.5.0`.
+- **From git (no npm publish needed):** `github:Paatricious/Dezign0#v0.5.1`.
   This is the current tool-enabled version; the repository is public.
 
 Choose User or Project scope. On load the plugin copies the kit to `.design-os/`,

@@ -28,7 +28,7 @@ Registry package (skills only in the live 0.3.0):
 Tagged git install (current tools, no npm auth):
 
 ```text
-github:Paatricious/Dezign0#v0.5.0
+github:Paatricious/Dezign0#v0.5.1
 ```
 
 Use the **From npm** tab for the git spec too, or put it in `opencode.json`.

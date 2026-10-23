@@ -20,6 +20,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import os from 'node:os'
+import crypto from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 
 const KIT = path.dirname(fileURLToPath(import.meta.url))
@@ -149,6 +150,32 @@ function main() {
   const log = (msg) => { actions.push(msg); console.log(msg) }
   const rel = (p) => path.relative(process.cwd(), p) || p
 
+  function kitVersion() {
+    try {
+      return JSON.parse(fs.readFileSync(path.join(KIT, 'kit.json'), 'utf8')).version || 'unknown'
+    } catch {
+      return 'unknown'
+    }
+  }
+
+  function writeKitMeta(dest) {
+    const files = {}
+    const walk = (dir, prefix = '') => {
+      for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        if (entry.name === '.dezign0-kit.json' || entry.name === 'node_modules' || entry.name === '.git') continue
+        const next = prefix ? `${prefix}/${entry.name}` : entry.name
+        const full = path.join(dir, entry.name)
+        if (entry.isDirectory()) walk(full, next)
+        else if (entry.isFile()) files[next] = crypto.createHash('sha256').update(fs.readFileSync(full)).digest('hex')
+      }
+    }
+    walk(dest)
+    fs.writeFileSync(
+      path.join(dest, '.dezign0-kit.json'),
+      JSON.stringify({ schema: 1, package: 'dezign0', version: kitVersion(), source: 'installer', installedAt: new Date().toISOString(), files }, null, 2) + '\n',
+    )
+  }
+
   function copyTree(from, to, overwrite) {
     const stat = fs.statSync(from)
     if (stat.isDirectory()) {
@@ -183,11 +210,13 @@ function main() {
   }
 
   // 1. Kit
+  let kitCopied = false
   if (fs.existsSync(kitTarget) && !force && !upgrade) {
     log(`skip (exists): ${rel(kitTarget)} (use --upgrade to add missing files or --force to replace)`)
   } else {
     if (!dryRun) fs.mkdirSync(kitTarget, { recursive: true })
     copyTree(KIT, kitTarget, force)
+    kitCopied = true
   }
 
   // 2. Skills
@@ -288,6 +317,8 @@ no browser, say the review is source-only. Do not invent metrics or filler copy.
       }
     }
   }
+
+  if (kitCopied && !dryRun) writeKitMeta(kitTarget)
 
   // 5. Next steps
   console.log('\nInstalled into: ' + target)

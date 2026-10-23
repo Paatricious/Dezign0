@@ -23,6 +23,13 @@ if (!fs.existsSync(path.join(KIT, "DESIGN-OS.md"))) {
 }
 const META = ".dezign0-kit.json";
 const LEGACY_META = ".dezign0.json";
+const KIT_VERSION = (() => {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(KIT, "kit.json"), "utf8")).version || "0.0.0";
+  } catch {
+    return "0.0.0";
+  }
+})();
 const SKILLS = [
   "design-brief",
   "frontend-design",
@@ -60,7 +67,7 @@ function hashTree(root) {
   const files = {};
   const walk = (dir) => {
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-      if (entry.name === META || entry.name === LEGACY_META || entry.name === "node_modules" || entry.name === ".git") {
+      if (entry.name === META || entry.name === LEGACY_META || entry.name === "node_modules" || entry.name === ".git" || entry.name.startsWith(".backup-")) {
         continue;
       }
       const full = path.join(dir, entry.name);
@@ -78,7 +85,101 @@ function hashTree(root) {
   return files;
 }
 
-function writeMeta(dest, source) {
+function walkFiles(root, prefix = "") {
+  const result = [];
+  for (const entry of fs.readdirSync(root, { withFileTypes: true })) {
+    if (entry.name === "node_modules" || entry.name === ".git" || entry.name === META || entry.name === LEGACY_META || entry.name.startsWith(".backup-")) continue;
+    const rel = prefix ? `${prefix}/${entry.name}` : entry.name;
+    const full = path.join(root, entry.name);
+    if (entry.isDirectory()) result.push(...walkFiles(full, rel));
+    else if (entry.isFile()) result.push(rel);
+  }
+  return result;
+}
+
+function hashFile(file) {
+  return crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
+}
+
+function recoverLegacyKit(dest) {
+  // A kit created by an older installer has no hash manifest. Refresh the
+  // managed files, but keep every overwritten file in a local backup.
+  const stamp = Date.now();
+  let changed = 0;
+  for (const rel of walkFiles(KIT)) {
+    const src = path.join(KIT, rel);
+    const dst = path.join(dest, rel);
+    let differs = true;
+    try {
+      differs = hashFile(src) !== hashFile(dst);
+    } catch {
+      differs = true;
+    }
+    if (!differs) continue;
+    if (fs.existsSync(dst)) {
+      const backup = path.join(dest, `.backup-${stamp}`, rel);
+      fs.mkdirSync(path.dirname(backup), { recursive: true });
+      fs.copyFileSync(dst, backup);
+    }
+    fs.mkdirSync(path.dirname(dst), { recursive: true });
+    fs.copyFileSync(src, dst);
+    changed += 1;
+  }
+  writeMeta(dest, "recovered");
+  if (changed > 0) console.warn(`[dezign0] refreshed a legacy kit (${changed} files; old versions in .backup-${stamp})`);
+  return true;
+}
+
+function matchesPackage(dest) {
+  for (const rel of walkFiles(KIT)) {
+    try {
+      if (hashFile(path.join(dest, rel)) !== hashFile(path.join(KIT, rel))) return false;
+    } catch {
+      return false;
+    }
+  }
+  return true;
+}
+
+function upgradeKit(dest, meta) {
+  const oldFiles = meta?.files && typeof meta.files === "object" ? meta.files : {};
+  const nextFiles = {};
+  let updated = 0;
+  let conflict = 0;
+  for (const rel of walkFiles(KIT)) {
+    const src = path.join(KIT, rel);
+    const dst = path.join(dest, rel);
+    const srcHash = hashFile(src);
+    const oldHash = oldFiles[rel];
+    let dstHash = null;
+    try {
+      dstHash = hashFile(dst);
+    } catch {
+      // Missing file: copy below.
+    }
+    if (dstHash === null || (oldHash && dstHash === oldHash)) {
+      fs.mkdirSync(path.dirname(dst), { recursive: true });
+      fs.copyFileSync(src, dst);
+      nextFiles[rel] = srcHash;
+      updated += 1;
+    } else if (!oldHash) {
+      // A legacy install with no hash: do not overwrite an existing file.
+      nextFiles[rel] = dstHash;
+      conflict += 1;
+    } else {
+      // User modified this file; preserve it and keep the old base hash so the
+      // next upgrade still treats it as modified.
+      nextFiles[rel] = oldHash;
+      conflict += 1;
+    }
+  }
+  writeMeta(dest, "upgrade", nextFiles);
+  if (process.env.DEZIGN0_DEBUG === "1") {
+    console.error(`[dezign0] kit upgraded: ${updated} files, ${conflict} preserved`);
+  }
+}
+
+function writeMeta(dest, source, files = null) {
   try {
     fs.writeFileSync(
       path.join(dest, META),
@@ -89,7 +190,7 @@ function writeMeta(dest, source) {
           version: VERSION,
           source,
           installedAt: new Date().toISOString(),
-          files: hashTree(dest),
+          files: files || hashTree(dest),
         },
         null,
         2,
@@ -131,6 +232,18 @@ function ensureKit(projectDir) {
     const stat = fs.lstatSync(dest);
     if (stat.isSymbolicLink()) throw new Error(`${dest} is a symlink; refusing to trust it`);
     if (!stat.isDirectory()) throw new Error(`${dest} exists and is not a directory`);
+    const meta = readMeta(dest).data;
+    if (!meta) {
+      // A legacy installer (or an interrupted copy) produced a kit without
+      // metadata. Add missing files, then adopt it only if it is byte-identical.
+      recoverLegacyKit(dest);
+    } else if (meta.version !== KIT_VERSION) {
+      try {
+        upgradeKit(dest, meta);
+      } catch (error) {
+        console.warn(`[dezign0] kit upgrade failed: ${error instanceof Error ? error.message : String(error)}`);
+      }
+    }
     return dest;
   }
   const tmp = `${dest}.tmp-${process.pid}-${Date.now()}`;
@@ -186,7 +299,7 @@ function runNode(script, args, cwd) {
         timeout: 120000,
         maxBuffer: 4 * 1024 * 1024,
         windowsHide: true,
-        env: { ...process.env, FORCE_COLOR: "0", NO_COLOR: "1" },
+        env: { ...process.env, FORCE_COLOR: "0", NO_COLOR: "1", DEZIGN0_PROJECT_DIR: cwd },
       },
       (error, stdout, stderr) => {
         resolve({
@@ -323,7 +436,7 @@ function makeTools(projectDir, kitDir, scriptKit) {
           `measure: ${fs.existsSync(path.join(kitDir, "tools", "measure-artifact.mjs")) ? "ok" : "missing"}`,
           `node: ${process.version}`,
           `playwright: ${playwright}`,
-          `tools: ${TOOL_NAMES.join(", ")}`,
+          `tools: ${TOOL_NAMES.join(", ")} (scripts from package ${KIT_VERSION})`,
         ];
         if (found < SKILLS.length) lines.push("", "Fix: delete .design-os and reload the plugin to recopy the kit.");
         if (meta?.version && meta.version !== VERSION) {

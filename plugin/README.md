@@ -47,21 +47,21 @@ shell.
    npm publish --access public
    ```
 2. Settings → Plugins → Add plugin → **From npm**.
-3. Spec: `dezign0` (or a pinned version such as `dezign0@0.5.0`).
+3. Spec: `dezign0` (or a pinned version such as `dezign0@0.5.1`).
 4. Reload.
 
-The live npm `0.3.0` package has six skills and no tools. The `0.5.0` git tag adds the Figma skill, tools and the Claude Code bootstrap hook.
+The live npm `0.3.0` package has six skills and no tools. The `0.5.1` git tag adds the Figma skill, tools and the Claude Code bootstrap hook.
 
 **From git (tool-enabled, no npm auth):**
 
 ```text
-github:Paatricious/Dezign0#v0.5.0
+github:Paatricious/Dezign0#v0.5.1
 ```
 
 Use this in the **From npm** spec field, or in `opencode.json`:
 
 ```json
-{ "plugins": ["github:Paatricious/Dezign0#v0.5.0"] }
+{ "plugins": ["github:Paatricious/Dezign0#v0.5.1"] }
 ```
 
 This installs the tagged public repository and includes `dezign0_lint`,

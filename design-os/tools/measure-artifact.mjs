@@ -21,6 +21,7 @@
  */
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
+import { createRequire } from 'node:module'
 import fs from 'node:fs'
 
 const args = process.argv.slice(2)
@@ -55,12 +56,21 @@ the inert mock widgets on a state board) from clipping/contrast/type checks.`)
 
 let chromium
 try {
-  ({ chromium } = await import('playwright'))
-} catch {
-  console.error('measure-artifact: Playwright is not installed.\n  npm i -D playwright\n  npx playwright install chromium')
+  // Resolve Playwright from the project, not from this script's package.
+  // The plugin executes this file from its bundled kit, which has no node_modules.
+  const projectDir = process.env.DEZIGN0_PROJECT_DIR || process.cwd()
+  const requireFromProject = createRequire(path.join(projectDir, '__dezign0_resolve__.js'))
+  const playwrightEntry = requireFromProject.resolve('playwright')
+  const playwright = await import(pathToFileURL(playwrightEntry).href)
+  chromium = playwright.chromium || playwright.default?.chromium
+} catch (error) {
+  console.error(`measure-artifact: Playwright is not installed in the project.
+  project: ${process.env.DEZIGN0_PROJECT_DIR || process.cwd()}
+  npm i -D playwright
+  npx playwright install chromium`)
+  if (process.env.DEZIGN0_DEBUG === '1' && error instanceof Error) console.error(error.message)
   process.exit(2)
 }
-
 const url = /^https?:|^file:/.test(target) ? target : pathToFileURL(path.resolve(target)).href
 const browser = await chromium.launch({ headless: true })
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } })

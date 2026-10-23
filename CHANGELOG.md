@@ -3,6 +3,20 @@
 All notable changes are recorded here. The format follows Keep a Changelog and
 the project uses semantic versioning.
 
+## [0.5.1] - 2026-10-23
+
+### Fixed
+
+- `dezign0_measure` now resolves Playwright from the **project**, not from the
+  bundled plugin directory. The MCP tool works when Playwright is installed in
+  the project.
+- The installer writes `.design-os/.dezign0-kit.json` for every install mode,
+  including `--harness=files`.
+- The plugin repairs a legacy kit that has no metadata and upgrades a stale
+  `.design-os` on version mismatch, preserving modified files and backing up
+  overwritten ones under `.design-os/.backup-<timestamp>/`.
+- The doctor now reports that lint/measure scripts come from the packaged kit.
+
 ## [0.5.0] - 2026-10-23
 
 ### Added

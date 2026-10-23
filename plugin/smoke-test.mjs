@@ -34,7 +34,19 @@ try {
   }
   const metaFile = path.join(dir, ".design-os", ".dezign0-kit.json");
   assert.ok(fs.existsSync(metaFile), "kit metadata written");
-  assert.equal(JSON.parse(fs.readFileSync(metaFile, "utf8")).version, JSON.parse(fs.readFileSync(new URL("../package.json", import.meta.url), "utf8")).version);
+  const packageVersion = JSON.parse(fs.readFileSync(new URL("../package.json", import.meta.url), "utf8")).version;
+  assert.equal(JSON.parse(fs.readFileSync(metaFile, "utf8")).version, packageVersion);
+
+  // Stale kit: simulate a project kit left at the previous version. The upgrade
+  // must refresh untouched files, preserve a user modification and update meta.
+  const meta = JSON.parse(fs.readFileSync(metaFile, "utf8"));
+  meta.version = "0.0.0-old";
+  fs.writeFileSync(metaFile, JSON.stringify(meta, null, 2));
+  const designOs = path.join(dir, ".design-os", "DESIGN-OS.md");
+  fs.appendFileSync(designOs, "\nUSER LOCAL EDIT\n");
+  await Dezign0Plugin.setup(ctx);
+  assert.match(fs.readFileSync(designOs, "utf8"), /USER LOCAL EDIT/);
+  assert.equal(JSON.parse(fs.readFileSync(metaFile, "utf8")).version, packageVersion);
 
   // A modified project copy must not change the registered skill content.
   fs.writeFileSync(
